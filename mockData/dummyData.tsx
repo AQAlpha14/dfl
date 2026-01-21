@@ -1,4 +1,11 @@
-import { FBSVG, InstaSVG, INSVG, LocationSVG, MailSVG, MailWhiteSVG, PhoneSVG, XSVG, YoutubeSVG } from "@/public/icons/SVGIcons";
+import {
+  FBSVG,
+  InstaSVG,
+  LocationSVG,
+  MailWhiteSVG,
+  PhoneSVG,
+  XSVG,
+} from "@/public/icons/SVGIcons";
 
 export const contactDetail = {
   telNo: "+971 50 123 4567",
@@ -56,7 +63,7 @@ export const btnText = {
   find_your_dream_home_now: "Find Your Dream Home Now",
   try_our_savings_calculator: "Try Our Savings Calculator",
   list_your_property: "List Your Property ",
-}
+};
 // NavBar
 export const navlinks = {
   en: [
@@ -369,6 +376,9 @@ export const contactLinks = [
   },
 ];
 export const icons = {
+  facebook: "flowbite:facebook-solid",
+  instagram: "lets-icons:insta-light",
+  whatsapp: "ic:baseline-whatsapp",
   threeDots: "mdi:dots-vertical",
   search: "iconamoon:search",
   notification: "ion:notifications-outline",
@@ -378,14 +388,16 @@ export const icons = {
   share: "fa-solid:share",
   print: "fa6-solid:print",
   upArrow: "ep:top",
-  'upArrowv2': "material-symbols:arrow-drop-up",
+  upArrowv2: "material-symbols:arrow-drop-up",
+  arrowRight: "iconamoon:arrow-right-2-duotone",
   downArrow: "ep:bottom",
-  'downArrowv2': "material-symbols:arrow-drop-down",
+  downArrowv2: "material-symbols:arrow-drop-down",
   logout: "line-md:log-out",
   star: "mdi:star-outline",
-  'starV2': "iconoir:star-solid",
+  starV2: "iconoir:star-solid",
   edit: "akar-icons:edit",
   plus: "icons8:plus",
+  plusv2: "icons8:plus",
   refresh: "tdesign:refresh",
   checkBox: "octicon:check-16",
   mobile: "uiw:mobile",
@@ -402,11 +414,29 @@ export const icons = {
   ship: "hugeicons:shipping-truck-01",
   shipmentLabel: "hugeicons:label",
   shipmentTrack: "hugeicons:van",
-}
+};
 export const socialLinks = [
   { href: "https://www.facebook.com/Buzinessify/", icon: <FBSVG /> },
   { href: "https://www.instagram.com/buzinessify/", icon: <InstaSVG /> },
-  { href: "https://twitter.com", icon: <XSVG /> },
+  { href: "https://x.com/buzinessify", icon: <XSVG /> },
   // { href: "https://www.linkedin.com", icon: <INSVG /> },
   // { href: "https://www.youtube.com", icon: <YoutubeSVG /> },
 ];
+export const faqData = [
+  {
+    id: "general",
+    title: "General",
+    faqs: [
+      { id: 1, question: "What is this?", answer: "This is FAQ." },
+      { id: 2, question: "How it works?", answer: "Like this." },
+    ],
+  },
+  {
+    id: "pricing",
+    title: "Pricing",
+    faqs: [
+      { id: 3, question: "Is it free?", answer: "Yes." },
+    ],
+  },
+];
+

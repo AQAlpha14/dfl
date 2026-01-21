@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import SplideSlider from "@/sections/SplideSlider/SplideSlider";
+import SplideSlider from "@/sections/SplideSlider";
 import Typography from "@/components/Typography";
 import Image from "@/components/Image";
 

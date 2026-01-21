@@ -54,8 +54,8 @@ function NewsLetterForm() {
           type="email"
           placeholder="Subscribe to our newsletter.."
           {...register("email")}
-          className={`text-primary border-2 px-4 py-1 rounded-full flex-1 focus:outline-none ${
-            errors.email ? "border-red-500" : "border-white"
+          className={`text-primary border px-4 py-1 flex-1 focus:outline-none ${
+            errors.email ? "border-red-500 rounded" : ""
           }`}
         />
         <button
