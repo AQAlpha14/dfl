@@ -1,0 +1,59 @@
+@import "tailwindcss";
+
+:root {
+  --primary: #3C8FCA;
+  --primaryL: #66BFFF;
+  --primaryLight: #EBF7FF;
+  --secondary: #00182A;
+  --secondaryLight: #f2f4ff;
+  --font-creatoDisplay: "creatoDisplay";
+}
+
+@theme inline {
+  --default-font-family: var(--font-creatoDisplay), sans-serif;
+  --color-primary: var(--primary);
+  --color-primaryL: var(--primaryL);
+  --color-primaryLight: var(--primaryLight);
+  --color-secondary: var(--secondary);
+  --color-secondaryLight: var(--secondaryLight);
+  --breakpoint-*: initial;
+  --breakpoint-2xs: 360px;
+  --breakpoint-xs: 480px;
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
+  --container-*: initial;
+  --container-sm: 640px;
+  --container-md: 768px;
+  --container-lg: 1024px;
+  --container-xl: 1280px;
+}
+body {
+  overflow-x: hidden !important;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.bgimg {
+  @apply bg-no-repeat bg-cover bg-center;
+}
+.secPadding {
+  @apply md:py-12 sm:py-8 py-4;
+}
+.heroPadding {
+  @apply md:pt-44 pt-28 md:pb-24 sm:pb-20 xs:pb-16 pb-8;
+}
+.container {
+  width: 100%;
+  margin-inline: auto !important;
+  padding-inline: 1rem !important;
+}
+.float-labels {
+  transition-property: top, font-size, line-height;
+  transition-duration: 150ms;
+  pointer-events: none;
+  transition-timing-function: linear;
+}
