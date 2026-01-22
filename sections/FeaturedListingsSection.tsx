@@ -1,6 +1,8 @@
 "use client";
 import { useState, useMemo } from "react";
 import { motion } from "framer-motion";
+import { Splide, SplideSlide } from "@splidejs/react-splide";
+import "@splidejs/splide/css";
 import FeaturedCards, { Property } from "@/components/cards/FeaturedCards";
 import Typography from "@/components/Typography";
 import homeData from "@/mockData/homeData.json";
@@ -124,22 +126,37 @@ const FeaturedListingsSection = ({
 
           {filteredProperties && filteredProperties.length > 0 ? (
             <motion.div
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-6"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
               key={selectedType}
+              className="pt-6"
             >
-              {filteredProperties.map((property: Property, idx: number) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3, delay: idx * 0.05 }}
-                >
-                  <FeaturedCards data={property} />
-                </motion.div>
-              ))}
+              <Splide
+                options={{
+                  type: "loop",
+                  perPage: 3,
+                  gap: "1.5rem",
+                  pagination: false,
+                  arrows: false,
+                  breakpoints: {
+                    768: { perPage: 2 },
+                    640: { perPage: 1 },
+                  },
+                }}
+              >
+                {filteredProperties.map((property: Property, idx: number) => (
+                  <SplideSlide key={idx}>
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.3, delay: idx * 0.05 }}
+                    >
+                      <FeaturedCards data={property} />
+                    </motion.div>
+                  </SplideSlide>
+                ))}
+              </Splide>
             </motion.div>
           ) : (
             <motion.div
