@@ -421,6 +421,7 @@ export const icons = {
     shares: "tdesign:share",
   shipmentLabel: "hugeicons:label",
   shipmentTrack: "hugeicons:van",
+  doller: "mdi:currency-usd",
 };
 export const socialLinks = [
   { href: "https://www.facebook.com/Buzinessify/", icon: <FBSVG /> },
