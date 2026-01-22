@@ -3,13 +3,21 @@ import { FaqAccordian } from "./FaqAccordian";
 
 /* ===================== TYPES ===================== */
 interface FaqItem {
-  id: number | string;
+  id: number;
   question: string;
   answer: string;
 }
 
+interface FaqTab {
+  id: number;
+  counter: number;
+  title: string;
+  tabicon?: string | React.ReactNode;
+  faqs: FaqItem[];
+}
+
 interface FaqsSectionProps {
-  data?: FaqItem[];
+  data?: FaqTab[];
 }
 
 /* ===================== COMPONENT ===================== */

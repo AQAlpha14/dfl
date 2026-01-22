@@ -1,11 +1,17 @@
 import {
   FBSVG,
+  ForLandloadSVG,
+  ForTenantsSVG,
+  GeneralsSVG,
   InstaSVG,
   LocationSVG,
   MailWhiteSVG,
   PhoneSVG,
+  RefundsSVG,
+  TechSupportSVG,
   XSVG,
 } from "@/public/icons/SVGIcons";
+import { count } from "console";
 
 export const contactDetail = {
   telNo: "+971 50 123 4567",
@@ -424,19 +430,214 @@ export const socialLinks = [
 ];
 export const faqData = [
   {
-    id: "general",
-    title: "General",
+    id: 1,
+    title: "For Landlords",
+    tabicon: <ForLandloadSVG />,
+    counter: 6,
     faqs: [
-      { id: 1, question: "What is this?", answer: "This is FAQ." },
-      { id: 2, question: "How it works?", answer: "Like this." },
+      {
+        id: 1,
+        question: "How does DFL help me avoid agent commissions?",
+        answer:
+          "By connecting you directly with tenants, DFL eliminates the need for brokers to hunt renters. This ensures you keep 100% of your rental income.",
+      },
+      {
+        id: 2,
+        question: "How can I ensure my property gets higher visibility?",
+        answer:
+          "DFL syncs your listing across multiple platforms to increase reach and quickly attract only tenants interested in your property.",
+      },
+      {
+        id: 3,
+        question: "Can I manage multiple properties on one account?",
+        answer:
+          "Yes, DFL's unified dashboard lets you manage, track, and update all listings in one place.",
+      },
+      {
+        id: 4,
+        question: "What if my property remains vacant?",
+        answer:
+          "DFL's smart filters and syndication reduce vacancy risks. Our immersive 3d tours and HD pictures of the property get you higher views and queries from verified, interested tenants.",
+      },
+      {
+        id: 5,
+        question: "Do I need to pay anything up front?",
+        answer:
+          "No, DFL follows a success-fee model — you pay only once the deal is finalized.",
+      },
+      {
+        id: 6,
+        question: "Do I need to pay anything up front?",
+        answer:
+          "All tenant inquiries come directly to you on DFL, ensuring no middleman interference and complete control.",
+      },
     ],
   },
   {
-    id: "pricing",
-    title: "Pricing",
+    id: 2,
+    title: "For Tenants",
+    tabicon: <ForTenantsSVG />,
+    counter: 6,
     faqs: [
-      { id: 3, question: "Is it free?", answer: "Yes." },
+      {
+        id: 1,
+        question: "How do I know listings on DFL are real?",
+        answer:
+          "Every property is verified and updated regularly to ensure authenticity and accuracy.",
+      },
+      {
+        id: 2,
+        question: "Do I have to pay commissions to the broker?",
+        answer:
+          "No, DFL connects you directly with landlords — meaning zero commission fees.",
+      },
+      {
+        id: 3,
+        question: "Can I filter properties by budget and location?",
+        answer:
+          "Yes, our smart filters let you search by location, rent, lifestyle match, and facilities.",
+      },
+      {
+        id: 4,
+        question: "How quickly are listings updated?",
+        answer:
+          "DFL refreshes listings daily to ensure tenants see the most current availability.",
+      },
+      {
+        id: 5,
+        question: "Can I schedule property viewings online?",
+        answer:
+          "Yes, you can explore properties through immersive 3D tours already available on the website or directly request and schedule an in-person viewing with landlords at your convenience.",
+      },
+      {
+        id: 6,
+        question: "Is communication with landlords secure?",
+        answer:
+          "Yes, all chats and calls are handled through DFL's secure, end-to-end encrypted communication system.",
+      },
+    ],
+  },
+  {
+    id: 3,
+    title: "General",
+    tabicon: <GeneralsSVG />,
+    counter: 5,
+    faqs: [
+      {
+        id: 1,
+        question:
+          "What makes DirectFromLandlord (DFL) different from other rental platforms?",
+        answer:
+          "DFL connects tenants directly with landlords, cutting out agents and commissions. You get verified listings, transparent rental values, and digital tools like virtual tours, instant schedulers, and secure chat—all in one place.",
+      },
+      {
+        id: 2,
+        question: "How do you verify landlords and properties on DFL?",
+        answer:
+          "Landlords must complete a verification process, and properties receive a Verified Badge once documentation is confirmed. This ensures trust and reduces fraud.",
+      },
+      {
+        id: 3,
+        question: "Can both tenants and landlords use DFL for free?",
+        answer:
+          "Yes. Tenants can browse, schedule, and connect with landlords without any upfront cost. Landlords only pay a small success fee when a tenant signs the agreement.",
+      },
+      {
+        id: 4,
+        question: "How often are listings updated?",
+        answer:
+          " DFL refreshes listings hourly to ensure availability, pricing, and details are always up to date",
+      },
+      {
+        id: 5,
+        question: "Does DFL support flexible rental options?",
+        answer:
+          "Yes. Many landlords offer flexible payment plans, short-term contracts, and digital agreements, making it easier for tenants to rent on their terms.",
+      },
+    ],
+  },
+  {
+    id: 4,
+    title: "Refunds",
+    tabicon: <RefundsSVG />,
+    counter: 6,
+    faqs: [
+      {
+        id: 1,
+        question:
+          "Am I entitled to a refund if a deal is canceled or falls through?",
+        answer:
+          "Yes, refundable deposits are returned if agreements are not finalized.",
+      },
+      {
+        id: 2,
+        question: "How long does it take to process a refund?",
+        answer:
+          "Refunds are processed within 7–10 business days; however, this timeframe may vary depending on the payment method.",
+      },
+      {
+        id: 3,
+        question:
+          "Do tenants receive a refund if the landlord cancels the lease?",
+        answer:
+          "Yes, tenants are refunded in full if the landlord cancels after payment has been made.",
+      },
+      {
+        id: 4,
+        question: "What if I change my mind after booking?",
+        answer:
+          "Refund eligibility depends on the cancellation policy agreed upon in your contract.",
+      },
+      {
+        id: 5,
+        question: "Are service fees refundable?",
+        answer:
+          "Platform success fees are charged only after the tenant signs the contract. If the deal falls through after that, any fees paid will be refunded in full.",
+      },
+      {
+        id: 6,
+        question: "How do I request a refund?",
+        answer:
+          "Refunds can be requested directly through your DFL dashboard, with status tracking feature.",
+      },
+    ],
+  },
+  {
+    id: 5,
+    title: "Tech & Support",
+    tabicon: <TechSupportSVG />,
+    counter: 5,
+    faqs: [
+      {
+        id: 1,
+        question: "Do I need to download an app to use DFL?",
+        answer:
+          "No. DFL is fully web-based and mobile-responsive. You can access your account, listings, and tools directly from your browser on any device.",
+      },
+      {
+        id: 2,
+        question: "How does the secure chat and call feature work?",
+        answer:
+          "All communication happens within the platform, so your personal details remain private. Tenants and landlords can chat, call, and share documents safely without using third-party apps.",
+      },
+      {
+        id: 3,
+        question: "What if I face a technical issue while using DFL?",
+        answer:
+          "You can contact our support team via live chat or email. We provide quick resolutions for issues like login problems, listing errors, or scheduling glitches.",
+      },
+      {
+        id: 4,
+        question: "Can I sign and manage contracts digitally on DFL?",
+        answer:
+          "Yes. The platform includes digital contracts and e-signature integration, so both tenants and landlords can finalize agreements online without paperwork.",
+      },
+      {
+        id: 5,
+        question: "Is there a customer support team to guide me through setup?",
+        answer:
+          "Absolutely. Our support team helps new landlords create listings and assists tenants in navigating filters, scheduling, and secure communications.",
+      },
     ],
   },
 ];
-

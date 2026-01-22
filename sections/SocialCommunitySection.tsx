@@ -44,8 +44,8 @@ const SocialCommunitySection = () => {
   return (
     <section className="secPadding bg-[url(/assets/icons/car_icon.svg)] bg-contain bg-no-repeat bg-bottom">
       <div className="container relative">
-        <div className="pb-4 md:flex md:items-end md:justify-between">
-          <div className="max-w-[450px]">
+        <div className="xs:pb-4 md:flex md:items-start md:justify-between gap-4">
+          <div className="max-w-112.5 w-full">
             <Typography as="h2" size="xl" weight="medium" color="secondary">
               {`Join Our Community`}
             </Typography>
@@ -53,7 +53,7 @@ const SocialCommunitySection = () => {
               {`Connect with like-minded landlords and tenants in a trusted, supportive rental community.`}
             </Typography>
           </div>
-          <div className="flex sm:items-center sm:justify-center gap-2 pt-1">
+          <div className="flex sm:items-center gap-2 pt-1">
             <div className="flex items-center sm:justify-end justify-center gap-2">
               <Link
                 href={"https://www.facebook.com/dfl/"}

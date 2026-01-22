@@ -1,20 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, ReactNode } from "react";
 import { Icon } from "@iconify/react";
 import Typography from "@/components/Typography";
 import { icons } from "@/mockData/dummyData";
 
 /* ===================== TYPES ===================== */
 interface FaqItem {
-  id: number | string;
+  id: number;
   question: string;
   answer: string;
 }
 
 interface FaqTab {
-  id: string;
+  counter: number;
+  id: number;
   title: string;
+  tabicon?: string | ReactNode;
   faqs: FaqItem[];
 }
 
@@ -23,45 +25,55 @@ interface FaqAccordianProps {
 }
 
 interface AccordionItemProps {
-  id: number | string;
+  id: number;
   title: string;
   content: string;
   isOpen: boolean;
-  onClick: (id: number | string) => void;
+  onClick: (id: number) => void;
 }
 
 /* ===================== COMPONENT ===================== */
 export function FaqAccordian({ data = [] }: FaqAccordianProps) {
-  const [activeTab, setActiveTab] = useState<string>(data[0]?.id);
-  const [openItemId, setOpenItemId] = useState<number | string | null>(null);
+  const [activeTab, setActiveTab] = useState<number | undefined>(data[0]?.id);
+  const [openItemId, setOpenItemId] = useState<number | null>(null);
 
-  const handleTabClick = (id: string) => {
+  const handleTabClick = (id: number) => {
     setActiveTab(id);
     setOpenItemId(null); // reset accordion
   };
 
-  const handleItemClick = (id: number | string) => {
+  const handleItemClick = (id: number) => {
     setOpenItemId((prev) => (prev === id ? null : id));
   };
 
-  const activeFaqs =
-    data.find((tab) => tab.id === activeTab)?.faqs || [];
+  const activeFaqs = data.find((tab) => tab.id === activeTab)?.faqs || [];
 
   return (
     <div>
       {/* ===================== TABS ===================== */}
-      <div className="flex gap-4 mb-6 border-b">
+      <div className="flex lg:flex-nowrap flex-wrap items-center justify-center xs:gap-4 gap-3 mb-6">
         {data.map((tab) => (
           <button
             key={tab.id}
             onClick={() => handleTabClick(tab.id)}
-            className={`pb-3 text-sm font-medium transition-colors ${
+            className={`flex items-center gap-2 hover:cursor-pointer xs:px-4 px-2 py-2 rounded-md xs:text-sm text-xs font-medium transition-colors ${
               activeTab === tab.id
-                ? "border-b-2 border-primary text-primary"
+                ? "text-white bg-primary"
                 : "text-gray-500 hover:text-gray-700"
             }`}
           >
+            {typeof tab.tabicon === "string" ? (
+              <Icon
+                icon={tab.tabicon}
+                width="1.3rem"
+                height="1.3rem"
+                className={`transition-transform duration-300`}
+              />
+            ) : (
+              tab.tabicon
+            )}
             {tab.title}
+            <span className="rounded-full bg-secondary/10 w-6 h-6 flex items-center justify-center">{tab.counter}</span>
           </button>
         ))}
       </div>

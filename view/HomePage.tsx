@@ -5,7 +5,7 @@ import AffiliateSection from "@/sections/AffiliateSection";
 import FeaturedListingsSection from "@/sections/FeaturedListingsSection";
 import HeroSection from "@/sections/HeroSection/HeroSection";
 import AssetSection from "@/sections/AssetSection";
-import { btnText, faqData, faqHome } from "@/mockData/dummyData";
+import { btnText, faqData } from "@/mockData/dummyData";
 import SocialCommunitySection from "@/sections/SocialCommunitySection";
 import FaqsSection from "@/sections/Faq/FaqsSection";
 
