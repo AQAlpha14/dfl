@@ -1,9 +1,14 @@
 // components/PropertyCard.tsx
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { Heart, Bed, Bath, Eye, DollarSign, MapPin } from "lucide-react";
+import { btnText, icons } from "@/mockData/dummyData";
+import Typography from "../Typography";
+import Button from "../Button";
+import { Icon } from "@iconify/react";
+import { AreaSVG, BathSVG, BedsSVG } from "@/public/icons/SVGIcons";
 
 // Define the shape of a property
 export type Property = {
@@ -29,6 +34,8 @@ type PropertyCardProps = {
 };
 
 const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
+  const [isFavorited, setIsFavorited] = useState(false);
+
   const {
     imageUrl,
     title,
@@ -41,10 +48,14 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
     views,
     inquiries,
     postedAgo,
-    featured = false,
-    verified = false,
+    featured,
+    verified,
     onViewDetails,
   } = data;
+
+  const handleFavoriteClick = () => {
+    setIsFavorited(!isFavorited);
+  };
 
   return (
     <div className="bg-white rounded-xl shadow-lg overflow-hidden w-full max-w-sm">
@@ -56,46 +67,66 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
           height={250}
           className="object-cover w-full h-60"
         />
-        <button className="absolute top-2 right-2 p-2 bg-white rounded-full shadow-md">
-          <Heart className="text-red-500" size={20} />
+        <button
+          onClick={handleFavoriteClick}
+          className="absolute top-4 left-4 rounded-full hover:bg-white/20 transition"
+        >
+          <Heart
+            className={`transition-colors ${isFavorited ? "fill-red-500 text-red-500" : "text-black"}`}
+            size={15}
+          />
         </button>
-        {featured && (
-          <span className="absolute top-2 left-2 bg-purple-600 text-white text-xs font-semibold px-2 py-1 rounded">
-            Featured
-          </span>
-        )}
-        {verified && (
-          <span className="absolute top-2 left-20 bg-green-500 text-white text-xs font-semibold px-2 py-1 rounded">
-            Verified
-          </span>
-        )}
-        <span className="absolute bottom-2 left-2 bg-blue-500 text-white text-xs font-semibold px-2 py-1 rounded">
+        <div className="absolute top-4 right-2 flex gap-2">
+          {featured && (
+            <Typography
+              as="p"
+              size="xs"
+              className="bg-purple text-white text-xs font-semibold px-4 py-2 rounded-md"
+            >
+              Featured
+            </Typography>
+          )}
+          {verified && (
+            <Typography
+              as="p"
+              size="xs"
+              className="bg-greenDark text-white text-xs font-semibold px-4 py-2 rounded-md"
+            >
+              Verified
+            </Typography>
+          )}
+        </div>
+
+        <span className="absolute bottom-4 left-4 bg-primary text-white text-xs font-semibold px-4 py-2 rounded-md">
           {type}
         </span>
       </div>
-
       <div className="p-4">
         <div className="flex justify-between items-center mb-2">
           <h3 className="font-semibold text-lg">{title}</h3>
-          <span className="text-blue-600 font-bold">{price}</span>
+          <span className="text-primary font-bold">{price}</span>
         </div>
 
-        <div className="flex items-center text-gray-500 text-sm mb-3">
-          <MapPin className="mr-1" size={16} />
+        <div className="flex items-start text-gray-500 font-medium mb-3">
+          <MapPin className="mr-1" size={24} />
           <span>{location}</span>
         </div>
 
-        <div className="flex justify-between text-gray-600 text-sm mb-3">
+        <div className="flex items-center justify-start gap-4 text-gray-600 mb-3">
           <div className="flex items-center">
-            <Bed className="mr-1" size={16} /> {beds} beds
+            <BedsSVG />
+            {beds} beds
           </div>
           <div className="flex items-center">
-            <Bath className="mr-1" size={16} /> {baths} baths
+            <AreaSVG />
+            {area} sqft
           </div>
-          <div className="flex items-center">{area} sqft</div>
+          <div className="flex items-center">
+            <BathSVG /> {baths} baths
+          </div>
         </div>
 
-        <div className="flex justify-between text-gray-400 text-xs mb-3">
+        <div className="flex justify-between bg-[#F9FAFB] text-xs mb-3">
           <div className="flex items-center">
             <Eye className="mr-1" size={14} /> {views} views
           </div>
@@ -105,12 +136,23 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
           <span>Posted {postedAgo}</span>
         </div>
 
-        <button
-          onClick={onViewDetails}
-          className="w-full bg-blue-600 text-white text-sm font-semibold py-2 rounded hover:bg-blue-700 transition"
-        >
-          View Details
-        </button>
+        <div className="flex gap-2 items-center justify-center">
+          <Button
+            onClick={onViewDetails}
+            variant="outline"
+            className="border-secondary/20 text-primary inline-flex items-center justify-center w-full"
+          >
+            <Eye className="mr-1" size={14} />
+            {btnText.view_details}
+          </Button>
+          <Button
+            onClick={onViewDetails}
+            variant="outline"
+            className="border-secondary/20 text-primary py-3"
+          >
+            <Icon icon={icons.shares} width="14" height="14" className="mr-1" />
+          </Button>
+        </div>
       </div>
     </div>
   );

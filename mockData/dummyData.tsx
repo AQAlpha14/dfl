@@ -418,6 +418,7 @@ export const icons = {
   cancel: "proicons:cancel",
   view: "hugeicons:view",
   ship: "hugeicons:shipping-truck-01",
+    shares: "tdesign:share",
   shipmentLabel: "hugeicons:label",
   shipmentTrack: "hugeicons:van",
 };

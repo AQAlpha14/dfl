@@ -37,6 +37,12 @@ export default function HomePage() {
             : "Trusted By The Best!"
         }
       />
+      <FeaturedListingsSection 
+      heading="Explore Our Featured Listings"
+        paragraph={[
+          "We do the heavy lifting for you, so you can find the UAE’s best rental properties vetted for value and comfort .",
+        ]}
+      />
       <AssetSection
         bgblue={true}
         heading="Manage Your Rentals with Ease – Let Us Take Care of Everything."
@@ -76,7 +82,6 @@ export default function HomePage() {
         link="/"
         linkLext={btnText.list_your_property}
       />
-      <FeaturedListingsSection />
       <FaqsSection data={faqData} />
       <SocialCommunitySection />
     </div>

@@ -6,6 +6,9 @@
   --primaryLight: #EBF7FF;
   --secondary: #00182A;
   --secondaryLight: #f2f4ff;
+  --purple: #59168B;
+  --green: #5DC647;
+  --greenDark: #37894E;
   --font-creatoDisplay: "creatoDisplay";
 }
 
@@ -16,6 +19,9 @@
   --color-primaryLight: var(--primaryLight);
   --color-secondary: var(--secondary);
   --color-secondaryLight: var(--secondaryLight);
+  --color-green: var(--green);
+  --color-greenDark: var(--greenDark);
+  --color-purple: var(--purple);
   --breakpoint-*: initial;
   --breakpoint-2xs: 360px;
   --breakpoint-xs: 480px;
