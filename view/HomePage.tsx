@@ -8,6 +8,7 @@ import AssetSection from "@/sections/AssetSection";
 import { btnText, faqData } from "@/mockData/dummyData";
 import SocialCommunitySection from "@/sections/SocialCommunitySection";
 import FaqsSection from "@/sections/Faq/FaqsSection";
+import PropertyCategorySection from "@/sections/PropertyCategorySection";
 
 const heroData = {
   heading:
@@ -43,6 +44,7 @@ export default function HomePage() {
           "We do the heavy lifting for you, so you can find the UAE’s best rental properties vetted for value and comfort .",
         ]}
       />
+      <PropertyCategorySection />
       <AssetSection
         bgblue={true}
         heading="Manage Your Rentals with Ease – Let Us Take Care of Everything."

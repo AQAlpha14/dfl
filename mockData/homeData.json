@@ -180,5 +180,88 @@
       "featured": true,
       "verified": true
     }
+  ],
+    "propertyCategoryData": [
+    {
+      "name": "residential",
+      "label": "Residential Properties",
+      "count": "3,370+",
+      "description": "Explore a range of verified residential listings, featuring transparent pricing, flexible rental terms, and a hassle-free approach.",
+      "propertyTypes": [
+        {
+          "name": "apartment",
+          "label": "Apartments",
+          "description": "From sleek 1-bedroom to luxury 3-bedroom apartments, find furnished and non-furnished units across the UAE",
+          "count": "2,400+",
+          "image": "/image_1.webp",
+          "buttonText": "Explore Apartments"
+        },
+        {
+          "name": "villa",
+          "label": "Villas",
+          "description": "Fit for a king, these spacious villas offer exceptional privacy, modern amenities, and ultimate comfort.",
+          "count": "1,200+",
+          "image": "/image_1.webp",
+          "buttonText": "Explore Villas"
+        },
+        {
+          "name": "studio",
+          "label": "Studios",
+          "description": "Perfect compact spaces with modern facilities, ideal for professionals and students.",
+          "count": "850+",
+          "image": "/image_1.webp",
+          "buttonText": "Explore Studios"
+        },
+        {
+          "name": "townhouse",
+          "label": "Townhouses",
+          "description": "Modern townhouses combining privacy with community living, perfect for families.",
+          "count": "520+",
+          "image": "/image_1.webp",
+          "buttonText": "Explore Townhouses"
+        }
+      ]
+    },
+    {
+      "name": "commercial",
+      "label": "Commercial Properties",
+      "count": "740+",
+      "description": "Discover prime commercial spaces perfect for your business with professional amenities and strategic locations.",
+      "propertyTypes": [
+        {
+          "name": "office-space",
+          "label": "Office Spaces",
+          "description": "Professional commercial spaces designed for your business success with premium amenities.",
+          "count": "740+",
+          "image": "/image_1.webp",
+          "buttonText": "Explore Offices"
+        },
+        {
+          "name": "retail-space",
+          "label": "Retail Spaces",
+          "description": "Prime retail locations perfect for your business with high foot traffic and modern facilities.",
+          "count": "420+",
+          "image": "/image_1.webp",
+          "buttonText": "Explore Retail"
+        },
+        {
+          "name": "warehouse",
+          "label": "Warehouses",
+          "description": "Large storage and logistics spaces with excellent accessibility and infrastructure.",
+          "count": "280+",
+          "image": "/image_1.webp",
+          "buttonText": "Explore Warehouses"
+        },
+        {
+          "name": "showroom",
+          "label": "Showrooms",
+          "description": "Spacious showrooms ideal for displaying products with high visibility and customer accessibility.",
+          "count": "150+",
+          "image": "/image_1.webp",
+          "buttonText": "Explore Showrooms"
+        }
+      ]
+    }
   ]
+
 }
