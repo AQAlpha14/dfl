@@ -122,14 +122,14 @@ const NavListMenu: FC<NavListMenuProps> = ({ title, pageLinks = [] }) => {
       >
         <LanguageAwareLink
           href={textToRouteUrl(link ?? "")}
-          className={`w-44 py-2 px-4 ${
+          className={`w-44 py-2 px-4 font-normal text-nowrap hover:bg-primary text-black hover:text-white ${
             !isMobileMenuOpen ? "px-4" : ""
-          } text-black font-normal text-nowrap hover:bg-primary hover:text-white`}
+          } `}
         >
           {title}
         </LanguageAwareLink>
       </li>
-    )
+    ),
   );
 
   return (
@@ -162,7 +162,7 @@ const NavListMenu: FC<NavListMenuProps> = ({ title, pageLinks = [] }) => {
       <div className="block lg:hidden">
         <div
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
-          className="flex items-center justify-between gap-2 py-2 pr-2 text-black font-semibold"
+          className="flex items-center justify-between gap-2 py-2 pr-2"
         >
           <span>{title}</span>
           <Chevron
@@ -185,7 +185,7 @@ const NavListMenu: FC<NavListMenuProps> = ({ title, pageLinks = [] }) => {
 export function StickyNavbar() {
   const { setFilter, resetFilters } = useFilterStore();
   const [navbarColor, setNavbarColor] = useState(
-    "lg:!backdrop-blur-0 lg:bg-transparent py-3 text-white"
+    "lg:!backdrop-blur-0 lg:bg-transparent py-3 text-white",
   );
 
   const [navbarText, setNavbarText] = useState("");
@@ -335,21 +335,21 @@ export function StickyNavbar() {
                         </div>
                       </div>
                     ),
-                    direction: locale === "ar" ? "right" : "left",
                     size: "sm",
                     content: (
-                      <div className="">
-                        <ul className="mt-4 mb-6 p-0 lg:mt-0 lg:mb-0 lg:flex lg:p-1 xl:gap-6 lg:gap-2">
+                      <div className="w-full">
+                        <ul className="p-0 flex flex-col gap-2 w-full">
                           <Suspense
                             fallback={<div>Loading language switcher...</div>}
                           >
-                            <div className="w-full flex items-center justify-between gap-2">
+                            <div className="w-full flex items-center justify-between gap-2 py-4 border-b border-gray-200">
                               {/* <LanguageSwitcher /> */}
                               <LanguageAwareLink
                                 href={textToRouteUrl(
-                                  vendor?.id ? "/favourities" : "/signin"
+                                  vendor?.id ? "/favourities" : "/signin",
                                 )}
-                                className="text-white text-sm"
+                                className="text-black text-sm"
+                                onClick={() => hideDrawer()}
                               >
                                 <Icon
                                   icon="akar-icons:heart"
@@ -359,9 +359,10 @@ export function StickyNavbar() {
                               </LanguageAwareLink>
                               <LanguageAwareLink
                                 href={textToRouteUrl(
-                                  vendor?.id ? "/profile" : "/signin"
+                                  vendor?.id ? "/profile" : "/signin",
                                 )}
-                                className="bg-primary! text-white rounded-sm py-2 px-4 lg:hidden block text-sm"
+                                className="bg-primary text-white rounded-sm py-2 px-4 text-sm"
+                                onClick={() => hideDrawer()}
                               >
                                 {translations[locale]?.bookYourCar}
                               </LanguageAwareLink>
@@ -371,7 +372,7 @@ export function StickyNavbar() {
                             ({ name, link, pageLinks }, index) => {
                               const currentPath = pathname.replace(
                                 /^\/(en|ar)/,
-                                ""
+                                "",
                               );
                               const isActive =
                                 link === "/"
@@ -397,7 +398,7 @@ export function StickyNavbar() {
                                 >
                                   <LanguageAwareLink
                                     href={textToRouteUrl(link || "")}
-                                    className="text-sm"
+                                    className="text-sm w-full"
                                     onClick={() => {
                                       resetFilters();
                                       hideDrawer();
@@ -407,7 +408,7 @@ export function StickyNavbar() {
                                   </LanguageAwareLink>
                                 </li>
                               );
-                            }
+                            },
                           )}
                         </ul>
                       </div>
@@ -442,7 +443,7 @@ export function StickyNavbar() {
                 <div className="flex items-center gap-4">
                   <LanguageAwareLink
                     href={textToRouteUrl(
-                      vendor?.id ? "/favourities" : "/signin"
+                      vendor?.id ? "/favourities" : "/signin",
                     )}
                     className="text-white text-sm"
                   >
@@ -482,7 +483,7 @@ export function StickyNavbar() {
                     ) : (
                       <LanguageAwareLink
                         href={textToRouteUrl(
-                          vendor?.id ? "/profile" : "/signin"
+                          vendor?.id ? "/profile" : "/signin",
                         )}
                         className="rounded-sm bg-primary text-white py-2 px-4 text-sm"
                       >

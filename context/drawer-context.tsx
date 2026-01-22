@@ -12,7 +12,7 @@ type DrawerSize = "sm" | "md" | "lg" | "full";
 export interface DrawerConfig {
   isOpen: boolean;
   title?: ReactNode;
-  direction?: ReactNode;
+  direction?: "left" | "right" | "top" | "bottom";
   size?: DrawerSize;
   content?: ReactNode;
   showClose?: boolean;
@@ -61,7 +61,17 @@ export const DrawerProvider = ({ children }: DrawerProviderProps) => {
   return (
     <DrawerContext.Provider value={{ showDrawer, hideDrawer }}>
       {children}
-      <Drawer {...drawerConfig} onClose={hideDrawer} />
+      <Drawer 
+        isOpen={drawerConfig.isOpen}
+        onClose={hideDrawer}
+        position={drawerConfig.direction as any || "right"}
+        size={drawerConfig.size}
+        header={drawerConfig.title}
+        footer={drawerConfig.footer}
+        withCloseButton={drawerConfig.showClose !== false}
+      >
+        {drawerConfig.content}
+      </Drawer>
     </DrawerContext.Provider>
   );
 };

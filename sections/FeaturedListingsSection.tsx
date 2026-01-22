@@ -9,8 +9,7 @@ const FeaturedListingsSection = () => {
     <section className="secPadding">
       <div className="container">
         <div className="">
-          <div className="">
-            <div className="container text-white">
+            <div className="text-white">
               <Typography as="h2" size="xl" weight="normal">
                 {`reprehenderit occaecat consequat ^est. Eiusmod tempor occaecat id^ nostrud consequat`}
               </Typography>
@@ -26,8 +25,7 @@ const FeaturedListingsSection = () => {
                 </Link>
               </div>
             </div>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 pt-6">
             {homeData.featuredCardsData?.map(
               (property: Property, idx: number) => (
                 <FeaturedCards key={idx} data={property} />

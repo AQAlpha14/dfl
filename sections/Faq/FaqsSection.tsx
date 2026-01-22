@@ -39,7 +39,7 @@ const FaqsSection = ({ data }: FaqsSectionProps) => {
             </Typography>
           </div>
           {/* FAQ Accordion */}
-          <div className="mt-10 max-w-lg w-full mx-auto ">
+          <div className="xs:pt-8 pt-6 max-w-lg w-full mx-auto ">
             <FaqAccordian data={data} />
           </div>
         </div>

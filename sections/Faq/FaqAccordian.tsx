@@ -109,12 +109,13 @@ const AccordionItem = ({
         <button
           type="button"
           onClick={() => onClick(id)}
-          className="w-full flex justify-between items-start gap-4 text-left"
+          className="w-full flex justify-between items-start gap-4 text-left hover:cursor-pointer"
         >
-          <Typography as="p" size="sm" weight="medium">
+          <Typography as="p" size="sm" weight="medium" className={`${
+            isOpen ? "pb-2" : ""
+          }`}>
             {title}
           </Typography>
-
           <Icon
             icon={icons.arrowRight}
             width="1.3rem"
@@ -124,13 +125,12 @@ const AccordionItem = ({
             }`}
           />
         </button>
-
         <div
-          className={`overflow-hidden transition-all duration-300 ${
-            isOpen ? "max-h-screen pt-2 opacity-100" : "max-h-0 opacity-0"
+          className={`bg-primaryLight px-4 rounded-md border-l-3 border-primary overflow-hidden transition-all duration-300 ${
+            isOpen ? "max-h-screen py-2 opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          <Typography as="p" size="sm">
+          <Typography as="p" size="sm" className="">
             {content}
           </Typography>
         </div>
