@@ -6,9 +6,11 @@ import FeaturedListingsSection from "@/sections/FeaturedListingsSection";
 import HeroSection from "@/sections/HeroSection/HeroSection";
 import AssetSection from "@/sections/AssetSection";
 import { btnText, faqData } from "@/mockData/dummyData";
+import { exploreCommunitiesData} from "@/mockData/homeData.json";
 import SocialCommunitySection from "@/sections/SocialCommunitySection";
 import FaqsSection from "@/sections/Faq/FaqsSection";
 import PropertyCategorySection from "@/sections/PropertyCategorySection";
+import ExploreCommunitiesSection from "@/sections/ExploreCommunitiesSection";
 
 const heroData = {
   heading:
@@ -38,8 +40,8 @@ export default function HomePage() {
             : "Trusted By The Best!"
         }
       />
-      <FeaturedListingsSection 
-      heading="Explore Our Featured Listings"
+      <FeaturedListingsSection
+        heading="Explore Our Featured Listings"
         paragraph={[
           "We do the heavy lifting for you, so you can find the UAE’s best rental properties vetted for value and comfort .",
         ]}
@@ -64,6 +66,13 @@ export default function HomePage() {
         btntag="Manage Your Rentals with Ease"
         link="/"
         linkLext={btnText.explore_more}
+      />
+      <ExploreCommunitiesSection
+        heading="Explore Communities"
+        paragraph={[
+          "Explore a range of vibrant communities — each offering transparent pricing, flexible rental options, and a seamless living experience.",
+        ]}  
+        data={exploreCommunitiesData}
       />
       <AssetSection
         bgblue={true}

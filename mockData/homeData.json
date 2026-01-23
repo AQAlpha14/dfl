@@ -1,7 +1,7 @@
 {
   "featuredCardsData": [
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Luxury Modern Apartment",
       "type": "apartment",
       "price": "280,000/ Yearly",
@@ -16,7 +16,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Spacious Villa with Garden",
       "type": "villa",
       "price": "450,000/ Yearly",
@@ -31,7 +31,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Modern Studio Apartment",
       "type": "studio",
       "price": "85,000/ Yearly",
@@ -46,7 +46,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Premium Office Space",
       "type": "office-space",
       "price": "150,000/ Yearly",
@@ -61,7 +61,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Cozy Studio Apartment",
       "type": "studio",
       "price": "75,000/ Yearly",
@@ -76,7 +76,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Beautiful Villa",
       "type": "villa",
       "price": "500,000/ Yearly",
@@ -91,7 +91,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Contemporary Apartment",
       "type": "apartment",
       "price": "320,000/ Yearly",
@@ -106,7 +106,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Premium Apartment Downtown",
       "type": "apartment",
       "price": "350,000/ Yearly",
@@ -121,7 +121,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Corporate Office Suite",
       "type": "office-space",
       "price": "200,000/ Yearly",
@@ -136,7 +136,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Modern Office Space",
       "type": "office-space",
       "price": "180,000/ Yearly",
@@ -151,7 +151,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Elegant Family Home",
       "type": "villa",
       "price": "480,000/ Yearly",
@@ -166,7 +166,7 @@
       "verified": true
     },
     {
-      "imageUrl": "/image_1.webp",
+      "imageUrl": "/images/image_1.webp",
       "title": "Compact Studio",
       "type": "studio",
       "price": "65,000/ Yearly",
@@ -181,7 +181,7 @@
       "verified": true
     }
   ],
-    "propertyCategoryData": [
+  "propertyCategoryData": [
     {
       "name": "residential",
       "label": "Residential Properties",
@@ -189,36 +189,68 @@
       "description": "Explore a range of verified residential listings, featuring transparent pricing, flexible rental terms, and a hassle-free approach.",
       "propertyTypes": [
         {
-          "name": "apartment",
+          "name": "apartments",
           "label": "Apartments",
-          "description": "From sleek 1-bedroom to luxury 3-bedroom apartments, find furnished and non-furnished units across the UAE",
+          "description": "From sleek 1-bedroom to luxury 3-bedroom apartments, find furnished and non-furnished units across the UAE.",
           "count": "2,400+",
-          "image": "/image_1.webp",
-          "buttonText": "Explore Apartments"
+          "image": "/images/image_35.webp",
+          "icons": "/icons/icon_20.svg"
         },
         {
-          "name": "villa",
+          "name": "houses",
+          "label": "Houses",
+          "description": "Experience the perfect blend of comfort, serenity, and family-friendly living in the thoughtfully designed, amenity-rich houses .",
+          "count": "120+",
+          "image": "/images/image_36.webp",
+          "icons": "/icons/icon_21.svg"
+        },
+        {
+          "name": "villas",
           "label": "Villas",
           "description": "Fit for a king, these spacious villas offer exceptional privacy, modern amenities, and ultimate comfort.",
-          "count": "1,200+",
-          "image": "/image_1.webp",
-          "buttonText": "Explore Villas"
-        },
-        {
-          "name": "studio",
-          "label": "Studios",
-          "description": "Perfect compact spaces with modern facilities, ideal for professionals and students.",
           "count": "850+",
-          "image": "/image_1.webp",
-          "buttonText": "Explore Studios"
+          "image": "/images/image_37.webp",
+          "icons": "/icons/icon_22.svg"
         },
         {
-          "name": "townhouse",
+          "name": "townhouses",
           "label": "Townhouses",
-          "description": "Modern townhouses combining privacy with community living, perfect for families.",
-          "count": "520+",
-          "image": "/image_1.webp",
-          "buttonText": "Explore Townhouses"
+          "description": "Family-friendly spaces offering cozy comfort, privacy, and affordability.",
+          "count": "2,400+",
+          "image": "/images/image_35.webp",
+          "icons": "/icons/icon_20.svg"
+        },
+        {
+          "name": "penthouses",
+          "label": "Penthouses",
+          "description": "Premium top-floor residences offering exclusivity, panoramic views, and luxury amenities for upscale living",
+          "count": "120+",
+          "image": "/images/image_36.webp",
+          "icons": "/icons/icon_21.svg"
+        },
+        {
+          "name": "bungalows",
+          "label": "Bungalows",
+          "description": "Single-story living with open layouts, private gardens, and convenience—perfect for relaxed and cozy living, away from the city’s hustle and bustle. ",
+          "count": "850+",
+          "image": "/images/image_37.webp",
+          "icons": "/icons/icon_22.svg"
+        },
+        {
+          "name": "studioapartments",
+          "label": "Studio Apartments",
+          "description": "Compact, functional units designed for young professionals and students seeking affordability and convenience.",
+          "count": "2,400+",
+          "image": "/images/image_37.webp",
+          "icons": "/icons/icon_22.svg"
+        },
+        {
+          "name": "lands",
+          "label": "Lands",
+          "description": "Build your dream home or secure lucrative investments in the UAE’s most sought-after locations.",
+          "count": "120+",
+          "image": "/images/image_38.webp",
+          "icons": "/icons/icon_20.svg"
         }
       ]
     },
@@ -229,39 +261,104 @@
       "description": "Discover prime commercial spaces perfect for your business with professional amenities and strategic locations.",
       "propertyTypes": [
         {
-          "name": "office-space",
-          "label": "Office Spaces",
-          "description": "Professional commercial spaces designed for your business success with premium amenities.",
-          "count": "740+",
-          "image": "/image_1.webp",
-          "buttonText": "Explore Offices"
+          "name": "offices",
+          "label": "Offices",
+          "description": "Furnished office spaces in prime locations, featuring flexible layouts and modern amenities.",
+          "count": "340+",
+          "image": "/images/image_43.webp",
+          "icons": "/icons/icon_20.svg"
         },
         {
-          "name": "retail-space",
+          "name": "retailspaces",
           "label": "Retail Spaces",
-          "description": "Prime retail locations perfect for your business with high foot traffic and modern facilities.",
-          "count": "420+",
-          "image": "/image_1.webp",
-          "buttonText": "Explore Retail"
+          "description": "Customer-centric units in high foot traffic locations, built to attract and grow your consumer base",
+          "count": "220+",
+          "image": "/images/image_44.webp",
+          "icons": "/icons/icon_21.svg"
         },
         {
-          "name": "warehouse",
-          "label": "Warehouses",
-          "description": "Large storage and logistics spaces with excellent accessibility and infrastructure.",
-          "count": "280+",
-          "image": "/image_1.webp",
-          "buttonText": "Explore Warehouses"
+          "name": "bulkunits",
+          "label": "Bulk Units",
+          "description": "Rent multiple units together, perfect for investors or companies, aiming to scale their operations and efficiency.",
+          "count": "180+",
+          "image": "/images/image_45.webp",
+          "icons": "/icons/icon_22.svg"
         },
         {
-          "name": "showroom",
-          "label": "Showrooms",
-          "description": "Spacious showrooms ideal for displaying products with high visibility and customer accessibility.",
-          "count": "150+",
-          "image": "/image_1.webp",
-          "buttonText": "Explore Showrooms"
+          "name": "explorefactories",
+          "label": "Explore Factories",
+          "description": "Industrial-ready spaces with infrastructure for storage, logistics, or production across prime UAE",
+          "count": "340+",
+          "image": "/images/image_46.webp",
+          "icons": "/icons/icon_20.svg"
+        },
+        {
+          "name": "fullfloors",
+          "label": "Full Floors",
+          "description": "Get entire commercial building floors to set up expansive, professional headquarters or offices",
+          "count": "220+",
+          "image": "/images/image_47.webp",
+          "icons": "/icons/icon_21.svg"
+        },
+        {
+          "name": "halffloors",
+          "label": "Half Floors",
+          "description": "Flexible mid-sized business spaces, offering affordability, practicality, and modern layouts for growing",
+          "count": "180+",
+          "image": "/images/image_48.webp",
+          "icons": "/icons/icon_22.svg"
+        },
+        {
+          "name": "hotelapartments",
+          "label": "Hotel Apartments",
+          "description": "Serviced apartments with flexible stays, ideal for corporate housing, hospitality businesses, or steady rental income.",
+          "count": "340+",
+          "image": "/images/image_49.webp",
+          "icons": "/icons/icon_22.svg"
+        },
+        {
+          "name": "laborcamps",
+          "label": "Labor Camps",
+          "description": "Affordable and safe staff housing equipped with required facilities, supporting construction, logistics, and industrial sectors.",
+          "count": "220+",
+          "image": "/images/image_50.webp",
+          "icons": "/icons/icon_22.svg"
+        },
+        {
+          "name": "shops",
+          "label": "Shops",
+          "description": "Boost business  visibility and accessibility with affordable retailing options, ideal for startups, local shop owners , and service providers.",
+          "count": "180+",
+          "image": "/images/image_51.webp",
+          "icons": "/icons/icon_20.svg"
         }
       ]
     }
+  ],
+  "exploreCommunitiesData": [
+    {
+      "title": "Downtown Dubai",
+      "paragraph": "A vibrant community with modern amenities and world-class facilities.",
+      "priceRange": "AED 2,500 - 8,000",
+      "rating": 4.8,
+      "totalProperties": 1250,
+      "imageUrl": "/images/image_35.webp"
+    },
+    {
+      "title": "Marina District",
+      "paragraph": "Luxury waterfront living with stunning views and premium services.",
+      "priceRange": "AED 3,500 - 12,000",
+      "rating": 4.9,
+      "totalProperties": 980,
+      "imageUrl": "/images/image_36.webp"
+    },
+    {
+      "title": "Dubai Hills",
+      "paragraph": "Exclusive hilltop residences offering privacy and sophistication.",
+      "priceRange": "AED 4,000 - 15,000",
+      "rating": 4.7,
+      "totalProperties": 650,
+      "imageUrl": "/images/image_37.webp"
+    }
   ]
-
 }
