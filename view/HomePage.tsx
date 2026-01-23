@@ -6,7 +6,7 @@ import FeaturedListingsSection from "@/sections/FeaturedListingsSection";
 import HeroSection from "@/sections/HeroSection/HeroSection";
 import AssetSection from "@/sections/AssetSection";
 import { btnText, faqData } from "@/mockData/dummyData";
-import { exploreCommunitiesData} from "@/mockData/homeData.json";
+import { exploreCommunitiesData } from "@/mockData/homeData.json";
 import SocialCommunitySection from "@/sections/SocialCommunitySection";
 import FaqsSection from "@/sections/Faq/FaqsSection";
 import PropertyCategorySection from "@/sections/PropertyCategorySection";
@@ -67,13 +67,7 @@ export default function HomePage() {
         link="/"
         linkLext={btnText.explore_more}
       />
-      <ExploreCommunitiesSection
-        heading="Explore Communities"
-        paragraph={[
-          "Explore a range of vibrant communities — each offering transparent pricing, flexible rental options, and a seamless living experience.",
-        ]}  
-        data={exploreCommunitiesData}
-      />
+      <ExploreCommunitiesSection data={exploreCommunitiesData[0]} />
       <AssetSection
         bgblue={true}
         heading="List Your Property Now and Reach Out to Tenants All Across the UAE"

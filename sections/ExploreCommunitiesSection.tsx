@@ -1,65 +1,128 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import Button from "@/components/Button";
 import ExploreCommunitiesCard from "@/components/cards/ExploreCommunitiesCard";
 import Link from "@/components/Link";
 import Typography from "@/components/Typography";
 import { btnText } from "@/mockData/dummyData";
+import Image from "@/components/Image";
 
-interface ExploreCommunitiesCardItem {
-  title?: string;
-  paragraph: string;
-  priceRange: string;
-  rating: number;
-  totalProperties: number;
-  imageUrl: string;
+interface SubTab {
+  label: string;
+  value: string;
+  icon: string;
+}
+
+interface CommunityItem {
+  id: number;
+  title: string;
+  image: string;
+  rating?: number;
+  properties: number;
+  category: string[];
+  description: string;
+  price: string;
 }
 
 interface ExploreCommunitiesSectionProps {
-  topTitle?: string;
-  heading?: string;
-  bottomTitle?: string;
-  paragraph?: string[];
-  data?: ExploreCommunitiesCardItem[];
+  data: {
+    heading: string;
+    description: string;
+    cities: string[];
+    subTabs: SubTab[];
+    communities: {
+      [city: string]: CommunityItem[];
+    };
+  };
 }
 
 const ExploreCommunitiesSection = ({
-  topTitle,
-  heading,
-  bottomTitle,
-  paragraph,
-  data=[],
+  data,
 }: ExploreCommunitiesSectionProps) => {
+  const { heading, description, cities, subTabs, communities } = data;
+
+  const [activeCity, setActiveCity] = useState(cities[0]);
+  const [activeSubTab, setActiveSubTab] = useState(subTabs[0].value);
+
+  /* ===================== FILTERED DATA ===================== */
+  const filteredCommunities = useMemo(() => {
+    return (
+      communities?.[activeCity]?.filter((item) =>
+        item.category.includes(activeSubTab),
+      ) || []
+    );
+  }, [activeCity, activeSubTab, communities]);
+
   return (
-    <section className="py-12 md:py-20 bg-white">
-      <div className="container mx-auto px-4">
-        <div className="max-w-xl mx-auto space-y-2">
-          {topTitle && (
-            <Typography as="h3" size="md" weight="medium" align="center">
-              {topTitle}
-            </Typography>
-          )}
-          <Typography as="h2" size="xl" weight="semibold" align="center">
+    <section className="secPadding bg-white">
+      <div className="container">
+        {/* ===================== HEADER ===================== */}
+        <div className="max-w-xl mx-auto text-center space-y-3">
+          <Typography as="h2" size="xl" weight="semibold">
             {heading}
           </Typography>
-          {bottomTitle && (
-            <Typography as="h3" size="md" weight="medium" align="center">
-              {bottomTitle}
+          {/* ===================== CITY TABS ===================== */}
+          <div className="inline-flex items-center justify-center flex-wrap gap-3 mt-6 bg-white shadow-lg rounded-md p-2">
+            {cities.map((city) => (
+              <Button
+                key={city}
+                variant={activeCity === city ? "primary" : "outline"}
+                onClick={() => setActiveCity(city)}
+                className={`${activeCity === city ? "" : "border-none! text-secondary/80!"}`}
+              >
+                {city}
+              </Button>
+            ))}
+          </div>
+          <Typography as="p" size="sm" className="py-6">
+            {description}
+          </Typography>
+          {/* ===================== SUB TABS ===================== */}
+          <div className="flex justify-center flex-wrap gap-2 mt-4">
+            {subTabs.map((tab) => (
+              <Button
+                key={tab.value}
+                variant={activeSubTab === tab.value ? "primary" : "outline"}
+                className={`flex items-center gap-2 rounded-full! ${activeSubTab === tab.value ? "" : "border-secondary/80! text-secondary/80!"}`}
+                onClick={() => setActiveSubTab(tab.value)}
+              >
+                <Image
+                  src={tab.icon}
+                  alt={`${tab.value}`}
+                  width={24}
+                  height={24}
+                />
+                {tab.label}
+              </Button>
+            ))}
+          </div>
+        </div>
+        {/* ===================== CARDS ===================== */}
+        <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 mt-8">
+          {filteredCommunities.length ? (
+            filteredCommunities.map((item) => (
+              <ExploreCommunitiesCard
+                key={item.id}
+                data={{
+                  title: item.title,
+                  paragraph: item.description,
+                  priceRange: item.price,
+                  rating: item.rating ?? 0,
+                  totalProperties: item.properties,
+                  imageUrl: item.image,
+                }}
+              />
+            ))
+          ) : (
+            <Typography align="center" className="col-span-full">
+              No communities found
             </Typography>
           )}
-
-          {paragraph?.map((para: string, ind: number) => (
-            <Typography key={ind} as="p" size="sm" align="center">
-              {para}
-            </Typography>
-          ))}
-        </div>
-        {/* Category Cards would go here */}
-
-        <div className="grid md:grid-cols-3 grid-cols-1 gap-4 pt-4">
-          {data?.map((items, i) => (
-            <ExploreCommunitiesCard key={i} {...items} />
-          ))}
         </div>
 
-        <div className="mt-8 flex justify-center">
+        {/* ===================== CTA ===================== */}
+        <div className="mt-10 flex justify-center">
           <Link href="/communities" icon2>
             {btnText.view_all_communities_in_dubai}
           </Link>

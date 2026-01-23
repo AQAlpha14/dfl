@@ -337,28 +337,126 @@
   ],
   "exploreCommunitiesData": [
     {
-      "title": "Downtown Dubai",
-      "paragraph": "A vibrant community with modern amenities and world-class facilities.",
-      "priceRange": "AED 2,500 - 8,000",
-      "rating": 4.8,
-      "totalProperties": 1250,
-      "imageUrl": "/images/image_35.webp"
-    },
-    {
-      "title": "Marina District",
-      "paragraph": "Luxury waterfront living with stunning views and premium services.",
-      "priceRange": "AED 3,500 - 12,000",
-      "rating": 4.9,
-      "totalProperties": 980,
-      "imageUrl": "/images/image_36.webp"
-    },
-    {
-      "title": "Dubai Hills",
-      "paragraph": "Exclusive hilltop residences offering privacy and sophistication.",
-      "priceRange": "AED 4,000 - 15,000",
-      "rating": 4.7,
-      "totalProperties": 650,
-      "imageUrl": "/images/image_37.webp"
+      "heading": "Explore Communities",
+      "description": "Explore a range of vibrant communities — each offering transparent pricing, flexible rental options, and a seamless living experience.",
+      "cities": ["Dubai", "Abu Dhabi", "Sharjah", "Ajman", "Ras Al Khaimah"],
+      "subTabs": [
+        {
+          "label": "Popular",
+          "value": "popular",
+          "icon": "/icons/icon_20.svg"
+        },
+        {
+          "label": "Budget-Friendly",
+          "value": "budget-friendly",
+          "icon": "/icons/icon_21.svg"
+        },
+        {
+          "label": "Business Friendly",
+          "value": "business-friendly",
+          "icon": "/icons/icon_22.svg"
+        },
+        {
+          "label": "Eco & Sustainability",
+          "value": "eco-sustainability",
+          "icon": "/icons/icon_20.svg"
+        },
+        {
+          "label": "Expats",
+          "value": "expats",
+          "icon": "/icons/icon_21.svg"
+        },
+        {
+          "label": "Family-Friendly",
+          "value": "family-friendly",
+          "icon": "/icons/icon_22.svg"
+        },
+        {
+          "label": "Green Areas",
+          "value": "green-areas",
+          "icon": "/icons/icon_20.svg"
+        },
+        {
+          "label": "Investment",
+          "value": "investment",
+          "icon": "/icons/icon_21.svg"
+        },
+        {
+          "label": "Lifestyle & Demographics",
+          "value": "lifestyle-demographics",
+          "icon": "/icons/icon_22.svg"
+        },
+        {
+          "label": "Luxury",
+          "value": "luxury",
+          "icon": "/icons/icon_22.svg"
+        },
+        {
+          "label": "Pet-Friendly",
+          "value": "pet-friendly",
+          "icon": "/icons/icon_20.svg"
+        },
+        {
+          "label": "Proximity",
+          "value": "proximity",
+          "icon": "/icons/icon_21.svg"
+        },
+        {
+          "label": "Security & Safety",
+          "value": "security-safety",
+          "icon": "/icons/icon_22.svg"
+        },
+        {
+          "label": "Tourism & Vacation",
+          "value": "tourism-vacation",
+          "icon": "/icons/icon_20.svg"
+        }
+      ],
+      "communities": {
+        "Dubai": [
+          {
+            "id": 1,
+            "title": "Dubai Marina",
+            "image": "/assets/communities/marina.jpg",
+            "rating": 4.8,
+            "properties": 1250,
+            "category": ["popular", "luxury", "expats"],
+            "description": "Iconic waterfront living with stunning skyline views",
+            "price": "AED 65K - 200K"
+          },
+          {
+            "id": 2,
+            "title": "Downtown Dubai",
+            "image": "/assets/communities/downtown.jpg",
+            "properties": 980,
+            "category": ["popular", "business"],
+            "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
+            "price": "AED 80K - 300K"
+          },
+          {
+            "id": 3,
+            "title": "Palm Jumeirah",
+            "image": "/assets/communities/palm.jpg",
+            "properties": 720,
+            "category": ["luxury", "expats"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 4,
+            "title": "Business Bay",
+            "image": "/assets/communities/businessbay.jpg",
+            "properties": 890,
+            "category": ["business", "popular"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          }
+        ],
+        "Abu Dhabi": [],
+        "Sharjah": [],
+        "Ajman": [],
+        "Ras Al Khaimah": []
+      }
     }
   ]
 }

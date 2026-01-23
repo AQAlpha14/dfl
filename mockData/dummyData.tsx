@@ -400,6 +400,7 @@ export const icons = {
   downArrowv2: "material-symbols:arrow-drop-down",
   logout: "line-md:log-out",
   star: "mdi:star-outline",
+  starFilled: "mdi:star",
   starV2: "iconoir:star-solid",
   edit: "akar-icons:edit",
   plus: "icons8:plus",

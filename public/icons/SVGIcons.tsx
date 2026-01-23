@@ -464,7 +464,7 @@ export const BedsSVG = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 export const AreaSVG = (props: React.SVGProps<SVGSVGElement>) => (
-     <svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     width={18}
     height={18}
@@ -482,7 +482,7 @@ export const AreaSVG = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 export const BathSVG = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     width={18}
     height={18}
@@ -514,7 +514,7 @@ export const CommercialSVG = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 export const ResidentialSVG = (props: React.SVGProps<SVGSVGElement>) => (
-    <svg
+  <svg
     xmlns="http://www.w3.org/2000/svg"
     width={20}
     height={20}
@@ -525,6 +525,31 @@ export const ResidentialSVG = (props: React.SVGProps<SVGSVGElement>) => (
       fill="currentColor"
       d="M18 4.1V2.5H2v1.6h.8v12.8H2v1.6h16v-1.6h-.8V4.1h.8Zm-11.2 12H4.4v-2.4h2.4v2.4Zm0-4H4.4V9.7h2.4v2.4Zm0-4H4.4V5.7h2.4v2.4Zm4.8 8.8H8.4v-4h3.2v4Zm4-.8h-2.4v-2.4h2.4v2.4Zm0-4h-2.4V9.7h2.4v2.4Zm0-4h-2.4V5.7h2.4v2.4Z"
     />
+  </svg>
+);
+export const PopularSVG = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={16}
+    height={16}
+    fill="none"
+    {...props}
+  >
+    <g
+      stroke="#fff"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={1.333}
+      clipPath="url(#a)"
+    >
+      <path d="M10.666 4.667h4v4" />
+      <path d="m14.667 4.667-5.666 5.666L5.667 7l-4.333 4.333" />
+    </g>
+    <defs>
+      <clipPath id="a">
+        <path fill="#fff" d="M0 0h16v16H0z" />
+      </clipPath>
+    </defs>
   </svg>
 );
 // export const SVG = (props: React.SVGProps<SVGSVGElement>) => (
