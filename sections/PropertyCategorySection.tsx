@@ -63,7 +63,7 @@ const PropertyCategorySection = ({
           </Typography>
 
           {/* Category Tabs */}
-          <div className="inline-flex gap-4 mb-8 bg-white p-3 shadow-xl">
+          <div className="inline-flex flex-wrap gap-4 mb-8 bg-white p-3 shadow-xl">
             {categoryTabs.map((tab) => (
               <button
                 key={tab.name}
@@ -86,7 +86,7 @@ const PropertyCategorySection = ({
                   {tab.label}
                 </Typography>
                 <span
-                  className={`bg-white/20 bg-opacity-50 rounded px-2 py-1 text-xs font-semibold
+                  className={`bg-white/20 rounded-full px-3 py-1 text-xs font-semibold
                     ${
                       selectedCategory === tab.name
                         ? ""

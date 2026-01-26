@@ -9,6 +9,7 @@ import Link from "@/components/Link";
 import Typography from "@/components/Typography";
 import Image from "@/components/Image";
 import { btnText } from "@/mockData/dummyData";
+import NotFound from "@/components/NotFound";
 
 /* ===================== TYPES ===================== */
 
@@ -128,16 +129,15 @@ const ExploreCommunitiesSection = ({
           </Typography>
 
           {/* ===================== SUB TABS ===================== */}
-          <div className="flex justify-center flex-wrap gap-2 pt-4">
+          <div className="flex justify-center flex-wrap gap-2 pt-4 pb-6">
             {citySubTabs.map((tab) => {
               const isActive = activeSubTab === tab.value;
-
               return (
                 <Button
                   key={tab.value}
                   onClick={() => setActiveSubTab(tab.value)}
                   variant="outline"
-                  className="relative rounded-full! bg-white! border-gray-200! shadow-sm"
+                  className="relative sm:px-6! xs:px-4! px-2! rounded-full! bg-white! text-secondary border-gray-200! shadow-sm"
                 >
                   {isActive && (
                     <motion.span
@@ -152,7 +152,7 @@ const ExploreCommunitiesSection = ({
                   )}
 
                   <span
-                    className={`relative z-10 flex items-center gap-2 ${isActive ? "text-white!" : ""}`}
+                    className={`relative z-10 flex items-center md:text-base xs:text-sm text-xs gap-2 ${isActive ? "text-white!" : ""}`}
                   >
                     <Image src={tab.icon} alt={tab.label} width={20} height={20} />
                     {/* {tab.icon} */}
@@ -172,12 +172,14 @@ const ExploreCommunitiesSection = ({
             initial="hidden"
             animate="visible"
             exit="hidden"
-            className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 mt-10"
+            className="flex flex-wrap justify-center gap-4"
+            // className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 mt-10"
           >
             {filteredCommunities.length ? (
               filteredCommunities.map((item) => (
-                <motion.div key={item.id} variants={cardVariants} exit="exit">
+                <motion.div key={item.id} variants={cardVariants} exit="exit" className="lg:basis-[23.5%] basis-full ">
                   <ExploreCommunitiesCard
+                  className=""
                     data={{
                       title: item.title,
                       paragraph: item.description,
@@ -190,9 +192,10 @@ const ExploreCommunitiesSection = ({
                 </motion.div>
               ))
             ) : (
-              <Typography align="center" className="col-span-full">
-                No communities found
-              </Typography>
+              // <Typography align="center" className="col-span-full">
+              //   No communities found
+              // </Typography>
+              <NotFound />
             )}
           </motion.div>
         </AnimatePresence>

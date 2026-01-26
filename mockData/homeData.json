@@ -410,6 +410,21 @@
           "label": "Tourism & Vacation",
           "value": "tourism-vacation",
           "icon": "/icons/icon_36.svg"
+        },
+        {
+          "label": "Waterfront",
+          "value": "waterfront",
+          "icon": "/icons/icon_36.svg"
+        },
+        {
+          "label": "Outdoor Enthusiasts",
+          "value": "outdoor-enthusiasts",
+          "icon": "/icons/icon_36.svg"
+        },
+        {
+          "label": "Sports Enclave",
+          "value": "sports-enclave",
+          "icon": "/icons/icon_36.svg"
         }
       ],
       "communities": {
@@ -420,7 +435,7 @@
             "image": "/images/image_6.webp",
             "rating": 4.8,
             "properties": 1250,
-            "category": ["popular", "luxury", "expats"],
+            "category": ["popular"],
             "description": "Iconic waterfront living with stunning skyline views",
             "price": "AED 65K - 200K"
           },
@@ -430,7 +445,7 @@
             "image": "/images/image_1.webp",
             "rating": 4.8,
             "properties": 980,
-            "category": ["popular", "business"],
+            "category": ["budget-friendly"],
             "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
             "price": "AED 80K - 300K"
           },
@@ -440,22 +455,22 @@
             "image": "/images/image_11.webp",
             "rating": 4.8,
             "properties": 720,
-            "category": ["luxury", "expats", "popular"],
+            "category": ["business-friendly"],
             "description": "Exclusive island living with luxury amenities",
             "price": "AED 120K - 500K"
           },
           {
-            "id": 3,
+            "id": 4,
             "title": "Palm Jumeirah",
             "image": "/images/image_12.webp",
             "rating": 4.8,
             "properties": 720,
-            "category": ["luxury", "expats"],
+            "category": ["eco-sustainability", "popular"],
             "description": "Exclusive island living with luxury amenities",
             "price": "AED 120K - 500K"
           },
           {
-            "id": 3,
+            "id": 5,
             "title": "Palm Jumeirah",
             "image": "/images/image_1.webp",
             "rating": 4.8,
@@ -465,14 +480,136 @@
             "price": "AED 120K - 500K"
           },
           {
-            "id": 4,
+            "id": 6,
             "title": "Business Bay",
             "image": "/images/image_1.webp",
             "rating": 4.8,
             "properties": 890,
-            "category": ["business", "popular"],
+            "category": ["family-friendly"],
             "description": "Modern towers perfect for professionals",
             "price": "AED 55K - 180K"
+          },
+          {
+            "id": 7,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["green-areas"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 8,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["investment"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 9,
+            "title": "Dubai Marina",
+            "image": "/images/image_6.webp",
+            "rating": 4.8,
+            "properties": 1250,
+            "category": ["lifestyle-demographics", "popular"],
+            "description": "Iconic waterfront living with stunning skyline views",
+            "price": "AED 65K - 200K"
+          },
+          {
+            "id": 10,
+            "title": "Downtown Dubai",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 980,
+            "category": ["luxury"],
+            "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
+            "price": "AED 80K - 300K"
+          },
+          {
+            "id": 11,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_11.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["pet-friendly"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 12,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_12.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["proximity"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 13,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["security-safety", "popular"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 14,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["tourism-vacation"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          }
+        ],
+        "Abu Dhabi": [
+          {
+            "id": 1,
+            "title": "Dubai Marina",
+            "image": "/images/image_6.webp",
+            "rating": 4.8,
+            "properties": 1250,
+            "category": ["popular"],
+            "description": "Iconic waterfront living with stunning skyline views",
+            "price": "AED 65K - 200K"
+          },
+          {
+            "id": 2,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_11.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["business-friendly"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 3,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_12.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["eco-sustainability", "popular"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 4,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["expats"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
           },
           {
             "id": 5,
@@ -480,7 +617,7 @@
             "image": "/images/image_1.webp",
             "rating": 4.8,
             "properties": 890,
-            "category": ["business", "luxury"],
+            "category": ["family-friendly"],
             "description": "Modern towers perfect for professionals",
             "price": "AED 55K - 180K"
           },
@@ -490,14 +627,185 @@
             "image": "/images/image_1.webp",
             "rating": 4.8,
             "properties": 890,
-            "category": ["business"],
+            "category": ["green-areas"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 7,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["investment"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 8,
+            "title": "Dubai Marina",
+            "image": "/images/image_6.webp",
+            "rating": 4.8,
+            "properties": 1250,
+            "category": ["lifestyle-demographics", "popular"],
+            "description": "Iconic waterfront living with stunning skyline views",
+            "price": "AED 65K - 200K"
+          },
+          {
+            "id": 9,
+            "title": "Downtown Dubai",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 980,
+            "category": ["luxury"],
+            "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
+            "price": "AED 80K - 300K"
+          },
+          {
+            "id": 10,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_11.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["pet-friendly"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 11,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_12.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["proximity"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 12,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["security-safety", "popular"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 13,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["tourism-vacation"],
             "description": "Modern towers perfect for professionals",
             "price": "AED 55K - 180K"
           }
         ],
-        "Abu Dhabi": [],
-        "Sharjah": [],
-        "Ajman": [],
+        "Sharjah": [
+          {
+            "id": 9,
+            "title": "Downtown Dubai",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 980,
+            "category": ["luxury"],
+            "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
+            "price": "AED 80K - 300K"
+          },
+          {
+            "id": 2,
+            "title": "Downtown Dubai",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 980,
+            "category": ["budget-friendly"],
+            "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
+            "price": "AED 80K - 300K"
+          },
+          {
+            "id": 10,
+            "title": "Downtown Dubai",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 980,
+            "category": ["luxury"],
+            "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
+            "price": "AED 80K - 300K"
+          },
+          {
+            "id": 6,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["family-friendly"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 6,
+            "title": "waterfront",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["waterfront"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 6,
+            "title": "Sports Enclave",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["sports-enclave"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          }
+        ],
+        "Ajman": [
+          {
+            "id": 2,
+            "title": "Downtown Dubai",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 980,
+            "category": ["budget-friendly", "primary"],
+            "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
+            "price": "AED 80K - 300K"
+          },
+          {
+            "id": 2,
+            "title": "Downtown Dubai",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 980,
+            "category": ["budget-friendly", "outdoor-enthusiasts"],
+            "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
+            "price": "AED 80K - 300K"
+          },
+          {
+            "id": 6,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["family-friendly"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 6,
+            "title": "Outdoor Enthusiasts",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["outdoor-enthusiasts"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          }
+        ],
         "Ras Al Khaimah": []
       }
     }

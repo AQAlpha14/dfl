@@ -5,6 +5,7 @@ import Image from "../Image";
 import { Icon } from "@iconify/react";
 
 interface ExploreCommunitiesCardProps {
+  className: string;
   data: {
     imageUrl: string;
     title?: string;
@@ -15,9 +16,12 @@ interface ExploreCommunitiesCardProps {
   };
 }
 
-const ExploreCommunitiesCard = ({ data }: ExploreCommunitiesCardProps) => {
+const ExploreCommunitiesCard = ({
+  data,
+  className,
+}: ExploreCommunitiesCardProps) => {
   return (
-    <section className="bg-white">
+    <section className={`bg-white ${className}`}>
       <div className="max-w-80 rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm">
         {/* Image */}
         <div className="relative aspect-4/3 w-full">
@@ -41,7 +45,13 @@ const ExploreCommunitiesCard = ({ data }: ExploreCommunitiesCardProps) => {
           )}
           {/* Properties Count */}
           <div className="absolute bottom-3 left-3 bg-white px-3 py-1 rounded-full flex items-center gap-2 text-sm shadow">
-            🏠 <span>{data?.totalProperties} properties</span>
+             <Icon
+                icon={`mynaui:home`}
+                className="text-primary"
+                width={20}
+                height={20}
+              /> 
+              <span>{data?.totalProperties} properties</span>
           </div>
         </div>
         {/* Content */}
