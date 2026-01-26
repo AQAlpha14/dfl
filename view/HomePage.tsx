@@ -6,11 +6,12 @@ import FeaturedListingsSection from "@/sections/FeaturedListingsSection";
 import HeroSection from "@/sections/HeroSection/HeroSection";
 import AssetSection from "@/sections/AssetSection";
 import { btnText, faqData } from "@/mockData/dummyData";
-import { exploreCommunitiesData } from "@/mockData/homeData.json";
+import homeData from "@/mockData/homeData.json";
 import SocialCommunitySection from "@/sections/SocialCommunitySection";
 import FaqsSection from "@/sections/Faq/FaqsSection";
 import PropertyCategorySection from "@/sections/PropertyCategorySection";
 import ExploreCommunitiesSection from "@/sections/ExploreCommunitiesSection";
+import PropertyServiceSolSection from "@/sections/PropertyServiceSolSection";
 
 const heroData = {
   heading:
@@ -67,7 +68,13 @@ export default function HomePage() {
         link="/"
         linkLext={btnText.explore_more}
       />
-      <ExploreCommunitiesSection data={exploreCommunitiesData[0]} />
+      <ExploreCommunitiesSection data={homeData.exploreCommunitiesData[0]} />
+      <PropertyServiceSolSection 
+        heading="DFL’s Complete Property Services & Solutions"
+        paragraph={[
+          "Nearly half of the UAE’s residents rely on rental properties, yet finding the right tenant isn't always easy. But with DFL, landlords are experiencing faster occupancy and higher rental value thanks to:",
+        ]}
+      />
       <AssetSection
         bgblue={true}
         heading="List Your Property Now and Reach Out to Tenants All Across the UAE"

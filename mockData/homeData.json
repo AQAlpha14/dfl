@@ -809,5 +809,61 @@
         "Ras Al Khaimah": []
       }
     }
+  ],
+  "PropertyServiceSolData": [
+    {
+      "name": "ForTenants",
+      "tabTitle": "For Tenants",
+      "tabLabel": "Your Move Made Simple",
+      "propertyTypes": [
+        {
+          "cardTitle": "Relocation Packages for Expats",
+          "cardDescription": "Arrive and feel at home from day one. We handle airport pickup, housing setup, and utilities - so you can settle in stress-free.",
+          "icons": "/icons/icon_37.svg"
+        },
+        {
+          "cardTitle": "Tenant Insurance Add-ons",
+          "cardDescription": "Be prepared for the unexpected. With DFL's trusted insurance companies, your home and belongings are always in safe hands.",
+          "icons": "/icons/icon_38.svg"
+        },
+        {
+          "cardTitle": "Move-in Services",
+          "cardDescription": "Take the hassle out of it. We'll connect you with reliable movers and utility providers to make your move quick and comfortable.",
+          "icons": "/icons/icon_39.svg"
+        },
+        {
+          "cardTitle": "Corporate Housing Solutions",
+          "cardDescription": "Find ready-to-move homes for professionals and business travelers - flexible, furnished, and fully managed.",
+          "icons": "/icons/icon_40.svg"
+        }
+      ]
+    },
+    {
+      "name": "ForLandlords",
+      "tabTitle": "For Landlords",
+      "tabLabel": "Rent Smarter, Earn More",
+      "propertyTypes": [
+        {
+          "cardTitle": "Property Photography & 3D Tours",
+          "cardDescription": "DFL's professional photos and immersive 3D tours highlight every detail - helping your listing attract serious renters instantly.",
+          "icons": "/icons/icon_41.svg"
+        },
+        {
+          "cardTitle": "Premium Listing Packages",
+          "cardDescription": "Put your property where the right eyes can see it. With DFL's platform, you can reach more verified tenants and close your rental deals faster.",
+          "icons": "/icons/icon_42.svg"
+        },
+        {
+          "cardTitle": "Data Insights (Smart Market Advisory)",
+          "cardDescription": "DFL monitors live rental trends and market demand to guide your pricing and listing strategy - helping you attract quality tenants and boost your returns.",
+          "icons": "/icons/icon_43.svg"
+        },
+        {
+          "cardTitle": "Corporate Housing Solutions",
+          "cardDescription": "We match your property with vetted corporate clients who rent responsibly, stay longer, and maintain your investment with care.",
+          "icons": "/icons/icon_44.svg"
+        }
+      ]
+    }
   ]
 }
