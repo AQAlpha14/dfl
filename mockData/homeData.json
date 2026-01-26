@@ -344,72 +344,72 @@
         {
           "label": "Popular",
           "value": "popular",
-          "icon": "/icons/icon_20.svg"
+          "icon": "/icons/icon_23.svg"
         },
         {
           "label": "Budget-Friendly",
           "value": "budget-friendly",
-          "icon": "/icons/icon_21.svg"
+          "icon": "/icons/icon_24.svg"
         },
         {
           "label": "Business Friendly",
           "value": "business-friendly",
-          "icon": "/icons/icon_22.svg"
+          "icon": "/icons/icon_25.svg"
         },
         {
           "label": "Eco & Sustainability",
           "value": "eco-sustainability",
-          "icon": "/icons/icon_20.svg"
+          "icon": "/icons/icon_26.svg"
         },
         {
           "label": "Expats",
           "value": "expats",
-          "icon": "/icons/icon_21.svg"
+          "icon": "/icons/icon_27.svg"
         },
         {
           "label": "Family-Friendly",
           "value": "family-friendly",
-          "icon": "/icons/icon_22.svg"
+          "icon": "/icons/icon_28.svg"
         },
         {
           "label": "Green Areas",
           "value": "green-areas",
-          "icon": "/icons/icon_20.svg"
+          "icon": "/icons/icon_29.svg"
         },
         {
           "label": "Investment",
           "value": "investment",
-          "icon": "/icons/icon_21.svg"
+          "icon": "/icons/icon_30.svg"
         },
         {
           "label": "Lifestyle & Demographics",
           "value": "lifestyle-demographics",
-          "icon": "/icons/icon_22.svg"
+          "icon": "/icons/icon_31.svg"
         },
         {
           "label": "Luxury",
           "value": "luxury",
-          "icon": "/icons/icon_22.svg"
+          "icon": "/icons/icon_32.svg"
         },
         {
           "label": "Pet-Friendly",
           "value": "pet-friendly",
-          "icon": "/icons/icon_20.svg"
+          "icon": "/icons/icon_33.svg"
         },
         {
           "label": "Proximity",
           "value": "proximity",
-          "icon": "/icons/icon_21.svg"
+          "icon": "/icons/icon_34.svg"
         },
         {
           "label": "Security & Safety",
           "value": "security-safety",
-          "icon": "/icons/icon_22.svg"
+          "icon": "/icons/icon_35.svg"
         },
         {
           "label": "Tourism & Vacation",
           "value": "tourism-vacation",
-          "icon": "/icons/icon_20.svg"
+          "icon": "/icons/icon_36.svg"
         }
       ],
       "communities": {
@@ -417,7 +417,7 @@
           {
             "id": 1,
             "title": "Dubai Marina",
-            "image": "/assets/communities/marina.jpg",
+            "image": "/images/image_6.webp",
             "rating": 4.8,
             "properties": 1250,
             "category": ["popular", "luxury", "expats"],
@@ -427,7 +427,8 @@
           {
             "id": 2,
             "title": "Downtown Dubai",
-            "image": "/assets/communities/downtown.jpg",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
             "properties": 980,
             "category": ["popular", "business"],
             "description": "Heart of Dubai, home to Burj Khalifa and Dubai Mall",
@@ -436,18 +437,60 @@
           {
             "id": 3,
             "title": "Palm Jumeirah",
-            "image": "/assets/communities/palm.jpg",
+            "image": "/images/image_11.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["luxury", "expats", "popular"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
+            "id": 3,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_12.webp",
+            "rating": 4.8,
             "properties": 720,
             "category": ["luxury", "expats"],
             "description": "Exclusive island living with luxury amenities",
             "price": "AED 120K - 500K"
           },
           {
+            "id": 3,
+            "title": "Palm Jumeirah",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 720,
+            "category": ["expats"],
+            "description": "Exclusive island living with luxury amenities",
+            "price": "AED 120K - 500K"
+          },
+          {
             "id": 4,
             "title": "Business Bay",
-            "image": "/assets/communities/businessbay.jpg",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
             "properties": 890,
             "category": ["business", "popular"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 5,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["business", "luxury"],
+            "description": "Modern towers perfect for professionals",
+            "price": "AED 55K - 180K"
+          },
+          {
+            "id": 6,
+            "title": "Business Bay",
+            "image": "/images/image_1.webp",
+            "rating": 4.8,
+            "properties": 890,
+            "category": ["business"],
             "description": "Modern towers perfect for professionals",
             "price": "AED 55K - 180K"
           }

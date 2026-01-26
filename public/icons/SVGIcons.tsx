@@ -528,7 +528,7 @@ export const ResidentialSVG = (props: React.SVGProps<SVGSVGElement>) => (
   </svg>
 );
 export const PopularSVG = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg
+   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={16}
     height={16}
@@ -536,7 +536,7 @@ export const PopularSVG = (props: React.SVGProps<SVGSVGElement>) => (
     {...props}
   >
     <g
-      stroke="#fff"
+      stroke="currentColor"
       strokeLinecap="round"
       strokeLinejoin="round"
       strokeWidth={1.333}
@@ -547,7 +547,7 @@ export const PopularSVG = (props: React.SVGProps<SVGSVGElement>) => (
     </g>
     <defs>
       <clipPath id="a">
-        <path fill="#fff" d="M0 0h16v16H0z" />
+        <path fill="currentColor" d="M0 0h16v16H0z" />
       </clipPath>
     </defs>
   </svg>

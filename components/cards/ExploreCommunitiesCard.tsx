@@ -17,7 +17,7 @@ interface ExploreCommunitiesCardProps {
 
 const ExploreCommunitiesCard = ({ data }: ExploreCommunitiesCardProps) => {
   return (
-    <section className="py-12 md:py-20 bg-white">
+    <section className="bg-white">
       <div className="max-w-80 rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm">
         {/* Image */}
         <div className="relative aspect-4/3 w-full">

@@ -1,12 +1,16 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+
 import Button from "@/components/Button";
 import ExploreCommunitiesCard from "@/components/cards/ExploreCommunitiesCard";
 import Link from "@/components/Link";
 import Typography from "@/components/Typography";
-import { btnText } from "@/mockData/dummyData";
 import Image from "@/components/Image";
+import { btnText } from "@/mockData/dummyData";
+
+/* ===================== TYPES ===================== */
 
 interface SubTab {
   label: string;
@@ -31,11 +35,27 @@ interface ExploreCommunitiesSectionProps {
     description: string;
     cities: string[];
     subTabs: SubTab[];
-    communities: {
-      [city: string]: CommunityItem[];
-    };
+    communities: Record<string, CommunityItem[]>;
   };
 }
+
+/* ===================== ANIMATION VARIANTS ===================== */
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.08 },
+  },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: 10 },
+};
+
+/* ===================== COMPONENT ===================== */
 
 const ExploreCommunitiesSection = ({
   data,
@@ -43,10 +63,35 @@ const ExploreCommunitiesSection = ({
   const { heading, description, cities, subTabs, communities } = data;
 
   const [activeCity, setActiveCity] = useState(cities[0]);
-  const [activeSubTab, setActiveSubTab] = useState(subTabs[0].value);
+  const [activeSubTab, setActiveSubTab] = useState("");
+
+  /* ===================== DEFAULT SUB TAB ===================== */
+  useEffect(() => {
+    const firstValidSubTab =
+      subTabs.find((tab) =>
+        communities?.[activeCity]?.some((item) =>
+          item.category.includes(tab.value),
+        ),
+      )?.value || "";
+
+    setActiveSubTab(firstValidSubTab);
+  }, [activeCity, subTabs, communities]);
+
+  /* ===================== CITY BASED SUB TABS ===================== */
+  const citySubTabs = useMemo(() => {
+    const cityData = communities?.[activeCity] || [];
+    const categories = new Set<string>();
+
+    cityData.forEach((item) =>
+      item.category.forEach((cat) => categories.add(cat)),
+    );
+
+    return subTabs.filter((tab) => categories.has(tab.value));
+  }, [activeCity, communities, subTabs]);
 
   /* ===================== FILTERED DATA ===================== */
   const filteredCommunities = useMemo(() => {
+    if (!activeSubTab) return [];
     return (
       communities?.[activeCity]?.filter((item) =>
         item.category.includes(activeSubTab),
@@ -54,75 +99,106 @@ const ExploreCommunitiesSection = ({
     );
   }, [activeCity, activeSubTab, communities]);
 
+  /* ===================== RENDER ===================== */
+
   return (
     <section className="secPadding bg-white">
       <div className="container">
         {/* ===================== HEADER ===================== */}
-        <div className="max-w-xl mx-auto text-center space-y-3">
+        <div className="max-w-xl mx-auto text-center space-y-4">
           <Typography as="h2" size="xl" weight="semibold">
             {heading}
           </Typography>
+
           {/* ===================== CITY TABS ===================== */}
-          <div className="inline-flex items-center justify-center flex-wrap gap-3 mt-6 bg-white shadow-lg rounded-md p-2">
+          <div className="inline-flex flex-wrap justify-center gap-3 bg-white shadow-lg rounded-md p-2">
             {cities.map((city) => (
               <Button
                 key={city}
                 variant={activeCity === city ? "primary" : "outline"}
                 onClick={() => setActiveCity(city)}
-                className={`${activeCity === city ? "" : "border-none! text-secondary/80!"}`}
               >
                 {city}
               </Button>
             ))}
           </div>
-          <Typography as="p" size="sm" className="py-6">
+
+          <Typography as="p" size="sm" className="pt-4">
             {description}
           </Typography>
+
           {/* ===================== SUB TABS ===================== */}
-          <div className="flex justify-center flex-wrap gap-2 mt-4">
-            {subTabs.map((tab) => (
-              <Button
-                key={tab.value}
-                variant={activeSubTab === tab.value ? "primary" : "outline"}
-                className={`flex items-center gap-2 rounded-full! ${activeSubTab === tab.value ? "" : "border-secondary/80! text-secondary/80!"}`}
-                onClick={() => setActiveSubTab(tab.value)}
-              >
-                <Image
-                  src={tab.icon}
-                  alt={`${tab.value}`}
-                  width={24}
-                  height={24}
-                />
-                {tab.label}
-              </Button>
-            ))}
+          <div className="flex justify-center flex-wrap gap-2 pt-4">
+            {citySubTabs.map((tab) => {
+              const isActive = activeSubTab === tab.value;
+
+              return (
+                <Button
+                  key={tab.value}
+                  onClick={() => setActiveSubTab(tab.value)}
+                  variant="outline"
+                  className="relative rounded-full! bg-white! border-gray-200! shadow-sm"
+                >
+                  {isActive && (
+                    <motion.span
+                      layoutId="activeSubTab"
+                      className="absolute inset-0 rounded-full bg-primary text-white!"
+                      transition={{
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 30,
+                      }}
+                    />
+                  )}
+
+                  <span
+                    className={`relative z-10 flex items-center gap-2 ${isActive ? "text-white!" : ""}`}
+                  >
+                    <Image src={tab.icon} alt={tab.label} width={20} height={20} />
+                    {/* {tab.icon} */}
+                    {tab.label}
+                  </span>
+                </Button>
+              );
+            })}
           </div>
         </div>
+
         {/* ===================== CARDS ===================== */}
-        <div className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 mt-8">
-          {filteredCommunities.length ? (
-            filteredCommunities.map((item) => (
-              <ExploreCommunitiesCard
-                key={item.id}
-                data={{
-                  title: item.title,
-                  paragraph: item.description,
-                  priceRange: item.price,
-                  rating: item.rating ?? 0,
-                  totalProperties: item.properties,
-                  imageUrl: item.image,
-                }}
-              />
-            ))
-          ) : (
-            <Typography align="center" className="col-span-full">
-              No communities found
-            </Typography>
-          )}
-        </div>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${activeCity}-${activeSubTab}`}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+            exit="hidden"
+            className="grid lg:grid-cols-4 sm:grid-cols-2 grid-cols-1 gap-6 mt-10"
+          >
+            {filteredCommunities.length ? (
+              filteredCommunities.map((item) => (
+                <motion.div key={item.id} variants={cardVariants} exit="exit">
+                  <ExploreCommunitiesCard
+                    data={{
+                      title: item.title,
+                      paragraph: item.description,
+                      priceRange: item.price,
+                      rating: item.rating ?? 0,
+                      totalProperties: item.properties,
+                      imageUrl: item.image,
+                    }}
+                  />
+                </motion.div>
+              ))
+            ) : (
+              <Typography align="center" className="col-span-full">
+                No communities found
+              </Typography>
+            )}
+          </motion.div>
+        </AnimatePresence>
 
         {/* ===================== CTA ===================== */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-12 flex justify-center">
           <Link href="/communities" icon2>
             {btnText.view_all_communities_in_dubai}
           </Link>
