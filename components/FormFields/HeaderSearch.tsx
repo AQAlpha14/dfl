@@ -12,6 +12,7 @@ import { RHFTextField } from "./RHFTextField";
 import RHFSelect from "./RHFSelect";
 import { vendorId } from "@/constants/constants";
 import { btnText } from "@/mockData/dummyData";
+import { motion, AnimatePresence } from "framer-motion";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Types                                    */
@@ -67,11 +68,11 @@ const HeaderSearch: FC = () => {
       property_purpose:
         typeof data.property_purpose === "object"
           ? data.property_purpose?.value
-          : data.property_purpose ?? propertiesQuery?.property_purpose,
+          : (data.property_purpose ?? propertiesQuery?.property_purpose),
       property_type:
         typeof data.property_type === "object"
           ? data.property_type?.value
-          : data.property_type ?? propertiesQuery?.property_type,
+          : (data.property_type ?? propertiesQuery?.property_type),
       vendor_website_id: vendorId,
     };
 
@@ -153,7 +154,7 @@ const HeaderSearch: FC = () => {
                 type="submit"
                 disabled={isSubmitting || loading}
                 loading={isSubmitting}
-                className="md:!rounded-md flex items-center bg-primary w-full md:w-fit"
+                className="md:rounded-md! flex items-center bg-primary w-full md:w-fit"
               >
                 <Icon
                   icon="mdi:search"
@@ -177,55 +178,79 @@ const HeaderSearch: FC = () => {
                   height="1.2rem"
                   className="mx-auto"
                 />
+
                 {btnText.advance_filter}
-                <Icon
-                  icon="lsicon:right-outline"
-                  width="1.2rem"
-                  height="1.2rem"
-                  className={`mx-auto ${isOpenBar ? "rotate-90" : ""}`}
-                />
+
+                {/* ROTATING ARROW */}
+                <motion.div
+                  animate={{ rotate: isOpenBar ? 90 : 0 }}
+                  transition={{ duration: 0.3, ease: "easeInOut" }}
+                  className="mx-auto"
+                >
+                  <Icon
+                    icon="lsicon:right-outline"
+                    width="1.2rem"
+                    height="1.2rem"
+                  />
+                </motion.div>
               </Button>
             </div>
           </div>
-          {isOpenBar && (
-            <div className="flex">
-              <div className="md:basis-4/5 basis-full">
-                <div className="md:flex lg:flex-nowrap flex-wrap items-center gap-2 pt-2">
-                  <RHFSelect
-                    name="property_purpose"
-                    placeholder="Purpose"
-                    options={purposeOptions}
-                    className="w-full text-primary!"
-                    isLoading={loading}
-                    isHidden
-                  />
-                  <RHFSelect
-                    name="property_type"
-                    placeholder="Categories"
-                    options={catOptions}
-                    className="w-full text-primary!"
-                    isLoading={loading}
-                    isHidden
-                  />
-                  <RHFSelect
-                    name="property_type"
-                    placeholder="Categories"
-                    options={catOptions}
-                    className="w-full text-primary!"
-                    isLoading={loading}
-                    isHidden
-                  />
-                  <Button
-                    variant="outline"
-                    type="button"
-                    className="w-full ml-auto"
-                  >
-                    {btnText.reset}
-                  </Button>
+          <AnimatePresence>
+            {isOpenBar && (
+              <motion.div
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.35, ease: "easeInOut" }}
+                className="overflow-hidden"
+              >
+                <div className="flex">
+                  <div className="md:basis-4/5 basis-full">
+                    <motion.div
+                      initial={{ y: -10 }}
+                      animate={{ y: 0 }}
+                      exit={{ y: -10 }}
+                      transition={{ duration: 0.3 }}
+                      className="md:flex lg:flex-nowrap flex-wrap items-center gap-2 pt-2"
+                    >
+                      <RHFSelect
+                        name="property_purpose"
+                        placeholder="Purpose"
+                        options={purposeOptions}
+                        className="w-full text-primary!"
+                        isLoading={loading}
+                      />
+
+                      <RHFSelect
+                        name="property_type"
+                        placeholder="Categories"
+                        options={catOptions}
+                        className="w-full text-primary!"
+                        isLoading={loading}
+                      />
+
+                      <RHFSelect
+                        name="property_sub_type"
+                        placeholder="Sub Categories"
+                        options={catOptions}
+                        className="w-full text-primary!"
+                        isLoading={loading}
+                      />
+
+                      <Button
+                        variant="outline"
+                        type="button"
+                        className="w-full ml-auto"
+                      >
+                        {btnText.reset}
+                      </Button>
+                    </motion.div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </FormProvider>
       </div>
     </div>

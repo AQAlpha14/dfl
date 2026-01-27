@@ -16,17 +16,18 @@ export interface EndPoints {
   BLOGS: BlogEndpoints;
 }
 
+
 const endPoints: EndPoints = {
-  NEWSLATTER: "",
-  INQUIRIES: "",
-  CONTACT_US: "",
+  NEWSLATTER: ``,
+  INQUIRIES: ``,
+  CONTACT_US: ``,
   AUTH: {
-    SIGN_IN: "",
-    SIGN_UP: "",
+    SIGN_IN: ``,
+    SIGN_UP: ``,
   },
   BLOGS: {
-    BLOGS_POST: "",
-    BLOGS_CATAGORIES: "",
+    BLOGS_POST: ``,
+    BLOGS_CATAGORIES: ``,
   },
 };
 
