@@ -12,6 +12,7 @@ import FaqsSection from "@/sections/Faq/FaqsSection";
 import PropertyCategorySection from "@/sections/PropertyCategorySection";
 import ExploreCommunitiesSection from "@/sections/ExploreCommunitiesSection";
 import PropertyServiceSolSection from "@/sections/PropertyServiceSolSection";
+import TopLocationsSection from "@/sections/TopLocationsSection";
 
 const heroData = {
   heading:
@@ -69,11 +70,15 @@ export default function HomePage() {
         linkLext={btnText.explore_more}
       />
       <ExploreCommunitiesSection data={homeData.exploreCommunitiesData[0]} />
-      <PropertyServiceSolSection 
+      <PropertyServiceSolSection
         heading="DFL’s Complete Property Services & Solutions"
         paragraph={[
           "Nearly half of the UAE’s residents rely on rental properties, yet finding the right tenant isn't always easy. But with DFL, landlords are experiencing faster occupancy and higher rental value thanks to:",
         ]}
+      />
+      <TopLocationsSection
+        heading="UAE's Top Locations "
+        description="Explore the most popular property spots in the UAE — from city buzz to peaceful suburbs — every Emirate offers unique living experiences and high rental demand."
       />
       <AssetSection
         bgblue={true}

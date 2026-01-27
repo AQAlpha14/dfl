@@ -865,5 +865,51 @@
         }
       ]
     }
+  ],
+  "topLocationsData": [
+    {
+      "name": "residential",
+      "label": "Residential Properties",
+      "count": "3,370+",
+      "propertyTypes": [
+        {
+          "name": "apartments",
+          "label": "Apartments",
+          "image": "/images/image_52.webp"
+        },
+        {
+          "name": "apartments",
+          "label": "Apartments",
+          "image": "/images/image_53.webp"
+        },
+        {
+          "name": "apartments",
+          "label": "Apartments",
+          "image": "/images/image_54.webp"
+        }
+      ]
+    },
+    {
+      "name": "commercial",
+      "label": "Commercial Properties",
+      "count": "740+",
+      "propertyTypes": [
+        {
+          "name": "apartments",
+          "label": "Apartments",
+          "image": "/images/image_52.webp"
+        },
+        {
+          "name": "apartments",
+          "label": "Apartments",
+          "image": "/images/image_53.webp"
+        },
+        {
+          "name": "apartments",
+          "label": "Apartments",
+          "image": "/images/image_54.webp"
+        }
+      ]
+    }
   ]
 }

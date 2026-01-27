@@ -2,6 +2,7 @@
 
 :root {
   --primary: #3C8FCA;
+  --primaryDark: #00182A;
   --primaryL: #66BFFF;
   --primaryLight: #EBF7FF;
   --secondary: #434343;
@@ -15,6 +16,7 @@
 @theme inline {
   --default-font-family: var(--font-creatoDisplay), sans-serif;
   --color-primary: var(--primary);
+  --color-primaryDark: var(--primaryDark);
   --color-primaryL: var(--primaryL);
   --color-primaryLight: var(--primaryLight);
   --color-secondary: var(--secondary);
