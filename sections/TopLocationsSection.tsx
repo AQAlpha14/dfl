@@ -151,6 +151,14 @@ const TopLocationsSection = ({
                     >
                       {type.label}
                     </Typography>
+                    <Typography
+                      as="p"
+                      size="sm"
+                      color="white"
+                      className="mb-6 line-clamp-2"
+                    >
+                      {type.content}
+                    </Typography>
                   </div>
                 </div>
               </SplideSlide>
