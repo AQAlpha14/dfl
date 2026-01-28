@@ -57,6 +57,7 @@ export const btnText = {
   subscribe_now: "Subscribe Now",
   read_more: "Read More",
   view_all: "View All",
+  view_listing: "View Listing",
   find_a_room: "Find a Room",
   explore_packages: "Explore Packages",
   view_all_communities_in_dubai: "View All Communities in Dubai",

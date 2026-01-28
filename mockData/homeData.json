@@ -923,5 +923,71 @@
         }
       ]
     }
+  ],
+  "ourValuesData1": [
+    {
+      "icon": "/icons/icon_3.svg",
+      "title": "Monthly Rental",
+      "description": "Pay your rent every month for better affordability and hassle-free payments. Ideal for tourists and professionals visiting the country on a short-term basis. This offers hassle-free, commitment-free temporary stays"
+    },
+    {
+      "icon": "/icons/icon_2.svg",
+      "title": "Quarterly Rental",
+      "description": "Pay your rent every 90 days to enjoy better stability and a stress-free rental experience. A perfect option for business travelers, families exploring new areas, or expats seeking flexible housing without being tied to yearly contracts."
+    },
+    {
+      "icon": "/icons/icon_3.svg",
+      "title": "Half-Yearly Rental",
+      "description": "Invest in 180 days of comfort with half-yearly rentals. Suited for professionals or expats who plan to live in the country for the long term. Enjoy predictability, affordable pricing, and payment plans to fit your lifestyle."
+    },
+    {
+      "icon": "/icons/icon_3.svg",
+      "title": "Yearly Rental",
+      "description": "Pay once a year and stay stress-free.Lock in your rent for the entire year without worrying about market fluctuations or mid-year rental hikes. With fixed costs and maximum value, it is the most cost-effective plan for families and long-term residents"
+    }
+  ],
+  "ourValuesData2": [
+    {
+      "icon": "/icons/icon_45.svg",
+      "title": "Search or List",
+      "description": "Find your ideal home or list a property quickly and hassle-free."
+    },
+    {
+      "icon": "/icons/icon_46.svg",
+      "title": "Home Viewing",
+      "description": "Tour homes or showcase properties with virtual 3D videos."
+    },
+    {
+      "icon": "/icons/icon_47.svg",
+      "title": "Connect Directly",
+      "description": "Communicate one-to-one with no middlemen to discuss terms and details."
+    },
+    {
+      "icon": "/icons/icon_48.svg",
+      "title": "Seal the Deal",
+      "description": "Sign the contract as soon as the deal is sealed and ensure faster occupancy. "
+    }
+  ],
+  "ourValuesData3": [
+    {
+      "conter": "1247+ Properties",
+      "title": "Under 50K AED",
+      "description": "Affordable rentals below 50K AED, ideal for budget-savvy tenants and first-time movers looking for practical living options"
+    },
+    {
+      "conter": "1247+ Properties",
+      "title": "Under 150K AED",
+      "description": "Mid-range homes under 150K AED, a balanced mix of comfort, style, and convenience in well-connected communities."
+    },
+    {
+      "conter": "1247+ Properties",
+      "title": "Under 200K AED",
+      "description": "Luxury rentals up to 200K AED, spacious apartments and villas offering premium amenities without breaking the bank."
+    },
+    {
+      "conter": "1247+ Properties",
+      "title": "Under 250K AED",
+      "description": "High-end residences under 250K AED, elegant, exclusive choices designed for premium urban living in prime UAE locations."
+    }
   ]
 }

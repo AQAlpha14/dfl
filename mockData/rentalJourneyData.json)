@@ -1,0 +1,65 @@
+{
+  "For Tenants": {
+    "topTitle": "Why Choose DirectFromLandlord?",
+    "heading": "Simple & Stress-Free Rental Journey",
+    "paragraph": "Experience a rental journey focused on trust, comfort, and complete peace of mind.",
+    "tabs": [
+      {
+        "id": 1,
+        "icon": "shield",
+        "title": "Save more money",
+        "content": "Commission-free rentals with transparent pricing.",
+        "image": "/images/tenant-1.jpg"
+      },
+      {
+        "id": 2,
+        "icon": "user",
+        "title": "Verified listings",
+        "content": "Only verified landlords and refreshed listings.",
+        "image": "/images/tenant-2.jpg"
+      },
+      {
+        "id": 3,
+        "icon": "search",
+        "title": "Smart matching",
+        "content": "Advanced filters and smart rental matching.",
+        "image": "/images/tenant-3.jpg"
+      },
+      {
+        "id": 4,
+        "icon": "calendar",
+        "title": "Instant scheduling",
+        "content": "Book viewings with virtual tours.",
+        "image": "/images/tenant-4.jpg"
+      },
+      {
+        "id": 5,
+        "icon": "chat",
+        "title": "Easy communication",
+        "content": "Secure in-app chat with landlords.",
+        "image": "/images/tenant-5.jpg"
+      }
+    ]
+  },
+  "For Landlords": {
+    "topTitle": "Why List With Us?",
+    "heading": "Hassle-Free Property Listing",
+    "paragraph": "Reach verified tenants faster with zero commission.",
+    "tabs": [
+      {
+        "id": 1,
+        "icon": "shield",
+        "title": "No hidden fees",
+        "content": "Simple and transparent pricing.",
+        "image": "/images/landlord-1.jpg"
+      },
+      {
+        "id": 2,
+        "icon": "user",
+        "title": "Quality tenants",
+        "content": "Get matched with verified renters.",
+        "image": "/images/landlord-2.jpg"
+      }
+    ]
+  }
+}

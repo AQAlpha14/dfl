@@ -13,6 +13,10 @@ import PropertyCategorySection from "@/sections/PropertyCategorySection";
 import ExploreCommunitiesSection from "@/sections/ExploreCommunitiesSection";
 import PropertyServiceSolSection from "@/sections/PropertyServiceSolSection";
 import TopLocationsSection from "@/sections/TopLocationsSection";
+import OurValuesSection from "@/sections/OurValuesSection";
+import CardGridsSection from "@/sections/CardGridsSection";
+import RentalJourneySection from "@/sections/RentalJourneySection";
+import OurTeamSection from "@/sections/OurTeamSection";
 
 const heroData = {
   heading:
@@ -80,11 +84,20 @@ export default function HomePage() {
         heading="UAE's Top Locations "
         description="Explore the most popular property spots in the UAE — from city buzz to peaceful suburbs — every Emirate offers unique living experiences and high rental demand."
       />
-       <FeaturedListingsSection
+      <FeaturedListingsSection
         heading="Discover Verified Properties Across the UAE"
         paragraph={[
           "With immersive 3D tours and quick side-by-side comparisons, picking the perfect property has never been easier. Direct From Landlord lets you rent your favorite home commission-free, connecting you directly with owners so you can negotiate flexible payments and enjoy a hassle-free move-in.",
         ]}
+      />
+      <CardGridsSection
+        heading={`Our 4-Step Process For a Smooth and Stress-Free Experience`}
+        paragraph={[
+          "With DFL, renting a property in the UAE is simple and straightforward. Landlords list their properties, tenants find the right match, agreements are finalized, and both sides win without paying a dime to the agent.",
+        ]}
+        data={homeData.ourValuesData1}
+        cardbg
+        sideIcon
       />
       <AssetSection
         bgblue={true}
@@ -104,6 +117,31 @@ export default function HomePage() {
         reverse={true}
         link="/"
         linkLext={btnText.list_your_property}
+      />
+      <OurValuesSection
+        heading={`Our 4-Step Process For a Smooth and Stress-Free Experience`}
+        paragraph={[
+          "With DFL, renting a property in the UAE is simple and straightforward. Landlords list their properties, tenants find the right match, agreements are finalized, and both sides win without paying a dime to the agent.",
+        ]}
+        data={homeData.ourValuesData2}
+        headingC
+        cardbg
+        lgGrid
+        sideIcon
+      />
+      <RentalJourneySection />
+      <OurTeamSection />
+      <OurValuesSection
+        heading={`Find Your Ideal Property by Budget`}
+        paragraph={[
+          "Browse vetted properties across the UAE without wasting time and money, choose from 50K to 250K+ AED, all thoroughly verified for your peace of mind.",
+        ]}
+        data={homeData.ourValuesData3}
+        headingC
+        cardbg
+        lgGrid
+        sideIcon
+        btn
       />
       <FaqsSection data={faqData} />
       <SocialCommunitySection />
