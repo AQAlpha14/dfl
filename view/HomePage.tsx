@@ -80,6 +80,12 @@ export default function HomePage() {
         heading="UAE's Top Locations "
         description="Explore the most popular property spots in the UAE — from city buzz to peaceful suburbs — every Emirate offers unique living experiences and high rental demand."
       />
+       <FeaturedListingsSection
+        heading="Discover Verified Properties Across the UAE"
+        paragraph={[
+          "With immersive 3D tours and quick side-by-side comparisons, picking the perfect property has never been easier. Direct From Landlord lets you rent your favorite home commission-free, connecting you directly with owners so you can negotiate flexible payments and enjoy a hassle-free move-in.",
+        ]}
+      />
       <AssetSection
         bgblue={true}
         heading="List Your Property Now and Reach Out to Tenants All Across the UAE"

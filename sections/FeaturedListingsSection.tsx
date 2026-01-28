@@ -18,7 +18,7 @@ interface FeaturedListingsSectionProps {
 
 const FeaturedListingsSection = ({
   topTitle,
-  heading = "Featured Listings",
+  heading,
   bottomTitle,
   paragraph = [],
 }: FeaturedListingsSectionProps = {}) => {
@@ -97,7 +97,7 @@ const FeaturedListingsSection = ({
                   className={`flex items-center min-w-max hover:cursor-pointer gap-4 px-4 py-2 rounded-lg whitespace-nowrap font-medium transition-all ${
                     selectedType === typeObj.name
                       ? "bg-primary text-white shadow-lg shadow-primary/30"
-                      : "border border-gray-400 text-gray-400 hover:border-white"
+                      : "border border-gray-400 text-gray-400 hover:border-primary"
                   }`}
                 >
                   <Image
