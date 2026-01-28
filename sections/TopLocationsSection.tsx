@@ -7,16 +7,17 @@ import Image from "@/components/Image";
 import homeData from "@/mockData/homeData.json";
 import { CommercialSVG, ResidentialSVG } from "@/public/icons/SVGIcons";
 
-// interface PropertyCategoryData {
-//   name: "residential" | "commercial";
-//   label: string;
-//   count: string;
-//   description: string;
-// }
+interface PropertyCategoryData {
+  name: "residential" | "commercial";
+  label: string;
+  counter: string;
+  description: string;
+}
 
 interface TopLocationsSectionProps {
   icons?: string;
   heading?: string;
+  counter?: string;
   description?: string;
 }
 
@@ -116,9 +117,9 @@ const TopLocationsSection = ({
               type: "loop",
               perPage: 3,
               gap: "1.5rem",
-              pagination: false,
+              pagination: true,
               arrows: true,
-              autoplay: false,
+              autoplay: true,
               drag: true,
               breakpoints: {
                 1024: { perPage: 2, gap: "1rem" },
@@ -136,29 +137,38 @@ const TopLocationsSection = ({
                       src={type.image}
                       alt={type.label}
                       fill
-                      className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
+                      className="object-cover w-full h-full transition-transform duration-500 group-hover:scale-110"
                     />
                   </div>
-                  {/* Content Area */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white flex flex-col h-full justify-end">
-                    {/* Title */}
+                  {/* Content */}
+                  <div className="absolute inset-0 p-6 flex flex-col justify-end translate-y-24 group-hover:translate-y-0 transition-all duration-1000">
+                    {/* Title (always visible) */}
                     <Typography
                       as="h3"
                       size="lg"
                       weight="bold"
-                      color="white"
-                      className="my-3"
+                      className="mb-2 text-white"
                     >
                       {type.label}
                     </Typography>
-                    <Typography
-                      as="p"
-                      size="sm"
-                      color="white"
-                      className="mb-6 line-clamp-2"
-                    >
-                      {type.content}
-                    </Typography>
+                    {/* Hidden content – appears on hover */}
+                    <div className="opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300">
+                      <Typography
+                        as="p"
+                        size="sm"
+                        className="line-clamp-2 mb-2 text-white"
+                      >
+                        {type.content}
+                      </Typography>
+                      <Typography
+                        as="p"
+                        size="lg"
+                        weight="bold"
+                        className="text-white"
+                      >
+                        {type.counter} Listings
+                      </Typography>
+                    </div>
                   </div>
                 </div>
               </SplideSlide>

@@ -65,3 +65,18 @@ input[type="number"]::-webkit-outer-spin-button {
   pointer-events: none;
   transition-timing-function: linear;
 }
+
+/* SPLIDE */
+.splide__arrow--prev {
+    left: -1em !important;
+}
+.splide__arrow--next {
+    right: -1em !important;
+}
+.splide__pagination {
+    bottom: -1.5em !important;
+}
+.splide__arrow {
+    opacity: 1 !important;
+    background: var(--color-primary) !important;
+}

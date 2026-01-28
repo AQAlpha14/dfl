@@ -874,20 +874,23 @@
       "propertyTypes": [
         {
           "name": "apartments",
-          "label": "Apartments",
-          "content": "Apartments",
+          "label": "Dubai",
+          "content": "Luxury apartments and villas offering modern living, iconic views, and an unmatched lifestyle.",
+          "counter": "1425",
           "image": "/images/image_52.webp"
         },
         {
           "name": "apartments",
-          "label": "Apartments",
-          "content": "Apartments",
+          "label": "Abu Dhabi",
+          "content": "High-end residences and waterfront homes offering comfort, luxury, and lifestyle in the heart of the UAE",
+          "counter": "1425",
           "image": "/images/image_53.webp"
         },
         {
           "name": "apartments",
-          "label": "Apartments",
-          "content": "Apartments",
+          "label": "Sharjah",
+          "content": "Affordable family homes with cultural vibes, strong community living, and easy city access.",
+          "counter": "1425",
           "image": "/images/image_54.webp"
         }
       ]
@@ -899,20 +902,23 @@
       "propertyTypes": [
         {
           "name": "apartments",
-          "label": "Apartments",
-          "content": "Apartments",
+          "label": "Dubai",
+          "content": "Luxury apartments and villas offering modern living, iconic views, and an unmatched lifestyle.",
+          "counter": "1425",
           "image": "/images/image_52.webp"
         },
         {
           "name": "apartments",
-          "label": "Apartments",
-          "content": "Apartments",
+          "label": "Abu Dhabi",
+          "content": "High-end residences and waterfront homes offering comfort, luxury, and lifestyle in the heart of the UAE",
+          "counter": "1425",
           "image": "/images/image_53.webp"
         },
         {
           "name": "apartments",
-          "label": "Apartments",
-          "content": "Apartments",
+          "label": "Sharjah",
+          "content": "Affordable family homes with cultural vibes, strong community living, and easy city access.",
+          "counter": "1425",
           "image": "/images/image_54.webp"
         }
       ]
