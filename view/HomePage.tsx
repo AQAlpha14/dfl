@@ -19,7 +19,7 @@ import RentalJourneySection from "@/sections/RentalJourneySection";
 import OurTeamSection from "@/sections/OurTeamSection";
 import CalculatorSection from "@/sections/CalculatorSection";
 import PopularAreasSection from "@/sections/PopularAreasSection";
-import TestimonialsVideosSection from "@/sections/TestimonialsVideosSection";
+import TestimonialsVideosSection from "@/sections/Testimonials/TestimonialsVideosSection";
 
 const heroData = {
   heading:

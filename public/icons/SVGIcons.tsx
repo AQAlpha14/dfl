@@ -249,14 +249,16 @@ export const YoutubeSVG = (props: React.SVGProps<SVGSVGElement>) => (
 export const PlaySVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    width={86}
-    height={89}
+    width={64}
+    height={64}
     fill="none"
     {...props}
   >
     <path
-      fill="currentColor"
-      d="M59.854 40.334 30.96 23.654c-3.208-1.857-7.223.462-7.223 4.166v33.36c0 3.704 4.015 6.022 7.223 4.166l28.893-16.68c3.208-1.848 3.208-6.484 0-8.332Z"
+      fill="#fff"
+      fillRule="evenodd"
+      d="M5.333 32C5.333 17.272 17.273 5.333 32 5.333A26.667 26.667 0 0 1 58.666 32c0 14.727-11.939 26.666-26.666 26.666C17.272 58.666 5.333 46.727 5.333 32ZM27.12 43.413l15.546-9.707a2.027 2.027 0 0 0 0-3.413l-15.6-9.707A2 2 0 0 0 24 22.266v19.467a2 2 0 0 0 3.12 1.68Z"
+      clipRule="evenodd"
     />
   </svg>
 );
