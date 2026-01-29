@@ -17,6 +17,7 @@ import OurValuesSection from "@/sections/OurValuesSection";
 import CardGridsSection from "@/sections/CardGridsSection";
 import RentalJourneySection from "@/sections/RentalJourneySection";
 import OurTeamSection from "@/sections/OurTeamSection";
+import CalculatorSection from "@/sections/CalculatorSection";
 
 const heroData = {
   heading:
@@ -131,6 +132,12 @@ export default function HomePage() {
       />
       <RentalJourneySection />
       <OurTeamSection />
+      <CalculatorSection
+        heading={`Find Your Ideal Property by Budget`}
+        paragraph={[
+          "Browse vetted properties across the UAE without wasting time and money, choose from 50K to 250K+ AED, all thoroughly verified for your peace of mind.",
+        ]}
+      />
       <OurValuesSection
         heading={`Find Your Ideal Property by Budget`}
         paragraph={[

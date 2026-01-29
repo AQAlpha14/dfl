@@ -12,10 +12,7 @@ export interface SelectOption {
   value: string | number;
 }
 
-interface RHFSelectProps
-  extends Partial<
-    SelectProps<SelectOption, boolean>
-  > {
+interface RHFSelectProps extends Partial<SelectProps<SelectOption, boolean>> {
   name: string;
   title?: string;
   placeholder?: string;
@@ -35,21 +32,14 @@ interface RHFSelectProps
 const customStyles = {
   container: () =>
     "flex h-10 w-full rounded-md !border border-primary bg-primaryLight text-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
-
   control: () => "!h-full w-full !bg-transparent !border-0",
-
   valueContainer: () => "bg-transparent",
-
   singleValue: () => "text-black",
-
   input: () => "!text-sm !text-black",
-
   menu: () => "!bg-white border !border-[#DDD] !z-[9999]",
 
   option: (state: { isSelected: boolean }) =>
-    state.isSelected
-      ? "!bg-primary !text-white"
-      : "hover:!bg-primary-light",
+    state.isSelected ? "!bg-primary !text-white" : "hover:!bg-primary-light",
 
   indicatorSeparator: () => "!hidden",
 };
@@ -83,9 +73,7 @@ const RHFSelect: React.FC<RHFSelectProps> = ({
           <div className={`${innerDivClassName} flex flex-col`}>
             {title && (
               <div className={`mb-2 ${isHidden ? "hidden sm:block" : ""}`}>
-                <label className="displayPara font-semibold">
-                  {title}
-                </label>
+                <label className="displayPara font-semibold">{title}</label>
               </div>
             )}
 
@@ -114,9 +102,7 @@ const RHFSelect: React.FC<RHFSelectProps> = ({
           </div>
 
           {error?.message && (
-            <p className="text-xs text-red-500">
-              {error.message}
-            </p>
+            <p className="text-xs text-red-500">{error.message}</p>
           )}
         </div>
       )}
