@@ -3,10 +3,13 @@ import NotFound from "@/components/NotFound";
 import Typography from "@/components/Typography";
 import { useState } from "react";
 
+/* ===================== TYPES ===================== */
+
 interface PopularAreasSectionProps {
   heading: string;
   paragraph: string[];
   topTitle?: string;
+  icon?: string;
   bottomTitle?: string;
 }
 
@@ -16,6 +19,8 @@ interface Area {
   imageUrl: string;
   category: string;
 }
+
+/* ===================== DATA ===================== */
 
 const areas: Area[] = [
   {
@@ -88,7 +93,7 @@ const areas: Area[] = [
     id: 12,
     name: "Dubai Marina",
     imageUrl: "/images/image_58.webp",
-    category: "Penthouse",
+    category: "Penthouses",
   },
   {
     id: 13,
@@ -116,6 +121,8 @@ const areas: Area[] = [
   },
 ];
 
+/* ===================== CATEGORIES + ICONS ===================== */
+
 const categories = [
   "Villa",
   "Houses",
@@ -125,7 +132,20 @@ const categories = [
   "Bungalows",
   "Studio Apartments",
   "Lands",
-];
+] as const;
+
+const categoryIcons: Record<string, string> = {
+  Villa: "/icons/icon_51.svg",
+  Houses: "/icons/icon_52.svg",
+  Apartment: "/icons/icon_53.svg",
+  Townhouses: "/icons/icon_54.svg",
+  Penthouses: "/icons/icon_55.svg",
+  Bungalows: "/icons/icon_56.svg",
+  "Studio Apartments": "/icons/icon_57.svg",
+  Lands: "/icons/icon_58.svg",
+};
+
+/* ===================== COMPONENT ===================== */
 
 const PopularAreasSection = ({
   topTitle,
@@ -135,16 +155,15 @@ const PopularAreasSection = ({
 }: PopularAreasSectionProps) => {
   const [activeCategory, setActiveCategory] = useState<string>("Villa");
 
-  // Filter areas by selected category
   const filteredAreas = areas.filter(
-    (area) => area.category === activeCategory,
+    (area) => area.category === activeCategory
   );
 
   return (
     <section className="relative overflow-hidden py-16 px-8 bg-[url(/icons/bg_2.svg)] bgimg">
       <div className="container">
-        {/* Heading Section */}
-        <div className="max-w-lg mx-auto space-y-2 flex flex-col justify-center text-center">
+        {/* ================= HEADING ================= */}
+        <div className="max-w-lg mx-auto space-y-2 text-center">
           {topTitle && (
             <Typography as="h3" size="md" weight="medium" color="white">
               {topTitle}
@@ -158,29 +177,38 @@ const PopularAreasSection = ({
               {bottomTitle}
             </Typography>
           )}
-          {paragraph?.map((para, ind) => (
+          {paragraph.map((para, ind) => (
             <Typography key={ind} as="p" size="sm" color="white">
               {para}
             </Typography>
           ))}
         </div>
-        {/* Categories */}
-        <div className="flex flex-wrap itcems-center gap-3 py-10">
+
+        {/* ================= CATEGORIES ================= */}
+        <div className="flex flex-wrap items-center gap-3 py-10">
           {categories.map((cat) => (
             <button
               key={cat}
-              className={`hover:cursor-pointer px-4 py-2 rounded-lg border text-white hover:text-primary transition-colors ${
-                activeCategory === cat
-                  ? "bg-primary border-primary"
-                  : "border-gray-400 bg-transparent hover:bg-primaryLight"
-              }`}
               onClick={() => setActiveCategory(cat)}
+              className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${
+                activeCategory === cat
+                  ? "bg-primary border-primary text-white"
+                  : "border-gray-400 text-white hover:bg-primaryLight"
+              }`}
             >
-              {cat}
+              <Image
+                src={categoryIcons[cat]}
+                alt={cat}
+                width={18}
+                height={18}
+                className="shrink-0"
+              />
+              <span className="text-sm font-medium">{cat}</span>
             </button>
           ))}
         </div>
-        {/* Areas Grid */}
+
+        {/* ================= GRID ================= */}
         {filteredAreas.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {filteredAreas.map((area) => (
@@ -202,7 +230,6 @@ const PopularAreasSection = ({
             ))}
           </div>
         ) : (
-          // NotFound outside the grid
           <div className="mt-10 flex justify-center">
             <NotFound />
           </div>
