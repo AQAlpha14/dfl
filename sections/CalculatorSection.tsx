@@ -14,10 +14,10 @@ const CalculatorSection = ({
   paragraph,
 }: CalculatorSectionProps) => {
   return (
-    <section className="secPadding">
+    <section className="secPadding bg-[url(/icons/bg_1.svg)] bgimg">
       <div className="container">
         <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-          <div className="max-w-xl mx-auto space-y-2">
+          <div className="max-w-xl mx-auto space-y-2 flex flex-col justify-center">
             {topTitle && (
               <Typography as="h3" size="md" weight="medium">
                 {topTitle}
@@ -37,7 +37,7 @@ const CalculatorSection = ({
               </Typography>
             ))}
           </div>
-          <div className="">
+          <div className="bg-white p-4 rounded-md shadow-md border border-primary/50">
             <CalculatorForm />
           </div>
         </div>

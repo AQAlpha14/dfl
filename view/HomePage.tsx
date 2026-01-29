@@ -18,6 +18,7 @@ import CardGridsSection from "@/sections/CardGridsSection";
 import RentalJourneySection from "@/sections/RentalJourneySection";
 import OurTeamSection from "@/sections/OurTeamSection";
 import CalculatorSection from "@/sections/CalculatorSection";
+import PopularAreasSection from "@/sections/PopularAreasSection";
 
 const heroData = {
   heading:
@@ -131,13 +132,13 @@ export default function HomePage() {
         sideIcon
       />
       <RentalJourneySection />
-      <OurTeamSection />
       <CalculatorSection
-        heading={`Find Your Ideal Property by Budget`}
+        heading={`Calculate How Much You Save on Agent Commission with DFL`}
         paragraph={[
-          "Browse vetted properties across the UAE without wasting time and money, choose from 50K to 250K+ AED, all thoroughly verified for your peace of mind.",
+          "Our real-time calculator to determine your savings for clearer insights, rental ROIs, and better budgeting",
         ]}
       />
+      <OurTeamSection />
       <OurValuesSection
         heading={`Find Your Ideal Property by Budget`}
         paragraph={[
@@ -149,6 +150,12 @@ export default function HomePage() {
         lgGrid
         sideIcon
         btn
+      />
+      <PopularAreasSection
+        heading={`Dubai's Most Popular Areas to Live in`}
+        paragraph={[
+          "From vibrant city living to peaceful family spaces, find the best places to live in Dubai.",
+        ]}
       />
       <FaqsSection data={faqData} />
       <SocialCommunitySection />

@@ -39,8 +39,6 @@ interface InquireFormProps {
 /* -------------------------------------------------------------------------- */
 
 export default function CalculatorForm({
-  gridCol = "",
-  open = false,
   onClose,
 }: InquireFormProps) {
   const { locale } = useContext(LanguageContext);
@@ -116,7 +114,6 @@ export default function CalculatorForm({
   const onSubmit: SubmitHandler<InquireFormData> = async (data) => {
     try {
       const res = await POST(endPoints.CONTACT_US, data);
-
       if (res?.status === 200 || res?.status === 201) {
         reset(defaultValues);
         toast.success(res?.message || "Submitted successfully");
@@ -137,6 +134,9 @@ export default function CalculatorForm({
     { label: "Seller", value: "Seller" },
     { label: "Buyer", value: "Buyer" },
     { label: "Agent", value: "Agent" },
+    { label: "Broker", value: "Broker" },
+    { label: "Investor", value: "Investor" },
+    { label: "Other", value: "Other" },
   ];
 
   /* ---------------------------------- JSX ---------------------------------- */

@@ -45,6 +45,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 .bgimg {
   @apply bg-no-repeat bg-cover bg-center;
 }
