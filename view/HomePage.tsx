@@ -19,6 +19,7 @@ import RentalJourneySection from "@/sections/RentalJourneySection";
 import OurTeamSection from "@/sections/OurTeamSection";
 import CalculatorSection from "@/sections/CalculatorSection";
 import PopularAreasSection from "@/sections/PopularAreasSection";
+import TestimonialsVideosSection from "@/sections/TestimonialsVideosSection";
 
 const heroData = {
   heading:
@@ -157,6 +158,7 @@ export default function HomePage() {
           "From vibrant city living to peaceful family spaces, find the best places to live in Dubai.",
         ]}
       />
+      <TestimonialsVideosSection />
       <FaqsSection data={faqData} />
       <SocialCommunitySection />
     </div>
