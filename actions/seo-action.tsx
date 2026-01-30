@@ -1,7 +1,7 @@
 "use server";
 
 import { BASE_URL } from "@/constants/constants";
-import { endpoints } from "@/utils/endpoints";
+import endPoints from "@/constants/endPionts";
 import { headers } from "next/headers";
 
 export async function GetFaqs() {
@@ -17,7 +17,7 @@ export async function GetFaqs() {
       formData.append("website_name", BASE_URL + headersInstance.get("x-url"));
     }
 
-    const res = await fetch(endpoints.FAQS.GET_FAQS, {
+    const res = await fetch(endPoints.GET_FAQS, {
       method: "POST",
       body: formData,
     });
@@ -40,7 +40,7 @@ export async function SEOAction() {
       formData.append("website_name", BASE_URL + headersInstance.get("x-url"));
     }
 
-    const res = await fetch(endpoints.getMeta, {
+    const res = await fetch(endPoints.GETMETA, {
       method: "POST",
       body: formData,
     });
@@ -81,7 +81,7 @@ export async function GlobalScriptAction() {
   try {
     const formData = new FormData();
     formData.append("website_name", BASE_URL);
-    const res = await fetch(endpoints.getGlobalScript, {
+    const res = await fetch(endPoints.GETGLOBALSCRIPT, {
       method: "POST",
       body: formData,
     });

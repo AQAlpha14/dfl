@@ -190,10 +190,10 @@ const PopularAreasSection = ({
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${
+              className={`hover:cursor-pointer flex items-center gap-2 px-4 py-2 rounded-lg border transition-all ${
                 activeCategory === cat
                   ? "bg-primary border-primary text-white"
-                  : "border-gray-400 text-white hover:bg-primaryLight"
+                  : "border-gray-400 text-white hover:bg-primary"
               }`}
             >
               <Image

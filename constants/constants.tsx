@@ -4,9 +4,9 @@
 |--------------------------------------------------
 */
 
-// const hostName = "buzinessify.com";
-// const BASE_URL = "https://staging.buzinessify.com";
-// const DOMAIN = "https://buzinessify.com";
+// const hostName = "directfromlanloard.com";
+// const BASE_URL = "https://staging.directfromlanloard.com";
+// const DOMAIN = "https://directfromlanloard.com";
 // const API_DOMAIN = "https://seodevapi.cloudapiserver.com";
 // const REAL_STATE_API_DOMAIN = "https://realstateapi.cloudapiserver.com";
 // const DEVAPI = "https://devapi.cloudapiserver.com";
@@ -20,8 +20,8 @@
 |--------------------------------------------------
 */
 
-const hostName = "buzinessify.com";
-const BASE_URL = "https://buzinessify.com";
+const hostName = "directfromlanloard.com";
+const BASE_URL = "https://directfromlanloard.com";
 const API_DOMAIN = "https://seoapi.cloudapiserver.com";
 const REAL_STATE_API_DOMAIN = "https://realstateapi.cloudapiserver.com";
 const DEVAPI = "https://devapi.cloudapiserver.com";

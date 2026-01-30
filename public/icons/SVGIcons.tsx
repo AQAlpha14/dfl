@@ -586,6 +586,22 @@ export const DribbleSVG = (props: React.SVGProps<SVGSVGElement>) => (
     />
   </svg>
 );
-// export const SVG = (props: React.SVGProps<SVGSVGElement>) => (
-
-// );
+export const SearchSVG = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width={40}
+    height={40}
+    viewBox="0 0 24 24"
+    {...props}
+  >
+    <g fill="none">
+      <path d="M15.803 15.803A7.5 7.5 0 1 1 5.197 5.197a7.5 7.5 0 0 1 10.606 10.606" />
+      <path
+        stroke="currentColor"
+        strokeLinecap="square"
+        strokeWidth={2}
+        d="m15.803 15.804 5.303 5.303m-5.303-5.304A7.5 7.5 0 1 1 5.197 5.197a7.5 7.5 0 0 1 10.606 10.606Z"
+      />
+    </g>
+  </svg>
+);
