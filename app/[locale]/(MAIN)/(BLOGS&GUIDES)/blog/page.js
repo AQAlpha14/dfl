@@ -30,7 +30,7 @@ const page = async () => {
   const { h1 } = await generateMetadata();
   return (
     <Suspense>
-      <HeroSection className={`!bg-primaryLight`} heading={h1} video />
+      <HeroSection className={`bg-primaryLight!`} heading={h1} video />
       <InterestedCategoriesSection />
       <div className="container pb-8">
         <ViewAllPostCards />

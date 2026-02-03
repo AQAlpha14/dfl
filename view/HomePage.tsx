@@ -20,6 +20,7 @@ import OurTeamSection from "@/sections/OurTeamSection";
 import CalculatorSection from "@/sections/CalculatorSection";
 import PopularAreasSection from "@/sections/PopularAreasSection";
 import TestimonialsVideosSection from "@/sections/Testimonials/TestimonialsVideosSection";
+import InsightsSection from "@/sections/InsightsSection";
 
 const heroData = {
   heading:
@@ -152,6 +153,7 @@ export default function HomePage() {
         sideIcon
         btn
       />
+      <InsightsSection />
       <PopularAreasSection
         heading={`Dubai's Most Popular Areas to Live in`}
         paragraph={[

@@ -9,18 +9,18 @@ interface Category {
   title: string;
 }
 
-interface BlogCard2Props {
-  thumbnail_image: string;
-  title: string;
+interface BlogCardProps {
+  thumbnail_image?: string;
+  title?: string;
   createon?: {
-    $date: string;
+    $date?: string;
   };
-  description: string;
-  slug: string;
+  description?: string;
+  slug?: string;
   categories_data?: Category[];
 }
 
-export const BlogCard2: React.FC<BlogCard2Props> = ({
+export const BlogCard: React.FC<BlogCardProps> = ({
   thumbnail_image,
   title,
   createon,
@@ -40,7 +40,7 @@ export const BlogCard2: React.FC<BlogCard2Props> = ({
         >
           <Link href={`/blog/${slug}`} variant="txt">
             <Image
-              src={thumbnail_image}
+              src={thumbnail_image || "/icons/dummy.svg"}
               alt={"Blog Image"}
               width={350}
               height={240}
@@ -101,4 +101,4 @@ export const BlogCard2: React.FC<BlogCard2Props> = ({
   );
 };
 
-export default BlogCard2;
+export default BlogCard;

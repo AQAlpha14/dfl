@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import BlogCards from "./BlogCard2";
+import BlogCards from "./BlogCard";
 import SplideSlider from "../SplideSlider/SplideSlider";
 import Heading4 from "./Typography/Heading4";
 import Heading2 from "./Typography/Heading2";

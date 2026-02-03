@@ -97,6 +97,7 @@ const mapPostToDetail = (post: BlogPostAPI): BlogDetailResponse => {
       },
     ],
     others_blogs: [],
+    identifier: String(post.id),
   };
 };
 
@@ -150,7 +151,7 @@ export const GetBlogs = async (
 };
 
 export const getBlogDetail = async (
-  vendorId?: number | string,
+  vendorId?: number,
   slug?: string,
 ): Promise<BlogDetailResponse | null> => {
   try {
@@ -158,12 +159,11 @@ export const getBlogDetail = async (
     if (!identifier) return null;
 
     const url = `${endPoints.BLOGS.GETBLOGDETAIL(
-      identifier,
+      String(identifier)
     )}?domain=${hostName}`;
 
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) return null;
-
     const post: BlogPostAPI = await res.json();
     return mapPostToDetail(post);
   } catch (error) {

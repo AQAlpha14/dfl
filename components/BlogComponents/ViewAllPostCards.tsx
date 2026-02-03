@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogCard2 from "./BlogCard2";
+import BlogCard2 from "./BlogCard";
 import Heading2 from "./Typography/Heading2";
 import { GetBlogs } from "@/actions/blog-actions";
 import { vendorId } from "@/constants/global";

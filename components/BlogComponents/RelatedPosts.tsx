@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import SplideSlider from "../SplideSlider/SplideSlider";
-import { BlogCard2 } from "./BlogCard2";
+import { BlogCard2 } from "./BlogCard";
 import { GetBlogs } from "@/actions/blog-actions";
 import { SkeletonBlogCard1 } from "./Skeleton";
 import { vendorId } from "@/constants/global";

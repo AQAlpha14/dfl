@@ -19,6 +19,7 @@ interface TopLocationsSectionProps {
   heading?: string;
   counter?: string;
   description?: string;
+  propertyTypes?: PropertyCategoryData[];
 }
 
 const TopLocationsSection = ({
@@ -129,7 +130,7 @@ const TopLocationsSection = ({
             className="splide-custom"
           >
             {currentPropertyTypes.map((type, idx: number) => (
-              <SplideSlide key={type.name}>
+              <SplideSlide key={idx}>
                 <div className="relative rounded-2xl overflow-hidden group">
                   {/* Background Image */}
                   <div className="aspect-410/486 w-full h-full">
