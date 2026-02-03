@@ -103,9 +103,7 @@ const mapPostToDetail = (post: BlogPostAPI): BlogDetailResponse => {
 
 /* ===================== ACTIONS ===================== */
 
-export const GetBlogs = async (
-  body: GetBlogsBody,
-): Promise<GetBlogsResult> => {
+export const GetBlogs = async (body: GetBlogsBody): Promise<GetBlogsResult> => {
   try {
     const {
       nPerPage = 10,
@@ -122,9 +120,12 @@ export const GetBlogs = async (
       sort: "published_at",
       order: "desc",
     });
-
+    
     if (keywords) params.append("q", keywords);
-    if (category_id?.length) params.append("category_id", String(category_id[0]));
+
+    if (category_id?.length)
+      params.append("category_id", String(category_id[0]));
+
     if (tag_id?.length) params.append("tag_id", String(tag_id[0]));
 
     const res = await fetch(
@@ -138,7 +139,6 @@ export const GetBlogs = async (
     }
 
     const data: { data: BlogPostAPI[]; total: number } = await res.json();
-
     return {
       data: data.data.map(mapPostToBlogCard),
       totalPages: Math.ceil(data.total / nPerPage),
@@ -159,11 +159,12 @@ export const getBlogDetail = async (
     if (!identifier) return null;
 
     const url = `${endPoints.BLOGS.GETBLOGDETAIL(
-      String(identifier)
+      String(identifier),
     )}?domain=${hostName}`;
 
     const res = await fetch(url, { cache: "no-store" });
     if (!res.ok) return null;
+
     const post: BlogPostAPI = await res.json();
     return mapPostToDetail(post);
   } catch (error) {
@@ -178,12 +179,10 @@ export const getBlogCategories = async (): Promise<BlogCategory[]> => {
       domain: hostName,
       limit: "100",
     });
-
     const res = await fetch(
       `${endPoints.BLOGS.GET_BLOGS_CATAGORIES}?${params.toString()}`,
       { cache: "no-store" },
     );
-
     if (!res.ok) return [];
     return (await res.json()) as BlogCategory[];
   } catch (error) {
@@ -197,15 +196,11 @@ export const NewsletterSubmit = async (
 ): Promise<unknown> => {
   try {
     const body = new FormData();
-    Object.entries(formData).forEach(([key, value]) =>
-      body.append(key, value),
-    );
-
+    Object.entries(formData).forEach(([key, value]) => body.append(key, value));
     const response = await fetch(endPoints.NEWSLETTER, {
       method: "POST",
       body,
     });
-
     return await response.json();
   } catch (error) {
     console.error("NewsletterSubmit Error", error);

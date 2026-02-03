@@ -55,10 +55,8 @@ export const onSignin = async (formData) => {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     const res = await response.json();
-    console.log("res", res);
     data = res;
   } catch (error) {
-    console.log("res", error);
     console.error("Error fetching data:", error.message);
   }
   return data;

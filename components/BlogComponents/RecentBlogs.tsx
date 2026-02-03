@@ -1,15 +1,29 @@
 "use client";
-import React from "react";
 import BlogCards from "./BlogCard";
-import SplideSlider from "../SplideSlider/SplideSlider";
-import Heading4 from "./Typography/Heading4";
-import Heading2 from "./Typography/Heading2";
-import Paragraph from "./Typography/Paragraph";
+import Typography from "../Typography";
+import SplideSlider from "@/sections/SplideSlider";
+
+interface BlogData {
+  title: string;
+  createon?: { $date: string };
+  front_image?: string;
+  front_image_alt?: string;
+  categories_data?: { id: number }[];
+  value?: string;
+}
+
+interface RecentBlogsProps {
+  topTitle?: string;
+  heading?: string;
+  bottomTitle?: string;
+  paragraph?: string[];
+  className?: string;
+  blogData: BlogData[];
+}
 
 const options = {
   type: "loop",
   rewind: true,
-  resolve: "left",
   perPage: 1,
   padding: "0.8rem",
   perMove: 1,
@@ -20,55 +34,56 @@ const options = {
   autoScroll: {
     speed: 1,
   },
-  mediaQuery: "min",
   breakpoints: {
     360: { perPage: 2 },
     640: { perPage: 3 },
     768: { perPage: 4 },
   },
 };
-const RecentBlogs = ({
+
+const RecentBlogs: React.FC<RecentBlogsProps> = ({
   topTitle,
   heading,
   bottomTitle,
   paragraph,
   className,
+  blogData,
 }) => {
   return (
-    <>
-      <section
-        className={`secPadding bg-cover bg-right-top bg-no-repeat ${className}`}
-      >
-        <div className="container">
-          <div className="max-w-[1024px] lg:mb-10">
-            {topTitle && (
-              <Heading4
-                blackHeading={topTitle}
-                className={`lg:!text-left !text-center !font-[500]`}
-              />
-            )}
-            <Heading2
-              heading={heading}
-              className={`lg:!text-left !text-center`}
-            />
-            {bottomTitle && (
-              <Heading4
-                blackHeading={bottomTitle}
-                className={`lg:!text-left !text-center`}
-              />
-            )}
-            {paragraph?.map((para, ind) => (
-              <Paragraph textAlign="text-center" blackText1={para} key={ind} />
-            ))}
-          </div>
+    <section
+      className={`secPadding bg-cover bg-top-right bg-no-repeat ${className}`}
+    >
+      <div className="container">
+        <div className="max-w-xl mx-auto space-y-2">
+          {topTitle && (
+            <Typography as="h3" size="md" weight="medium">
+              {topTitle}
+            </Typography>
+          )}
+          {heading && (
+            <Typography as="h2" size="xl" weight="semibold">
+              {heading}
+            </Typography>
+          )}
+          {bottomTitle && (
+            <Typography as="h3" size="md" weight="medium">
+              {bottomTitle}
+            </Typography>
+          )}
+          {paragraph?.map((para, ind) => (
+            <Typography key={ind} as="p" size="sm">
+              {para}
+            </Typography>
+          ))}
         </div>
-        <div className="container">
-          <SplideSlider options={options} data={blogData}>
-            <BlogCards />
-          </SplideSlider>
-        </div>
-      </section>
-    </>
+      </div>
+
+      <div className="container mt-6">
+        <SplideSlider options={options} data={blogData}>
+          <BlogCards />
+        </SplideSlider>
+      </div>
+    </section>
   );
 };
 

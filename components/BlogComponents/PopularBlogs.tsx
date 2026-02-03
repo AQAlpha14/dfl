@@ -1,17 +1,15 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import BlogCardListing from "./BlogCardListing";
-import Paragraph from "./Typography/Paragraph";
-import Heading2 from "./Typography/Heading2";
 import { GetBlogs } from "@/actions/blog-actions";
-import Heading4 from "./Typography/Heading4";
 import { SkeletonPopularBlog1, SkeletonPopularBlogs1 } from "./Skeleton";
-import { vendorId } from "@/constants/global";
+import { vendorId } from "@/constants/constants";
+import Typography from "../Typography";
 
 const PopularBlog = ({
-  front_image,
+  thumbnail_image,
   slug,
   categories_data,
   title,
@@ -25,16 +23,18 @@ const PopularBlog = ({
   return (
     <>
       <div className={`h-full rounded-xl overflow-hidden`}>
-        <div className={`relative aspect-[16/9] flex items-center justify-center overflow-hidden`}>
+        <div
+          className={`relative aspect-video flex items-center justify-center overflow-hidden`}
+        >
           {categories_data?.length ? (
-            <div className="absolute z-10 left-4 top-4 text-xs px-2 py-[2px] text-white bg-primary inline-block rounded-full">
+            <div className="absolute z-10 left-4 top-4 text-xs px-2 py-0.5 text-white bg-primary inline-block rounded-full">
               <p>{categories_data[0].title}</p>
             </div>
           ) : (
             ""
           )}
           <Image
-            src={front_image}
+            src={thumbnail_image}
             alt={"Blog Image"}
             width={1050}
             height={240}
@@ -46,28 +46,25 @@ const PopularBlog = ({
         <div className={`px-4 pb-6 flex flex-col`}>
           <div className="flex flex-col">
             <div className={`flex mt-3`}>
-              <Paragraph
-                className={`!text-xs !text-left`}
-                blackText1={createdDate}
-              />
+              <Typography as="p" size="xs">
+                {createdDate}
+              </Typography>
             </div>
-            <Link
-              href={`/blog/${slug}`}
-            >
-              <Heading2
-                blackHeading={title}
-                className={`!text-left !font-[400] md:!text-lg !text-lg line-clamp-2 text-ellipsis 
-            `}
-              />
+            <Link href={`/blog/${slug}`}>
+              <Typography as="h2" size="xl" weight="semibold">
+                {title}
+              </Typography>
             </Link>
-            <Paragraph
-              blackText1={description}
-              className={`!text-xs !text-left line-clamp-6`}
-            />
+            <Typography as="p" size="xs" className={`line-clamp-6`}>
+              {createdDate}
+            </Typography>
+            <Typography as="p" size="sm" className={`line-clamp-6`}>
+              {description}
+            </Typography>
             <div className="mt-auto ">
               <Link
                 href={`/blog/${slug}`}
-                className={`!text-primary text-sm border border-primary px-2 py-1 rounded-full hover:bg-primary hover:!text-white `}
+                className={`text-primary! text-sm border border-primary px-2 py-1 rounded-full hover:bg-primary hover:text-white!`}
               >
                 Read More
               </Link>
@@ -167,7 +164,5 @@ const PopularBlogs = ({ heading, className, bottomTitle }) => {
     </section>
   );
 };
-
-
 
 export default PopularBlogs;

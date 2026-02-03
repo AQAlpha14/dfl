@@ -46,7 +46,7 @@ const PhoneNumberInput = ({
       <div
         className={`relative border-b ${
           error ? "border-red-500" : "border-gray-dark"
-        } focus-within:border-primary transition-all min-h-[48px] flex items-center ${
+        } focus-within:border-primary transition-all min-h-12 flex items-center ${
           disabled || loading ? "opacity-70 cursor-not-allowed" : ""
         }`}>
         {/* Icon (optional) */}
@@ -64,30 +64,14 @@ const PhoneNumberInput = ({
           </div>
         )}
 
-        {/* Phone Input */}
-        {/* <div className={`flex-1 flex items-center `}>
-          <PhoneInput
-            value={val}
-            onChange={handleChange}
-            inputClass="!bg-transparent !border-none !shadow-none !text-sm !w-full !focus:outline-none"
-            buttonClass={`${
-              ar ? "flex-col-reverse" : ""
-            } !bg-transparent !border-none hover:!bg-transparent`}
-            disabled={disabled}
-            placeholder={placeholder}
-            country="ae"
-            enableSearch
-            {...props}
-          />
-        </div> */}
         <div className="flex-1 flex items-center relative">
           <PhoneInput
             value={val}
             onChange={handleChange}
-            inputClass={`!bg-transparent !border-none !shadow-none !text-sm !w-full !focus:outline-none ${
-              ar ? "!pr-7 !text-right" : "!pl-8 !text-left"
+            inputClass={`bg-transparent! border-none! shadow-none! text-sm! w-full! focus:outline-none! ${
+              ar ? "pr-7! text-right!" : "pl-8! text-left!"
             }`}
-            buttonClass="!bg-transparent !border-none hover:!bg-transparent"
+            buttonClass="bg-transparent! border-none! hover:bg-transparent!"
             containerClass="w-full relative"
             disabled={disabled}
             placeholder={placeholder}

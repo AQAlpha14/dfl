@@ -56,11 +56,11 @@ export default function BlogSection({
                 />
                 <div className="absolute top-2 left-2 bg-primary rounded-lg px-3 py-1">
                   <Heading4
-                    className="display3 !mb-0 text-white text-wrap text-center"
+                    className="display3 mb-0! text-white text-wrap text-center"
                     blackHeading={data[0]?.date}
                   />
                   <Heading4
-                    className="!mb-0 text-white text-wrap text-center"
+                    className="mb-0! text-white text-wrap text-center"
                     blackHeading={data[0]?.month}
                   />
                 </div>
@@ -93,7 +93,7 @@ export default function BlogSection({
                       />
                       <div className="absolute top-2 left-2 bg-primary rounded-lg px-3 py-1">
                         <Heading3
-                          className="display3 !mb-0 text-white text-wrap text-center"
+                          className="display3 mb-0 text-white text-wrap text-center"
                           blackHeading={post.date}
                         />
                         <Heading3

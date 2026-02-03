@@ -32,16 +32,16 @@ interface RHFSelectProps extends Partial<SelectProps<SelectOption, boolean>> {
 const customStyles = {
   container: () =>
     "flex h-10 w-full rounded-md !border border-primary bg-primaryLight text-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
-  control: () => "!h-full w-full !bg-transparent !border-0",
+  control: () => "h-full! w-full bg-transparent! border-0!",
   valueContainer: () => "bg-transparent",
   singleValue: () => "text-black",
-  input: () => "!text-sm !text-black",
-  menu: () => "!bg-white border !border-[#DDD] !z-[9999]",
+  input: () => "text-sm! text-black!",
+  menu: () => "bg-white! border! border-[#DDD] z-[9999]!",
 
   option: (state: { isSelected: boolean }) =>
-    state.isSelected ? "!bg-primary !text-white" : "hover:!bg-primary-light",
+    state.isSelected ? "bg-primary! text-white!" : "hover:bg-primary-light!",
 
-  indicatorSeparator: () => "!hidden",
+  indicatorSeparator: () => "hidden!",
 };
 
 /* -------------------------------------------------------------------------- */

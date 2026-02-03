@@ -1,7 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
 import { GetBlogs } from "@/actions/blog-actions";
-import { btnText } from "@/mockData/dummyData";
 import { vendorId } from "@/constants/constants";
 import SplideSlider from "@/sections/SplideSlider";
 import type { Options } from "@splidejs/splide";
@@ -14,10 +13,11 @@ import NotFound from "@/components/NotFound";
 interface InsightsSectionProps {
   heading?: string;
   paragraph?: string[];
+  btnText?: string;
 }
 // Adjust this if you already have a Blog type
 interface Blog {
-  id: number;
+  id?: number;
   [key: string]: any;
 }
 
@@ -26,6 +26,7 @@ interface Blog {
 const InsightsSection = ({
   heading = "Blogs & Insights: From Rental Tips to Market News — Everything You Need To Stay Informed…",
   paragraph,
+  btnText,
 }: InsightsSectionProps) => {
   const [data, setData] = useState<Blog[]>([]);
   const [loading, setLoading] = useState(true);
@@ -85,7 +86,7 @@ const InsightsSection = ({
             </div>
             <div className="sm:flex justify-center hidden">
               <Link href="/blog" variant="primary" className="rounded-full">
-                {btnText.view_all_insights}
+                {btnText}
               </Link>
             </div>
           </div>
@@ -98,7 +99,7 @@ const InsightsSection = ({
           </div>
         ) : data.length ? (
           <SplideSlider options={options} data={data}>
-            <BlogCard/>
+            <BlogCard />
           </SplideSlider>
         ) : (
           <NotFound />

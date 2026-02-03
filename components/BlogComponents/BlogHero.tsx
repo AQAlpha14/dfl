@@ -1,15 +1,27 @@
-import React from "react";
-import ButtonTheme from "@/components/Button/Button";
-import SearchBar from "@/components/SearchBar/SearchBar";
 import Image from "next/image";
-import { contactDetail } from "@/mockData/contact";
-import Heading4 from "./Typography/Heading4";
-import Heading2 from "./Typography/Heading2";
-import Paragraph from "./Typography/Paragraph";
+import Typography from "../Typography";
+import SearchBar from "./SearchBar/SearchBar";
 
-const BlogHero = ({
+interface BlogHeroProps {
+  subTitle?: string;
+  bottomTitle?: string;
+  heading?: string;
+  paragraph?: string[];
+  imageUrl?: string;
+  imageWidth?: number;
+  imageHeight?: number;
+  imageAlign?: string;
+  imageAlt?: string;
+  dealsTitle?: string;
+  dealsTitleColored?: string;
+  list?: string[];
+  hideSearch?: boolean;
+  className?: string;
+}
+
+const BlogHero: React.FC<BlogHeroProps> = ({
   subTitle,
-  topTitle,
+  bottomTitle,
   heading,
   paragraph,
   imageUrl,
@@ -26,38 +38,42 @@ const BlogHero = ({
   return (
     <section className={`lg:pt-28 pt-14 pb-20 ${className} `}>
       <div className="container">
-        <div className={`max-w-[768px] mx-auto grid grid-cols-1 gap-4`}>
+        <div className={`max-w-md mx-auto grid grid-cols-1 gap-4`}>
           <div className="flex flex-col justify-center">
-            {subTitle && (
-              <Heading4 className="text-center" blackHeading={subTitle} />
-            )}
-            {topTitle && (
-              <Heading4 className="text-start" blackHeading={topTitle} />
-            )}
-            <Heading2 blackHeading={heading} className="text-center" />
+            <div className="max-w-xl mx-auto space-y-2">
+              {subTitle && (
+                <Typography as="h3" size="md" weight="medium">
+                  {subTitle}
+                </Typography>
+              )}
+              <div className="flex gap-2">
+                <Typography as="h2" size="xl" weight="semibold">
+                  {heading}
+                </Typography>
+              </div>
+              {bottomTitle && (
+                <Typography as="h3" size="md" weight="medium">
+                  {bottomTitle}
+                </Typography>
+              )}
+            </div>
 
             <div className={`grid lg:grid-cols-1 grid-cols-1`}>
               <div className="flex flex-col justify-center items-start">
                 {paragraph?.map((para, ind) => (
-                  <Paragraph
-                    blackText1={para}
-                    key={ind}
-                    className={`lg:!text-left !text-center`}
-                  />
+                  <Typography key={ind} as="p" size="sm">
+                    {para}
+                  </Typography>
                 ))}
                 {(dealsTitle || dealsTitleColored) && (
-                  <Heading2
-                    blackHeading={dealsTitle}
-                    className="!text-start"
-                  />
+                  <Typography as="h3" size="md" weight="medium">
+                    {dealsTitle}
+                  </Typography>
                 )}
                 {list && (
                   <ul>
                     {list?.map((item, ind) => (
-                      <li
-                        className="displayPara font-[300] text-white"
-                        key={ind}
-                      >
+                      <li className="displayPara text-white" key={ind}>
                         {item}
                       </li>
                     ))}
@@ -66,10 +82,10 @@ const BlogHero = ({
               </div>
             </div>
             {!hideSearch && <SearchBar />}
-            <div className="flex gap-4 mt-4 mx-auto lg:mx-0">
+            {/* <div className="flex gap-4 mt-4 mx-auto lg:mx-0">
               <ButtonTheme
-                text={contactDetail.telNumber}
-                href={`tel:${contactDetail.telNumber}`}
+                text={contactDetail.telNo}
+                href={`tel:${contactDetail.telNo}`}
                 widthClass="w-auto"
               />
               <ButtonTheme
@@ -77,12 +93,13 @@ const BlogHero = ({
                 widthClass="w-auto mx-auto sm:mx-0"
                 callReqBtn
               />
-            </div>
+            </div> */}
           </div>
           {imageUrl && (
             <div
-              className={`flex ${imageAlign ? imageAlign : "items-center"
-                } justify-center`}
+              className={`flex ${
+                imageAlign ? imageAlign : "items-center"
+              } justify-center`}
             >
               <Image
                 src={imageUrl}

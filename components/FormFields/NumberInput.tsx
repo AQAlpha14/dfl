@@ -18,6 +18,17 @@ interface NumberInputProps extends InputHTMLAttributes<HTMLInputElement> {
   dropdownOptions?: string[];
   dropdownprops?: React.SelectHTMLAttributes<HTMLSelectElement>;
   isModal?: boolean;
+  disabled?: boolean;
+  placeholder?: string;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onFocus?: (e: React.FocusEvent<HTMLInputElement>) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onKeyPress?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
+  onInput?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onPaste?: (e: React.ClipboardEvent<HTMLInputElement>) => void;
+  
 }
 
 export default function NumberInput({

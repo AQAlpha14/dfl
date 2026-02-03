@@ -31,7 +31,6 @@ const FaqsSection = ({ data }: FaqsSectionProps) => {
             <Typography as="h2" size="xl" weight="medium" color="secondary">
               {`Got Questions? We’ve Got the Answers`}
             </Typography>
-
             <Typography as="p" size="sm" className="pt-4">
               {`Whether you’re a landlord or tenant, our FAQs make things easier
               and clearer for you. And if you still have any questions, we’re

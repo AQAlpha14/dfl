@@ -1,12 +1,23 @@
 "use client";
-import React, { useEffect, useState } from "react";
+
+import { useEffect, useState } from "react";
 import InterestedCategoriesSection from "./InterestedCategoriesSection";
-import Heading4 from "./Typography/Heading4";
 import ContactForm from "./ContactForm";
 import SubscribeSection from "./SubscribeSection";
+import Typography from "../Typography";
+import CommonModal from "../Modal/CommonModal";
+import { btnText } from "@/mockData/dummyData";
 
-const BlogStickyBar = ({ data }) => {
-  const [loading, setLoading] = useState(true);
+interface BlogStickyBarProps {
+  className?: string;
+  blogCategories?: string;
+  data?: any;
+  faq?: string;
+
+}
+
+
+const BlogStickyBar: React.FC<BlogStickyBarProps>= () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -17,15 +28,12 @@ const BlogStickyBar = ({ data }) => {
   useEffect(() => {
     const handleScroll = () => {
       const offset = window.scrollY;
-      const threshold = 0;
-      if (offset > threshold) {
-        setIsSticky(true);
-      } else {
-        setIsSticky(false);
-      }
+      const threshold = 100; // sticky triggers after 100px scroll
+      setIsSticky(offset > threshold);
     };
-    setLoading(false);
+
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -33,30 +41,46 @@ const BlogStickyBar = ({ data }) => {
 
   return (
     <div className="lg:h-full">
+      {/* Sticky wrapper */}
       <div
         className={`lg:pt-0 pt-16 ${isSticky ? "lg:sticky top-20 z-10" : ""}`}
       >
-        <div className="pt-4">
-          <div className="space-y-4">
-            <div className="">
-              <Heading4
-                blackHeading={`Inquire the best deals`}
-                className={`pb-4`}
-              />
-              <ContactForm
-                txtLeft={true}
-                className={`display3 !w-full`}
-                gridCol={`!grid-cols-1`}
-                padding={`py-3 !mx-0 !px-0`}
-              />
-            </div>
-            <SubscribeSection />
-            <div>
-              <InterestedCategoriesSection isStickyBar={true} />
-            </div>
+        <div className="pt-4 space-y-4">
+          {/* Contact Form Section */}
+          <div>
+            <Typography as="p" size="md" className="text-xs mb-1">
+              Inquire the best deals
+            </Typography>
+
+            <ContactForm
+              txtLeft={true}
+              className="display3 w-full!"
+              padding="py-3 !mx-0 !px-0"
+            />
+
+            {/* Optional: trigger modal */}
+            <button
+              onClick={toggleModal}
+              className="mt-2 px-3 py-1 text-sm bg-blue-500 text-white rounded"
+            >
+              {btnText.submit}
+            </button>
           </div>
+
+          {/* Subscribe Section */}
+          <SubscribeSection />
+
+          {/* Interested Categories Section */}
+          <InterestedCategoriesSection isStickyBar={true} />
         </div>
       </div>
+
+      {/* Modal */}
+      {isModalOpen && (
+        <CommonModal isOpen={isModalOpen} onClose={toggleModal}>
+          <ContactForm txtLeft={true} className="w-full" padding="py-3" />
+        </CommonModal>
+      )}
     </div>
   );
 };

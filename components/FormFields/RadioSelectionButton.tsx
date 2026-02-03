@@ -82,7 +82,7 @@ export default function RadioSelectionButton({
               )} */}
 
               {/* Option Label */}
-              <span className="text-sm md:!text-[15px] font-semibold">
+              <span className="text-sm md:text-[15px]! font-semibold">
                 {option.label}
               </span>
 

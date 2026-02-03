@@ -28,8 +28,8 @@ const Button: FC<ButtonProps> = ({
   // Variant styles centralized
   const variantClasses: Record<string, string> = {
     primary: "btnBorder bg-primary text-white",
-    simpleLink: "!p-0 !rounded-none !text-left",
-    txt: "border-b border-primary !p-0 !rounded-none font-medium text-primary",
+    simpleLink: "p-0! rounded-none! text-left!",
+    txt: "border-b border-primary p-0! rounded-none! font-medium text-primary",
     white: "border border-white bg-white/25 font-medium text-white",
     outline: "border border-primary bg-white font-medium text-primary",
   };

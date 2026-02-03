@@ -1,5 +1,5 @@
 "use client";
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import FormProvider from "@/components/FormFields/FormProvider";
 import { useForm } from "react-hook-form";
 import RHFOtpField from "@/components/FormFields/RHFOtpField";
@@ -59,7 +59,6 @@ const OtpVerification = ({ email }) => {
     const countdown = setInterval(() => {
       setTimer((prev) => (prev > 0 ? prev - 1 : 0));
     }, 1000);
-
     return () => clearInterval(countdown);
   }, []);
 
@@ -127,7 +126,7 @@ const OtpVerification = ({ email }) => {
           href={textToRouteUrl("/")}
           className="cursor-pointer">
           <Image
-            src={`/assets/images/car_solution_logo.svg`}
+            src={`/icons/dfl_logo2.svg`}
             alt="logo"
             width={70}
             height={64}
@@ -151,7 +150,7 @@ const OtpVerification = ({ email }) => {
         />
         <div className="grid grid-cols-1 gap-6">
           <div className="w-full flex items-center justify-center mt-4">
-            <div className="max-w-[450px] ">
+            <div className="max-w-112.5 ">
               <RHFOtpField name="code" />
             </div>
           </div>

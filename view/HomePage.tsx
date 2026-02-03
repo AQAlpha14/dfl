@@ -153,7 +153,7 @@ export default function HomePage() {
         sideIcon
         btn
       />
-      <InsightsSection />
+      <InsightsSection btnText={btnText.view_all_insights} />
       <PopularAreasSection
         heading={`Dubai's Most Popular Areas to Live in`}
         paragraph={[
@@ -161,6 +161,10 @@ export default function HomePage() {
         ]}
       />
       <TestimonialsVideosSection />
+      <InsightsSection
+        heading="Guides: Make Smarter Decisions to Finding, Renting, and Managing Your Property "
+        btnText={btnText.view_all_guides}
+      />
       <FaqsSection data={faqData} />
       <SocialCommunitySection />
     </div>

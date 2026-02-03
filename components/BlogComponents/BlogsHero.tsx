@@ -1,32 +1,34 @@
-import React from "react";
-import Heading1 from "./Typography/Heading1";
+import Typography from "../Typography";
 import SearchBarBlog from "./SearchBar/SearchBarBlog";
-import Paragraph from "./Typography/Paragraph";
 
-const BlogsHero = ({ heading, paragraph }) => {
+interface BlogsHeroProps {
+  heading?: string;
+  paragraph?: string[];
+}
+
+const BlogsHero: React.FC<BlogsHeroProps> = ({ heading, paragraph }) => {
   return (
     <section className={`bg-[#fafafa] secPadding`}>
       <div className="container">
         <div
-          className={`max-w-[768px] mx-auto grid grid-cols-1 place-items-center gap-4`}
+          className={`max-w-md mx-auto grid grid-cols-1 place-items-center gap-4`}
         >
           <div className="flex flex-col justify-center items-center">
-            <Heading1 blackHeading={heading} className={`!text-center`} />
+            <Typography as="h2" size="xl" weight="medium">
+              {heading}
+            </Typography>
             <div className={`grid lg:grid-cols-1 grid-cols-1`}>
               <div className="flex flex-col justify-center items-start">
                 {paragraph?.map((para, ind) => (
-                  <Paragraph
-                    blackText1={para}
-                    key={ind}
-                    className={`!text-center`}
-                  />
+                  <Typography key={ind} as="p" size="sm">
+                    {para}
+                  </Typography>
                 ))}
               </div>
             </div>
           </div>
           <SearchBarBlog />
-          <div className="max-w-[768px] mx-auto ">
-          </div>
+          <div className="max-w-md mx-auto "></div>
         </div>
       </div>
     </section>

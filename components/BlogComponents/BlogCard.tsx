@@ -34,7 +34,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
       : "Unknown Date";
   return (
     <div className={`my-2`}>
-      <div className={`shadow-md rounded-2xl overflow-hidden`}>
+      <div className={`rounded-2xl overflow-hidden`}>
         <div
           className={`relative w-full h-0 pt-[52%] sm:min-w-87.5 sm:pt-[52%] overflow-hidden`}
         >
@@ -62,7 +62,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
         <div className={`p-4`}>
           <div className="flex flex-col">
             <div className={`flex`}>
-              <Typography as="p" size="sm" weight="medium">
+              <Typography as="p" size="xs" weight="medium">
                 {createdDate}
               </Typography>
             </div>
@@ -71,7 +71,7 @@ export const BlogCard: React.FC<BlogCardProps> = ({
                 as="h2"
                 size="xl"
                 weight="medium"
-                className={`text-left! mb-2! text-wrap font-medium md:text-lg! text-lg! line-clamp-2`}
+                className={`text-left! mb-2! text-wrap font-medium md:text-lg! text-lg! line-clamp-1`}
               >
                 {title}
               </Typography>

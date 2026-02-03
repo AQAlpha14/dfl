@@ -70,7 +70,7 @@ export const BlogTags = () => {
       <div>
         <Heading2
           heading={`Tags:`}
-          className={`text-start rounded-full bg-black text-white !text-base py-1 !px-6 !mb-0`}
+          className={`text-start rounded-full bg-black text-white text-base! py-1 px-6! mb-0!`}
         />
       </div>
       <div className="flex flex-wrap gap-y-2 gap-x-2 ">

@@ -1,7 +1,12 @@
 "use client";
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 
-const TruncateText = ({ children, wordLimit }) => {
+interface TruncateTextProps {
+  children: string;
+  wordLimit: number;
+}
+
+const TruncateText: FC<TruncateTextProps> = ({ children, wordLimit }) => {
   const [truncatedText, setTruncatedText] = useState("");
 
   useEffect(() => {

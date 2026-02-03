@@ -1,18 +1,64 @@
 "use client";
 import React, { Suspense, useState } from "react";
 import Image from "next/image";
-import ButtonTheme from "../Button/Button";
 import Link from "next/link";
 import { SEOAction } from "@/actions/seo-action";
 import BottomFAQSchema from "@/lib/BottomFAQSchema";
-import Heading1 from "./Typography/Heading1";
 import { contactDetail } from "@/mockData/dummyData";
-import FaqsSection from "@/sections/FaqsSection";
 import InterestedCategoriesSection from "./InterestedCategoriesSection";
 import { BlogTags } from "./BlogTagsAndCategories";
 import { LoadFaqs } from "./Skeleton";
-import { isIndex, nocache } from "@/constants/global";
 import GetInTouch from "./GetInTouch";
+import Typography from "../Typography";
+import { isIndex, nocache } from "@/constants/constants";
+import FaqsSection from "@/sections/Faq/FaqsSection";
+
+interface BlogDetailProps {
+  data?: string | any;
+  nextPrev?: any;
+  className?: string;
+  faq?: string;
+}
+
+interface CTA1Props {
+  data?: string | any;
+  item?: any;
+}
+
+interface CTA2Props {
+  data?: string | any;
+  item?: any;
+}
+
+interface CTA3Props {
+  data?: string | any;
+}
+
+interface ParagraphSectionProps {
+  data?: string | any;
+}
+
+interface CallSectionProps {
+  data?: string | any;
+}
+
+interface QuoteSectionProps {
+  data?: string | any;
+}
+
+interface AuthorSectionProps {
+  data?: string | any;
+}
+
+interface ImageSectionProps {
+  item?: any;
+}
+
+interface rendDataDetialProps {
+  data?: string | any;
+}
+
+// SEO
 
 export async function generateMetadata() {
   const vMetaData = await SEOAction();
@@ -35,7 +81,12 @@ export async function generateMetadata() {
   };
 }
 
-const BlogsDetail = ({ data, nextPrev, className, faq }) => {
+const BlogsDetail: React.FC<BlogDetailProps> = ({
+  data,
+  nextPrev,
+  className,
+  faq,
+}) => {
   const blogDataLocal = [
     {
       component: (data) => <ParagraphSection data={data} />,
@@ -81,10 +132,9 @@ const BlogsDetail = ({ data, nextPrev, className, faq }) => {
               catId={data?.[0]?.categories_data?.[0]?.id}
             />
           </div>
-          <Heading1
-            className={`text-black mb-2 text-center lg:text-start px-1 lg:px-0 pr-0 lg:pr-14`}
-            blackHeading={data[0]?.title}
-          />
+          <Typography as="h2" size="xl" weight="medium">
+            {data[0]?.title}
+          </Typography>
           <p className="text-xs text-gray-500">
             {data[0]?.createon
               ? new Date(data[0]?.createon["$date"]).toDateString()
@@ -92,11 +142,11 @@ const BlogsDetail = ({ data, nextPrev, className, faq }) => {
           </p>
         </div>
         <div className={`mt-4`}>
-          <div className="relative w-full overflow-hidden my-4 aspect-[16/9] rounded-xl">
+          <div className="relative w-full overflow-hidden my-4 aspect-video rounded-xl">
             {data[0]?.front_image && (
               <Image
                 src={data[0]?.front_image}
-                alt={data[0]?.front_image_alt || 'Product image'}
+                alt={data[0]?.front_image_alt || "Product image"}
                 fill
                 className="object-cover"
                 priority={true}
@@ -105,20 +155,20 @@ const BlogsDetail = ({ data, nextPrev, className, faq }) => {
           </div>
           {data?.length
             ? JSON.parse(data[0]?.value)?.map((item, i) => {
-              return (
-                <React.Fragment key={i}>
-                  {blogDataLocal?.map((val, j) => {
-                    return (
-                      val.section == item.section && (
-                        <React.Fragment key={val.section}>
-                          {val.component(item?.description, item)}
-                        </React.Fragment>
-                      )
-                    );
-                  })}
-                </React.Fragment>
-              );
-            })
+                return (
+                  <React.Fragment key={i}>
+                    {blogDataLocal?.map((val, j) => {
+                      return (
+                        val.section == item.section && (
+                          <React.Fragment key={val.section}>
+                            {val.component(item?.description, item)}
+                          </React.Fragment>
+                        )
+                      );
+                    })}
+                  </React.Fragment>
+                );
+              })
             : ""}
         </div>
       </>
@@ -141,7 +191,7 @@ const BlogsDetail = ({ data, nextPrev, className, faq }) => {
               onClick={handleScrollTop}
             >
               <div className="flex items-center gap-4">
-                <div className="!w-16 !h-16 overflow-hidden sm:block hidden">
+                <div className="w-16! h-16! overflow-hidden sm:block hidden">
                   <Image
                     src={nextPrev[0]?.front_image}
                     width={50}
@@ -151,7 +201,7 @@ const BlogsDetail = ({ data, nextPrev, className, faq }) => {
                   />
                 </div>
                 <div className="text-left">
-                  <p className=" font-[600] text-white hover:text-primaryLight hover:underline hover:underline-offset-4">
+                  <p className=" font-semibold text-white hover:text-primaryLight hover:underline hover:underline-offset-4">
                     Previous Post
                   </p>
                   <p className="text-xs text-white hover:text-primaryLight line-clamp-1 sm:block hidden">
@@ -170,7 +220,7 @@ const BlogsDetail = ({ data, nextPrev, className, faq }) => {
               onClick={handleScrollTop}
             >
               <div className="flex flex-row-reverse items-center gap-4">
-                <div className="!w-16 !h-16 overflow-hidden sm:block hidden">
+                <div className="w-16! h-16! overflow-hidden sm:block hidden">
                   <Image
                     src={nextPrev[1]?.front_image}
                     width={50}
@@ -180,7 +230,7 @@ const BlogsDetail = ({ data, nextPrev, className, faq }) => {
                   />
                 </div>
                 <div className="text-right">
-                  <p className=" font-[600] text-white hover:text-primaryLight hover:underline hover:underline-offset-4">
+                  <p className=" font-semibold text-white hover:text-primaryLight hover:underline hover:underline-offset-4">
                     Next Post
                   </p>
                   <p className="text-xs text-white hover:text-primaryLight line-clamp-1 sm:block hidden">
@@ -214,79 +264,80 @@ const BlogsDetail = ({ data, nextPrev, className, faq }) => {
 };
 export default BlogsDetail;
 
-const ParagraphSection = ({ data }) => {
+const ParagraphSection: React.FC<ParagraphSectionProps> = ({ data }) => {
   return <div dangerouslySetInnerHTML={{ __html: data }} />;
 };
 
-const CTA1 = ({ data, item }) => {
+const CTA1: React.FC<CTA1Props> = ({ data, item }) => {
   return (
     <div className="bg-primary grid grid-cols-3 p-4 my-6 items-center rounded-xl">
       <div className="md:col-span-2 col-span-3 grid gap-4">
         <div
-          className="text-white max-w-[440px] md:text-base text-sm md:text-left text-center"
+          className="text-white max-w-110 md:text-base text-sm md:text-left text-center"
           dangerouslySetInnerHTML={{ __html: data }}
         />
-        <ButtonTheme
-          text={item?.cta1_button_text || "Get Started"}
+        <Link
           href={item?.cta1_button_url || "#"}
           target="_blank"
-          widthClass="w-max rounded-full bg-white hover:!bg-black !text-primary hover:!text-white "
-        />
+          className="w-max rounded-full bg-white hover:bg-black! text-primary! hover:text-white! "
+        >
+          {item?.cta1_button_text || "Get Started"}
+        </Link>
       </div>
       <div className="md:col-span-1 col-span-3 flex justify-center items-center">
         <Image
-          src={
-            item.cta1_image ? item.cta1_image : "/assets/images/8856532206.webp"
-          }
+          src={item.cta1_image ? item.cta1_image : ""}
           alt="blog image"
           layout="intrinsic"
           width={200}
           height={200}
-          className="object-cover w-[200px] h-[200px]"
+          className="object-cover w-50 h-50"
         />
       </div>
     </div>
   );
 };
 
-const CTA2 = ({ data, item }) => {
+const CTA2: React.FC<CTA2Props> = ({ data, item }) => {
   return (
-    <div className="py-6 md:py-10 flex md:flex-row flex-col justify-between px-4 my-6 items-center rounded-xl bg-[url('/assets/images/blogs/Cta2Bg.webp')] bg-cover bg-no-repeat">
+    <div className="py-6 md:py-10 flex md:flex-row flex-col justify-between px-4 my-6 items-center rounded-xl bg-[url('')] bg-cover bg-no-repeat">
       <div
-        className="text-white max-w-[440px] md:text-base text-sm md:text-left text-center"
+        className="text-white max-w-110 md:text-base text-sm md:text-left text-center"
         dangerouslySetInnerHTML={{ __html: data }}
       />
       <div className="">
-        <ButtonTheme
-          text={item?.cta2_button_text || "Get Started"}
+        <Link
           href={item?.cta2_button_url || "#"}
           target="_blank"
-          className="w-max rounded-lg bg-white hover:bg-black !text-primary hover:!text-white"
-        />
+          className="w-max rounded-lg bg-white hover:bg-black text-primary! hover:text-white!"
+        >
+          {item?.cta2_button_text || "Get Started"}
+        </Link>
       </div>
     </div>
   );
 };
 
-const CTA3 = ({ data }) => {
+const CTA3: React.FC<CTA3Props> = ({ data }) => {
   return (
     <div className="py-6 md:py-10 flex md:flex-row flex-col px-4 items-center rounded-xl bg-primary">
       <div
-        className="text-white max-w-[440px] md:text-base text-sm md:text-left text-center"
+        className="text-white max-w-110 md:text-base text-sm md:text-left text-center"
         dangerouslySetInnerHTML={{ __html: data }}
       />
       <div className="">
-        <ButtonTheme
-          text={"Get Started"}
-          href={contactDetail.telNumber}
-          className="w-max rounded-lg bg-white hover:bg-black !text-primary hover:!text-white"
-        />
+        <Link
+          href={contactDetail.telNo}
+          className="w-max rounded-lg bg-white hover:bg-black text-primary! hover:text-white!"
+        >
+          {contactDetail.telNo}
+        </Link>
       </div>
     </div>
   );
 };
 
-const CallSection = ({ data }) => {
+const CallSection: React.FC<CallSectionProps> = ({ data }) => {
   return (
     <>
       <div className="bg-primary p-4 rounded-md  flex flex-col justify-center items-center">
@@ -295,18 +346,19 @@ const CallSection = ({ data }) => {
           dangerouslySetInnerHTML={{ __html: data }}
         ></div>
         <div className="pt-4">
-          <ButtonTheme
-            text={contactDetail.telNumber}
-            href={contactDetail.telNumber}
-            className="w-max rounded-lg bg-white hover:bg-black !text-primary hover:!text-white"
-          />
+          <Link
+            href={contactDetail.telNo}
+            className="w-max rounded-lg bg-white hover:bg-black text-primary! hover:text-white!"
+          >
+            {contactDetail.telNo}
+          </Link>
         </div>
       </div>
     </>
   );
 };
 
-const QuoteSection = ({ data }) => {
+const QuoteSection: React.FC<QuoteSectionProps> = ({ data }) => {
   return (
     <>
       <div className="bg-[#FDF2EB] py-6 flex flex-col rounded-lg my-6">
@@ -327,7 +379,7 @@ const QuoteSection = ({ data }) => {
   );
 };
 
-const AuthorSection = ({ data }) => {
+const AuthorSection: React.FC<AuthorSectionProps> = ({ data }) => {
   return (
     <>
       <div
@@ -338,7 +390,7 @@ const AuthorSection = ({ data }) => {
   );
 };
 
-const ImageSection = ({ item }) => {
+const ImageSection: React.FC<ImageSectionProps> = ({ item }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const toggleModal = () => {
@@ -349,13 +401,13 @@ const ImageSection = ({ item }) => {
     <div className="py-6 md:py-10">
       {item?.image_url ? (
         <Link href={item?.image_url} legacyBehavior target="_blank">
-            <Image
-              src={item?.image}
-              height={500}
-              width={500}
-              className="h-full w-full"
-              alt=""
-            />
+          <Image
+            src={item?.image}
+            height={500}
+            width={500}
+            className="h-full w-full"
+            alt=""
+          />
         </Link>
       ) : (
         <div onClick={toggleModal}>

@@ -58,6 +58,7 @@ export const btnText = {
   read_more: "Read More",
   view_all: "View All",
   view_all_insights: "View All Insights",
+  view_all_guides: "View All Guides",
   view_listing: "View Listing",
   find_a_room: "Find a Room",
   explore_packages: "Explore Packages",

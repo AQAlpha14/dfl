@@ -4,9 +4,9 @@
 |--------------------------------------------------
 */
 
-// const hostName = "directfromlanloard.com";
-// const BASE_URL = "https://staging.directfromlanloard.com";
-// const DOMAIN = "https://directfromlanloard.com";
+// const hostName = "directfromlandloard.com";
+// const BASE_URL = "https://staging.directfromlandloard.com";
+// const DOMAIN = "https://directfromlandloard.com";
 // const API_DOMAIN = "https://seodevapi.cloudapiserver.com";
 // const REAL_STATE_API_DOMAIN = "https://realstateapi.cloudapiserver.com";
 // const DEVAPI = "https://devapi.cloudapiserver.com";
@@ -20,8 +20,8 @@
 |--------------------------------------------------
 */
 
-const hostName = "directfromlanloard.com";
-const BASE_URL = "https://directfromlanloard.com";
+const hostName = "directfromlandloard.com";
+const BASE_URL = "https://directfromlandloard.com";
 const API_DOMAIN = "https://seoapi.cloudapiserver.com";
 const REAL_STATE_API_DOMAIN = "https://realstateapi.cloudapiserver.com";
 const DEVAPI = "https://devapi.cloudapiserver.com";

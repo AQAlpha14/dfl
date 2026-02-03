@@ -1,19 +1,41 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import BlogCard2 from "./BlogCard";
-import Heading2 from "./Typography/Heading2";
+import { BlogCard } from "./BlogCard";
 import { GetBlogs } from "@/actions/blog-actions";
-import { vendorId } from "@/constants/global";
 import { SkeletonBlogCard1 } from "./Skeleton";
 import { useSearchParams } from "next/navigation";
+import { vendorId } from "@/constants/constants";
+import Typography from "../Typography";
+import NotFound from "../NotFound";
 
-const ViewAllPostCards = ({ searchParams, lGrid, heading }) => {
-  const [data, setData] = useState(null);
-  const [loading, setLoading] = useState(false);
-  const [totalPages, setTotalPages] = useState(1); // Added this line
+interface ViewAllPostCardsProps {
+  searchParams?: Record<string, string | string[] | undefined>;
+  lGrid?: boolean;
+  heading?: string;
+}
+
+interface BlogData {
+  id: number;
+  title: string;
+  excerpt: string;
+  image: string;
+  [key: string]: any;
+}
+
+const ViewAllPostCards: React.FC<ViewAllPostCardsProps> = ({
+  searchParams,
+  lGrid,
+  heading,
+}) => {
+  const [data, setData] = useState<BlogData[] | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [totalPages, setTotalPages] = useState<number>(1);
+
   const urlSearchParams = useSearchParams();
+
   useEffect(() => {
     setLoading(true);
+
     const fetch = async () => {
       const params = {
         id: 0,
@@ -32,6 +54,7 @@ const ViewAllPostCards = ({ searchParams, lGrid, heading }) => {
           : [],
         keywords: urlSearchParams.get("keywords") || "",
       };
+
       try {
         const res = await GetBlogs(params);
         setData(res?.data);
@@ -47,34 +70,33 @@ const ViewAllPostCards = ({ searchParams, lGrid, heading }) => {
   }, [searchParams, urlSearchParams]);
 
   return (
-    <>
-      <div className="">
-        <div className="mb-6">
-          <Heading2 blackHeading={heading} className={`!text-left`} />
-        </div>
-        {loading ? (
-          <div
-            className={`grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-6 ${
-              lGrid ? "lg:!grid-cols-4 md:grid-cols-2 grid-cols-1" : ""
-            }`}
-          >
-            {Array.from({ length: 12 })?.map((_, index) => (
-              <SkeletonBlogCard1 key={index} />
-            ))}
-          </div>
-        ) : data && data.length > 0 ? (
-          <div
-            className={`grid lg:!grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4`}
-          >
-            {data?.map((blog, index) => (
-              <BlogCard2 {...blog} key={index} />
-            ))}
-          </div>
-        ) : (
-          <p>No posts available</p>
-        )}
+    <div>
+      <div className="mb-6">
+        <Typography as="h2" size="xl" weight="semibold" align="left">
+          {heading}
+        </Typography>
       </div>
-    </>
+
+      {loading ? (
+        <div
+          className={`grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-x-4 gap-y-6 ${
+            lGrid ? "lg:grid-cols-4! md:grid-cols-2 grid-cols-1" : ""
+          }`}
+        >
+          {Array.from({ length: 12 }).map((_, index) => (
+            <SkeletonBlogCard1 key={index} />
+          ))}
+        </div>
+      ) : data && data.length > 0 ? (
+        <div className="grid lg:grid-cols-3! sm:grid-cols-2 grid-cols-1 gap-4">
+          {data.map((blog, index) => (
+            <BlogCard {...blog} key={index} />
+          ))}
+        </div>
+      ) : (
+        <NotFound />
+      )}
+    </div>
   );
 };
 

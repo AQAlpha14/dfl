@@ -14,7 +14,7 @@ export const SkeletonBlogDetailPage1 = () => {
   return (
     <div className="border border-[#DDD] rounded-xl overflow-hidden animate-pulse">
       <div className="relative">
-        <div className="w-full h-[210px] bg-gray-300"></div>
+        <div className="w-full h-52.5 bg-gray-300"></div>
       </div>
     </div>
   );
@@ -23,7 +23,7 @@ export const SkeletonPopularBlog1 = () => {
   return (
     <div className="border border-[#DDD] rounded-xl overflow-hidden animate-pulse">
       <div className="relative">
-        <div className="w-full h-[210px] bg-gray-300"></div>
+        <div className="w-full h-52.5 bg-gray-300"></div>
         <div className="absolute top-0 w-full flex justify-between items-center px-4 pt-4">
           <div className="p-2 bg-gray-300 rounded-[3px] w-20 h-6"></div>
           <div className="bg-gray-300 w-8 h-8 rounded-full"></div>
@@ -59,7 +59,7 @@ export const SkeletonBlogCard1 = () => {
   return (
     <div className="border border-[#DDD] rounded-xl overflow-hidden animate-pulse">
       <div className="relative">
-        <div className="w-full h-[210px] bg-gray-300"></div>
+        <div className="w-full h-52.5 bg-gray-300"></div>
       </div>
       <div className="px-4 py-4 space-y-2">
         <div className="h-6 bg-gray-300 w-1/4"></div>
@@ -81,7 +81,7 @@ export const SkeletonPopularBlogsDetail1 = () => {
       </div>
       <div className="border border-[#DDD] rounded-xl overflow-hidden animate-pulse">
         <div className="relative">
-          <div className="w-full h-[210px] bg-gray-300"></div>
+          <div className="w-full h-52.5 bg-gray-300"></div>
           <div className="absolute top-0 w-full flex justify-between items-center px-4 pt-4">
             <div className="p-2 bg-gray-300 rounded-[3px] w-20 h-6"></div>
             <div className="bg-gray-300 w-8 h-8 rounded-full"></div>

@@ -50,12 +50,12 @@ const Link: React.FC<LinkProps & React.ComponentProps<typeof NextLink>> = ({
     outline: "",
     white: "border border-white bg-white/25 font-medium text-white",
     whiteOutline: "",
-    simpleLink: "!p-0 !rounded-none !text-left",
+    simpleLink: "p-0! !rounded-none text-left!",
     blackbg: "",
     txtDarkbg: "",
-    button1: "!bg-primaryLight !rounded-full",
-    txt: "border-b border-primary !p-0 !rounded-none font-medium text-primary",
-    smptxt: "border-none !p-0 !rounded-none font-medium",
+    button1: "bg-primaryLight! rounded-full!",
+    txt: "border-b border-primary p-0! rounded-none! font-medium text-primary",
+    smptxt: "border-none p-0! rounded-none! font-medium",
   };
 
   return (
