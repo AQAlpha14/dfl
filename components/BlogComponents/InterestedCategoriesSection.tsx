@@ -7,7 +7,10 @@ import { vendorId } from "@/constants/constants";
 import SplideSlider from "@/sections/SplideSlider";
 import Typography from "../Typography";
 import type { Options } from "@splidejs/splide";
-import { SkeletonInterestedCategoriesbtn, SkeletonInterestedCategoriessticky } from "./Skeleton";
+import {
+  SkeletonInterestedCategoriesbtn,
+  SkeletonInterestedCategoriessticky,
+} from "./Skeleton";
 import InterestedCategoriesBtn from "./InterestedCategoriesbtn";
 
 /* ===================== TYPES ===================== */
@@ -18,6 +21,13 @@ interface Category {
 }
 
 interface InterestedCategoriesSectionProps {
+  id: number | string;
+  title?: string;
+  heading?: string;
+  paragraph?: string[];
+  btnText?: string;
+  btnLink?: string;
+  btnLinkText?: string;
   className?: string;
   isSingleIndex?: boolean;
   isStickyBar?: boolean;
@@ -30,7 +40,7 @@ const options: Options = {
   type: "loop",
   rewind: true,
   focus: "center",
-  perPage: 1.5,
+  perPage: 8,
   padding: "0.8rem",
   perMove: 1,
   pagination: false,
@@ -40,13 +50,11 @@ const options: Options = {
   autoScroll: {
     speed: 1,
   },
-  mediaQuery: "min",
   breakpoints: {
     480: { perPage: 2 },
     768: { perPage: 3 },
     1024: { perPage: 5 },
     1280: { perPage: 6 },
-    1536: { perPage: 8 },
   },
 };
 
@@ -75,7 +83,7 @@ const InterestedCategoriesSection = ({
       };
 
       const res = await getBlogCategories(body);
-      setData(res ?? []);
+      setData(res?.data ?? []);
       setLoading(false);
     };
 
@@ -86,9 +94,7 @@ const InterestedCategoriesSection = ({
 
   useEffect(() => {
     if (!catId) return;
-    const found = data.find(
-      (item) => Number(item.id) === Number(catId)
-    );
+    const found = data.find((item) => Number(item.id) === Number(catId));
     setSingleCat(found ?? null);
   }, [data, catId]);
 
@@ -140,7 +146,9 @@ const InterestedCategoriesSection = ({
   }
 
   return (
-    <section className={`py-10 bg-cover bg-top-right bg-no-repeat ${className}`}>
+    <section
+      className={`py-10 bg-cover bg-top-right bg-no-repeat ${className}`}
+    >
       <div className="container">
         <div className="max-w-5xl mx-auto mb-5">
           <Typography as="h3" size="md" weight="medium" className="pb-4">

@@ -1,16 +1,16 @@
 "use client";
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 interface TruncateTextProps {
-  children: string;
+  children: string | React.ReactNode; // allow string or any JSX content
   wordLimit: number;
 }
 
-const TruncateText: FC<TruncateTextProps> = ({ children, wordLimit }) => {
+const TruncateText: React.FC<TruncateTextProps> = ({ children, wordLimit }) => {
   const [truncatedText, setTruncatedText] = useState("");
 
   useEffect(() => {
-    if (children && typeof children === "string") {
+    if (typeof children === "string") {
       const wordsArray = children.split(/\s+/);
       if (wordsArray.length > wordLimit) {
         setTruncatedText(wordsArray.slice(0, wordLimit).join(" ") + "...");
@@ -18,6 +18,7 @@ const TruncateText: FC<TruncateTextProps> = ({ children, wordLimit }) => {
         setTruncatedText(children);
       }
     } else {
+      // if children is not a string, render nothing
       setTruncatedText("");
     }
   }, [children, wordLimit]);
