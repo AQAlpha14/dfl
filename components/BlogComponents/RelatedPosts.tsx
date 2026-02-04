@@ -62,7 +62,7 @@ const RelatedPosts: React.FC<RelatedPostsProps> = ({ heading, className, data })
           categories_ids: data?.categories_ids,
         };
         const res = await GetBlogs(body);
-        setRelatedPosts(res?.data ?? []);
+        setRelatedPosts(res);
       } catch (err) {
         console.error("Failed to fetch related posts:", err);
         setRelatedPosts([]);

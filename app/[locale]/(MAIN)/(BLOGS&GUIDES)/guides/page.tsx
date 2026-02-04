@@ -1,9 +1,9 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import ViewAllPostCards from "@/components/BlogComponents/ViewAllPostCards";
 import { SEOAction } from "@/actions/seo-action";
 import InterestedCategoriesSection from "@/components/BlogComponents/InterestedCategoriesSection";
-import { isIndex, nocache } from "@/constants/global";
-import HeroSection from "@/sections/HeroSection";
+import HeroSection from "@/sections/HeroSection/HeroSection";
+import { isIndex, nocache } from "@/constants/constants";
 
 export async function generateMetadata() {
   const vMetaData = await SEOAction();
@@ -21,7 +21,7 @@ export async function generateMetadata() {
     },
     h1: vMetaData?.h1,
     icons: {
-      icon: "/icon.jpg",
+      icon: "/icons/icon.svg",
     },
   };
 }
@@ -30,11 +30,19 @@ const page = async () => {
   const { h1 } = await generateMetadata();
   return (
     <Suspense>
-      <HeroSection className={`bg-primaryLight!`} heading={h1} video />
+      <HeroSection
+        className={`bg-primaryLight!`}
+        // bgimage={`md:bg-[url(/assets/images/ctabg_07.webp)] bg-[url(/assets/images/ctabg_07.webp)]`}
+        heading={h1}
+      />
       <InterestedCategoriesSection />
-      <div className="container pb-8">
-        <ViewAllPostCards />
-      </div>
+      {/* <ImageWatermark variant={10} povariant={'topRight'}> */}
+        <div className="container pb-8">
+          <ViewAllPostCards
+            // heading={`All Blogs`}
+          />
+        </div>
+      {/* </ImageWatermark> */}
     </Suspense>
   );
 };

@@ -1,9 +1,9 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import ViewAllPostCards from "@/components/BlogComponents/ViewAllPostCards";
 import { SEOAction } from "@/actions/seo-action";
 import InterestedCategoriesSection from "@/components/BlogComponents/InterestedCategoriesSection";
-import { isIndex, nocache } from "@/constants/global";
-import HeroSection from "@/sections/HeroSection";
+import { isIndex, nocache } from "@/constants/constants";
+import HeroSection from "@/sections/HeroSection/HeroSection";
 
 export async function generateMetadata() {
   const vMetaData = await SEOAction();
@@ -31,19 +31,16 @@ const page = async () => {
   return (
     <Suspense>
       <HeroSection
-        className={`!bg-primaryLight`}
-        // bgimage={`md:bg-[url(/assets/images/ctabg_07.webp)] bg-[url(/assets/images/ctabg_07.webp)]`}
-        heading={h1}
-        video
+        heading={`"Find your Next home ^directly from landlords,^ no commission, no hassle"`}
+        paragraph={[
+          "Direct From Landlords Connects Reliable Tenants & Verified Landlords Across UAE"
+        ]}
+        className="bg-[url('/images/bg_1.webp')] bg-img"
       />
       <InterestedCategoriesSection />
-      {/* <ImageWatermark variant={10} povariant={'topRight'}> */}
-        <div className="container pb-8">
-          <ViewAllPostCards
-            // heading={`All Blogs`}
-          />
-        </div>
-      {/* </ImageWatermark> */}
+      <div className="container pb-8">
+        <ViewAllPostCards />
+      </div>
     </Suspense>
   );
 };

@@ -12,7 +12,6 @@ interface BlogData {
   id?: number;
   title?: string;
   slug?: string;
-  // extend as needed
 }
 
 const BlogDetailSection = () => {
@@ -26,7 +25,6 @@ const BlogDetailSection = () => {
 
   useEffect(() => {
     if (!slug) return;
-
     const fetchBlog = async () => {
       try {
         setLoading(true);
@@ -37,7 +35,6 @@ const BlogDetailSection = () => {
         setLoading(false);
       }
     };
-
     fetchBlog();
   }, [slug]);
 
@@ -51,20 +48,15 @@ const BlogDetailSection = () => {
             </div>
           ) : (
             <>
-              <BlogsDetail
-                data={data}
-                nextPrev={nextPrev}
-              />
+              <BlogsDetail data={data} nextPrev={nextPrev} />
               <RelatedPosts heading="Related Posts" />
             </>
           )}
         </div>
-
         <div className="lg:col-span-3 col-span-12 my-6">
           <BlogStickyBar data={data} />
         </div>
       </div>
-
       <InsightsSection />
     </section>
   );

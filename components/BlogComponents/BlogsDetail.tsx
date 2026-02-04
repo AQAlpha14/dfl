@@ -14,7 +14,7 @@ import { isIndex, nocache } from "@/constants/constants";
 import FaqsSection from "@/sections/Faq/FaqsSection";
 
 interface BlogDetailProps {
-  data?: string | any;
+  data?: string[] | any;
   nextPrev?: any;
   className?: string;
   faq?: string;
@@ -300,7 +300,7 @@ const CTA1: React.FC<CTA1Props> = ({ data, item }) => {
 
 const CTA2: React.FC<CTA2Props> = ({ data, item }) => {
   return (
-    <div className="py-6 md:py-10 flex md:flex-row flex-col justify-between px-4 my-6 items-center rounded-xl bg-[url('')] bg-cover bg-no-repeat">
+    <div className="py-6 md:py-10 flex md:flex-row flex-col justify-between px-4 my-6 items-center rounded-xl">
       <div
         className="text-white max-w-110 md:text-base text-sm md:text-left text-center"
         dangerouslySetInnerHTML={{ __html: data }}

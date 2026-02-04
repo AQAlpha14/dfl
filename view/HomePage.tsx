@@ -41,6 +41,7 @@ export default function HomePage() {
       <HeroSection
         {...heroData}
         headerserach
+        Countertabs
         className="bg-[url('/images/bg_1.webp')] bg-img"
       />
       <AffiliateSection

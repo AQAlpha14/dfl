@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
       site: " @directfromlanloard",
       title: vMetaData.data[0]?.title || "",
       description: vMetaData.data[0]?.seo_description || "",
-      images: [`${BASE_URL}/assets/images/logo.png`],
+      images: [`${BASE_URL}/icons/dfl_logo2.svg`],
     },
     robots: {
       index: isIndex,

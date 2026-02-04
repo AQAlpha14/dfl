@@ -237,6 +237,9 @@ export function StickyNavbar() {
             path === "guides" ||
             path === "listing" ||
             path === "hotel-listing" ||
+            path === "category" ||
+            path === "tag" ||
+            lastPath === "billing" ||
             lastPath === "billing" ||
             lastPath === "booking" ||
             lastPath === "signin" ||

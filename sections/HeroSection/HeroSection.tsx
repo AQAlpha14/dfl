@@ -19,7 +19,9 @@ interface HeroSectionProps {
   bottomTitle?: string;
   paragraph?: string[];
   list?: string[];
+  FormButton?: boolean;
   listTitle?: string;
+  Countertabs?: boolean;
   headerserach?: boolean;
   counterReview?: CounterReviewItem[];
   content?: string;
@@ -32,6 +34,8 @@ const HeroSection: FC<HeroSectionProps> = ({
   bottomTitle,
   paragraph,
   list,
+  FormButton,
+  Countertabs,
   headerserach,
   counterReview,
   listTitle,
@@ -125,11 +129,12 @@ const HeroSection: FC<HeroSectionProps> = ({
                   {content}
                 </Typography>
               )}
-
-              <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
-                <FormButton1 btnTxt={btnText.find_your_dream_home_now} />
-                <FormButton2 btnTxt={btnText.try_our_savings_calculator} />
-              </div>
+              {FormButton && (
+                <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
+                  <FormButton1 btnTxt={btnText.find_your_dream_home_now} />
+                  <FormButton2 btnTxt={btnText.try_our_savings_calculator} />
+                </div>
+              )}
               {counterReview && (
                 <div className="overflow-hidden w-full">
                   <div className="pt-6 py-4 flex divide-x overflow-x-auto no-scrollbar">
@@ -173,7 +178,7 @@ const HeroSection: FC<HeroSectionProps> = ({
             <HeaderSearch />
           </div>
         )}
-        {placeCounter && (
+        {Countertabs && (
           <div className="md:flex lg:flex-nowrap flex-wrap hidden gap-2 justify-center">
             {placeCounter.map((item, i) => (
               <div

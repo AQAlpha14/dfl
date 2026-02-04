@@ -1,8 +1,8 @@
 import Link from "next/link";
 
 interface InterestedCategoriesBtnProps {
-  id: number | string;
-  title: string;
+  id?: number | string;
+  title?: string;
   maxChars?: number;
 }
 
@@ -11,10 +11,10 @@ const InterestedCategoriesBtn = ({
   title,
   maxChars = 20,
 }: InterestedCategoriesBtnProps) => {
-  const slug = title.replace(/\s+/g, "-").toLowerCase();
+  const slug = title?.replace(/\s+/g, "-").toLowerCase() || "";
 
   const truncatedTitle =
-    title.length > maxChars ? `${title.slice(0, maxChars)}...` : title;
+    title && title.length > maxChars ? `${title.slice(0, maxChars)}...` : title;
 
   return (
     <Link

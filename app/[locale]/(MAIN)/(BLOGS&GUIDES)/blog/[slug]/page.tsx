@@ -1,16 +1,21 @@
 import { Suspense } from "react";
 import Loading from "./loading";
 import BlogDetailSection from "@/components/BlogComponents/BlogDetailSection";
-import NotFound from "@/app/not-found";
+import NotFound from "@/components/NotFound";
+import { BASE_URL, isIndex, nocache } from "@/constants/constants";
+import { getBlogDetail } from "@/actions/blog-actions";
 
-export async function generateMetadata({ params }) {
-  const {slug} = await params;
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+export async function generateMetadata({ params }: PageProps) {
+  const {slug} =  params;
   const vMetaData = await getBlogDetail(0, slug);
- // If no data, return default metadata or throw 404
   if (!vMetaData?.data?.length) {
     return <NotFound />
   }
-
   return {
     title: vMetaData.data[0]?.seo_title || "",
     description: vMetaData.data[0]?.seo_description || "",
@@ -31,7 +36,7 @@ export async function generateMetadata({ params }) {
       site: " @directfromlandloard",
       title: vMetaData.data[0]?.title || "",
       description: vMetaData.data[0]?.seo_description || "",
-      images: [`${BASE_URL}/images/logo.png`],
+      images: [`${BASE_URL}/icons/dfl_logo2.svg`],
     },
     robots: {
       index: isIndex,
@@ -43,7 +48,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const page = async ({ params }) => {
+const page = async ({ params }: PageProps) => {
   const {slug} = await params;
   const res = await getBlogDetail(0, slug);
   if (!res?.data?.length) {

@@ -8,12 +8,12 @@ import endPoints from "@/constants/endPionts";
 
 interface BlogCategory {
   id: number;
-  name: string;
+  title?: string;
   slug?: string;
 }
 
 interface BlogPostAPI {
-  id: number;
+  id?: number;
   title_en: string;
   slug: string;
   thumbnail?: string;
@@ -44,6 +44,9 @@ interface BlogDetailResponse {
     value: string;
     seo_title?: string;
     seo_description?: string;
+    seo_keywords?: string;
+    seo_canonical?: string;
+    seo_url?: string;
     categories_data?: BlogCategory[];
   }>;
   others_blogs: BlogCard[];
@@ -67,7 +70,7 @@ interface GetBlogsResult {
 /* ===================== ADAPTERS ===================== */
 
 const mapPostToBlogCard = (post: BlogPostAPI): BlogCard => ({
-  thumbnail_image: post.thumbnail || "/assets/images/placeholder.jpg",
+  thumbnail_image: post.thumbnail || "/icons/dummy.svg",
   title: post.title_en,
   slug: post.slug,
   createon: { $date: post.created_at }, // legacy Mongo-style date
@@ -173,16 +176,18 @@ export const getBlogDetail = async (
   }
 };
 
-export const getBlogCategories = async (): Promise<BlogCategory[]> => {
+export const getBlogCategories = async (body: Record<string, any>): Promise<BlogCategory[]> => {
   try {
     const params = new URLSearchParams({
       domain: hostName,
       limit: "100",
+      ...body
     });
     const res = await fetch(
       `${endPoints.BLOGS.GET_BLOGS_CATAGORIES}?${params.toString()}`,
       { cache: "no-store" },
     );
+      console.log("GET_BLOGS_CATAGORIES", res);
     if (!res.ok) return [];
     return (await res.json()) as BlogCategory[];
   } catch (error) {
