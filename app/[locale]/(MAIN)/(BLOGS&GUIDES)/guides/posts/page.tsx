@@ -1,9 +1,11 @@
-import React from "react";
 import ViewAllPostCards from "@/components/BlogComponents/ViewAllPostCards";
 import { SEOAction } from "@/actions/seo-action";
 import InterestedCategoriesSection from "@/components/BlogComponents/InterestedCategoriesSection";
-import { isIndex, nocache } from "@/constants/global";
+import { isIndex, nocache } from "@/constants/constants";
 
+interface PageProps {
+  searchParams: Record<string, string | string[] | undefined>;
+}
 
 export async function generateMetadata() {
   const vMetaData = await SEOAction();
@@ -25,7 +27,7 @@ export async function generateMetadata() {
   };
 }
 
-const ViewAllPost = ({ searchParams }) => {
+const ViewAllPost = ({ searchParams }: PageProps) => {
   return (
     <section className="sm:pt-20 pt-10">
       <InterestedCategoriesSection />

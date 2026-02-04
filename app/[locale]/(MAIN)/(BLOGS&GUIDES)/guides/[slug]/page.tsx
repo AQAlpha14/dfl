@@ -1,14 +1,19 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import Loading from "./loading";
-
 import { getBlogDetail } from "@/actions/blog-actions";
 import BlogDetailSection from "@/components/BlogComponents/BlogDetailSection";
-import { BASE_URL, isIndex, nocache, siteName, vendorId } from "@/constants/global";
-import NotFound from "@/app/not-found";
+import NotFound from "@/components/NotFound";
+import { BASE_URL, isIndex, nocache } from "@/constants/constants";
 
-export async function generateMetadata({ params }) {
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
+
+export async function generateMetadata({ params }: PageProps) {
   const {slug} = await params;
-  const vMetaData = await getBlogDetail(0, vendorId, slug);
+  const vMetaData = await getBlogDetail(0, slug);
 
  // If no data, return default metadata or throw 404
   if (!vMetaData?.data?.length) {
@@ -24,7 +29,7 @@ export async function generateMetadata({ params }) {
     },
     openGraph: {
       title: vMetaData.data[0]?.seo_title || "",
-      site: siteName,
+      site: 'directfromlandloard.com',
       url: vMetaData.data[0]?.seo_url || "",
       description: vMetaData.data[0]?.seo_description || "",
       type: "website",
@@ -32,7 +37,7 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: " summary_large_image",
-      site: " @directfromlanloard",
+      site: " @directfromlandloard",
       title: vMetaData.data[0]?.title || "",
       description: vMetaData.data[0]?.seo_description || "",
       images: [`${BASE_URL}/icons/dfl_logo2.svg`],
@@ -47,9 +52,9 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const page = async ({ params }) => {
+const page = async ({ params }: PageProps) => {
   const {slug} = await params;
-  const res = await getBlogDetail(0, vendorId, slug);
+  const res = await getBlogDetail(0, slug);
 
    // If no data, return default metadata or throw 404
   if (!res?.data?.length) {

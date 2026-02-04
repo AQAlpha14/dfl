@@ -8,8 +8,7 @@ import endPoints from "@/constants/endPionts";
 
 interface BlogCategory {
   id: number;
-  title?: string;
-  slug?: string;
+  label?: string;
 }
 
 interface BlogPostAPI {
@@ -37,6 +36,7 @@ interface BlogCard {
 }
 
 interface BlogDetailResponse {
+  slug: string;
   data: Array<{
     front_image?: string;
     front_image_alt: string;
@@ -87,6 +87,7 @@ const mapPostToDetail = (post: BlogPostAPI): BlogDetailResponse => {
   ];
 
   return {
+    slug: post.slug,
     data: [
       {
         ...post,

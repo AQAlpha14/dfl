@@ -1,10 +1,13 @@
-import React from "react";
 import ViewAllPostCards from "@/components/BlogComponents/ViewAllPostCards";
 import InterestedCategoriesSection from "@/components/BlogComponents/InterestedCategoriesSection";
 
-const page = ({ searchParams }) => {
+interface PageProps {
+  searchParams: Record<string, string | string[] | undefined>;
+}
+
+const page = ({ searchParams }: PageProps) => {
   return (
-    <div>
+    <>
       <section className="sm:pt-20 pt-10">
         <InterestedCategoriesSection />
         <div className="container">
@@ -13,7 +16,7 @@ const page = ({ searchParams }) => {
           </div>
         </div>
       </section>
-    </div>
+    </>
   );
 };
 

@@ -16,22 +16,16 @@ import NotFound from "../NotFound";
 /* ===================== TYPES ===================== */
 
 interface Category {
-  id: number;
-  title: string;
+  id?: number;
+  label: string;
 }
 
 interface InterestedCategoriesSectionProps {
   id?: number;
-  title?: string;
-  heading?: string;
-  paragraph?: string[];
-  btnText?: string;
-  btnLink?: string;
-  btnLinkText?: string;
-  className?: string;
   isSingleIndex?: boolean;
   isStickyBar?: boolean;
   catId?: number;
+  className?: string;
 }
 
 /* ===================== SPLIDE OPTIONS ===================== */
@@ -99,12 +93,12 @@ const InterestedCategoriesSection = ({
   if (isSingleIndex) {
     return singleCat ? (
       <Link
-        href={`/blog/category/${singleCat.title
+        href={`/blog/category/${singleCat.label
           .replace(/\s+/g, "-")
           .toLowerCase()}?category_id=${singleCat.id}`}
       >
         <span className="bg-primary py-1 px-2 rounded-md text-white text-xs inline-flex">
-          {singleCat.title}
+          {singleCat.label}
         </span>
       </Link>
     ) : null;
@@ -130,11 +124,11 @@ const InterestedCategoriesSection = ({
                 <li key={item.id} className="mb-2">
                   <Link
                     className="text-[#555555] font-medium hover:text-theme-primary hover:underline hover:underline-offset-2"
-                    href={`/blog/category/${item.title
+                    href={`/blog/category/${item.label
                       .replace(/\s+/g, "-")
                       .toLowerCase()}?category_id=${item.id}`}
                   >
-                    {item.title}
+                    {item.label}
                   </Link>
                 </li>
               ))}

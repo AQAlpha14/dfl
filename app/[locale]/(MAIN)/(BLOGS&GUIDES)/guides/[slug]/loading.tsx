@@ -1,6 +1,4 @@
 import { SkeletonBlogDetailPage1, SkeletonPopularBlogsDetail1 } from "@/components/BlogComponents/Skeleton";
-import React from "react";
-
 const Loading = () => {
   return (
     <div className="container grid grid-cols-12 gap-4 mt-6">
