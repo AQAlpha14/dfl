@@ -62,9 +62,7 @@ export default function BookingForm({ gridCol }) {
       .string()
       .min(1, { message: t.validations.pickupRequired }),
 
-    description: z
-      .string()
-      .min(1, { message: t.validations.messageRequired }),
+    description: z.string().min(1, { message: t.validations.messageRequired }),
   });
 
   /* ---------------- DEFAULT VALUES ---------------- */
@@ -76,7 +74,7 @@ export default function BookingForm({ gridCol }) {
       pickup_location: "",
       description: "",
     }),
-    []
+    [],
   );
 
   const methods = useForm({
@@ -183,9 +181,10 @@ export default function BookingForm({ gridCol }) {
           <Button
             loading={isSubmitting}
             variant="primary"
-            className="mt-5! w-[120px]"
-            text={t.submit}
-          />
+            className="mt-5! w-30"
+          >
+            {t.submit}
+          </Button>
         </div>
       </form>
     </Form>

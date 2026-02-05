@@ -32,7 +32,7 @@ const page = async () => {
     <Suspense>
       <HeroSection
         className={`bg-primaryLight!`}
-        // bgimage={`md:bg-[url(/assets/images/ctabg_07.webp)] bg-[url(/assets/images/ctabg_07.webp)]`}
+        // bgimage={`md:bg-[url(/images/ctabg_07.webp)] bg-[url(/images/ctabg_07.webp)]`}
         heading={h1}
       />
       <InterestedCategoriesSection />

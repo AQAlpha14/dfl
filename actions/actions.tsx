@@ -252,7 +252,7 @@ export const NewsletterSubmit = async (
   try {
     const body = toFormData(formData);
 
-    const response = await axios.post(endPoints.NEWSLATTER, body);
+    const response = await axios.post(endPoints.NEWSLETTER, body);
     return response.data;
   } catch (error) {
     console.error(error);

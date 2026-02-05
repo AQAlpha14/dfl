@@ -16,7 +16,7 @@ const GetInTouch = ({ isModalOpen, toggleModal }: GetInTouchProps) => {
         {/* Left image */}
         <div className="hidden lg:flex lg:items-center">
           <Image
-            src="/assets/images/message-popup.webp"
+            src="/images/message-popup.webp"
             alt="A girl looking at cell phone"
             width={596}
             height={739}

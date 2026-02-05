@@ -1,12 +1,10 @@
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
-import React, { useContext, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { FormProvider as Form } from "react-hook-form";
 import Button from "@/components/Button/Button";
-import TextInput from "@/components/FormFields/TextInput";
-import NumberInput from "../../components/AllForms/NumberInput";
 import { toast } from "sonner";
 import { endpoints } from "@/utils/endpoints";
 import { POST } from "@/actions/actions";
@@ -59,51 +57,43 @@ export default function BillingForm({ gridCol }) {
     },
   }[locale];
 
-const validateSchema = z.object({
-  first_name: z
-    .string()
-    .min(1, t.validations.requiredFirstName)
-    .regex(/^[a-zA-Z\s]+$/, t.validations.onlyAlphabets),
+  const validateSchema = z.object({
+    first_name: z
+      .string()
+      .min(1, t.validations.requiredFirstName)
+      .regex(/^[a-zA-Z\s]+$/, t.validations.onlyAlphabets),
 
-  last_name: z
-    .string()
-    .min(1, t.validations.requiredLastName)
-    .regex(/^[a-zA-Z\s]+$/, t.validations.onlyAlphabets),
+    last_name: z
+      .string()
+      .min(1, t.validations.requiredLastName)
+      .regex(/^[a-zA-Z\s]+$/, t.validations.onlyAlphabets),
 
-  email: z
-    .string()
-    .min(1, t.validations.requiredEmail)
-    .email(t.validations.invalidEmail),
+    email: z
+      .string()
+      .min(1, t.validations.requiredEmail)
+      .email(t.validations.invalidEmail),
 
-  phone: z
-    .string()
-    .min(1, t.validations.requiredPhone),
+    phone: z.string().min(1, t.validations.requiredPhone),
 
-  country: z
-    .string()
-    .min(1, "Country is required"),
+    country: z.string().min(1, "Country is required"),
 
-  card: z
-    .string()
-    .min(16, "Card number must be at least 16 digits"),
+    card: z.string().min(16, "Card number must be at least 16 digits"),
 
-  message: z
-    .string()
-    .optional(),
-});
+    message: z.string().optional(),
+  });
 
-const defaultValues = useMemo(
-  () => ({
-    first_name: "",
-    last_name: "",
-    email: "",
-    phone: "",
-    country: "",
-    card: "",
-    message: "",
-  }),
-  []
-);
+  const defaultValues = useMemo(
+    () => ({
+      first_name: "",
+      last_name: "",
+      email: "",
+      phone: "",
+      country: "",
+      card: "",
+      message: "",
+    }),
+    [],
+  );
 
   const methods = useForm({
     resolver: zodResolver(validateSchema),
@@ -222,12 +212,9 @@ const defaultValues = useMemo(
           </div>
         </div>
         <div className="flex justify-center">
-          <Button
-            loading={isSubmitting}
-            variant={`primary`}
-            className={`mt-5! w-[120px]`}
-            text={t.submit}
-          />
+          <Button loading={isSubmitting} type="submit" variant="primary" className={`mt-5! w-[120px]`}>
+            {t.submit}
+          </Button>
         </div>
       </form>
     </Form>

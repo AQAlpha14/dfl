@@ -364,7 +364,7 @@ const QuoteSection: React.FC<QuoteSectionProps> = ({ data }) => {
       <div className="bg-[#FDF2EB] py-6 flex flex-col rounded-lg my-6">
         <div className="w-3/4 m-auto">
           <Image
-            src={"/assets/images/blogs/quote.svg"}
+            src={"/images/blogs/quote.svg"}
             alt={`quote img`}
             width={50}
             height={50}

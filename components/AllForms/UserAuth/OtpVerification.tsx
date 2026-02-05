@@ -1,24 +1,46 @@
 "use client";
+
 import { useContext, useEffect, useState } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import FormProvider from "@/components/FormFields/FormProvider";
-import { useForm } from "react-hook-form";
-import RHFOtpField from "@/components/FormFields/RHFOtpField";
-import { useRouter } from "next/navigation";
-import Button from "@/components/Button/Button";
+import Button from "@/components/Button";
 import { toast } from "sonner";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { endpoints } from "@/utils/endpoints";
 import { POST } from "@/actions/actions";
-import Heading5 from "@/components/Typography/Heading5";
-import Paragraph from "@/components/Typography/Paragraph";
-import { LanguageContext } from "@/app/[locale]/(MAIN)/context/LanguageContext";
 import { textToRouteUrl } from "@/utils/apiHelper";
-import LanguageAwareLink from "@/components/LanguageAwareLink/LanguageAwareLink";
 import Image from "next/image";
-import Heading2 from "@/components/Typography/Heading2";
+import { LanguageContext } from "@/context/LanguageContext";
+import endPoints from "@/constants/endPionts";
+import LanguageAwareLink from "@/components/LanguageAwareLink";
+import Typography from "@/components/Typography";
+import OtpInput from "@/components/FormFields/OtpInput";
+import { useRouter } from "next/router";
 
-const translations = {
+type Locale = "en" | "ar";
+
+interface TranslationSet {
+  heading: string;
+  subText: (email?: string) => string;
+  timerLabel: string;
+  enterOtp: string;
+  verify: string;
+  resend: string;
+  knowPassword: string;
+  signUp: string;
+  otpLengthError: string;
+  otpTypeError: string;
+}
+
+interface OtpVerificationProps {
+  email?: string;
+}
+
+interface OtpFormValues {
+  code: string;
+}
+
+const translations: Record<Locale, TranslationSet> = {
   en: {
     heading: "OTP Sent To Your Email",
     subText: (email) =>
@@ -47,13 +69,13 @@ const translations = {
   },
 };
 
-const OtpVerification = ({ email }) => {
+const OtpVerification: React.FC<OtpVerificationProps> = ({ email }) => {
   const upEmail = email?.replace(/%40/g, "@");
   const [loading, setLoading] = useState(false);
-  const router = useRouter();
   const [timer, setTimer] = useState(119);
-  const { locale } = useContext(LanguageContext);
+  const { locale } = useContext(LanguageContext) as { locale: Locale };
   const currentTranslations = translations[locale] || translations.en;
+  const router = useRouter();
 
   useEffect(() => {
     const countdown = setInterval(() => {
@@ -62,26 +84,26 @@ const OtpVerification = ({ email }) => {
     return () => clearInterval(countdown);
   }, []);
 
-  const myFormSchema = z.object({
+  const formSchema = z.object({
     code: z
       .string()
       .length(6, { message: currentTranslations.otpLengthError })
       .regex(/^\d+$/, { message: currentTranslations.otpTypeError }),
   });
 
-  const methods = useForm({
-    resolver: zodResolver(myFormSchema),
+  const methods = useForm<OtpFormValues>({
+    resolver: zodResolver(formSchema),
   });
+
   const {
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
 
-  const onSubmit = async (data) => {
-    const updatedEmail = email?.replace(/%40/g, "@");
-    const body = { ...data, email: updatedEmail };
+  const onSubmit: SubmitHandler<OtpFormValues> = async (data) => {
     try {
-      const res = await POST(endpoints.AUTH.VERIFY_OTP, body);
+      const body = { ...data, email: upEmail };
+      const res = await POST(endPoints.AUTH.VERIFY_OTP, body);
       if (res?.status === 200 || res?.status === 201) {
         toast.success(res?.message);
         router.push(`/${locale}/signin`);
@@ -89,69 +111,62 @@ const OtpVerification = ({ email }) => {
         toast.error(res?.message);
       }
     } catch (error) {
-      console.error(error.message);
+      console.error(error);
+      if (error instanceof Error) toast.error(error.message);
     }
   };
 
   const resendOtpHandler = async () => {
-    const updatedEmail = email?.replace(/%40/g, "@");
-    const body = {
-      email: updatedEmail,
-    };
     try {
       setLoading(true);
-      const res = await POST(endpoints.AUTH.RESEND_VERIFY_OTP, body);
-      if (res?.status === 200) {
-        setLoading(false);
-        toast.success(res?.message);
-      } else {
-        setLoading(false);
-        toast.error(res?.message);
-      }
+      const res = await POST(endPoints.AUTH.RESEND_VERIFY_OTP, { email: upEmail });
+      setLoading(false);
+      if (res?.status === 200) toast.success(res?.message);
+      else toast.error(res?.message);
     } catch (error) {
-      console.log("error", error);
+      console.error(error);
       setLoading(false);
     }
   };
 
-  const formatTime = (seconds) => {
+  const formatTime = (seconds: number) => {
     const m = String(Math.floor(seconds / 60)).padStart(2, "0");
     const s = String(seconds % 60).padStart(2, "0");
     return `${m}:${s}`;
   };
+
   return (
     <div className="w-full space-y-4 p-4">
       <div className="flex items-center justify-center w-full mb-3">
-        <LanguageAwareLink
-          href={textToRouteUrl("/")}
-          className="cursor-pointer">
+        <LanguageAwareLink href={textToRouteUrl("/")} className="cursor-pointer">
           <Image
             src={`/icons/dfl_logo2.svg`}
             alt="logo"
             width={70}
             height={64}
-            className={`w-auto lg:h-28 h-14`}
+            className="w-auto lg:h-28 h-14"
           />
         </LanguageAwareLink>
       </div>
-      <Heading2 blackHeading={currentTranslations.heading} />
-      <Paragraph
-        className="flex justify-center"
-        blackText1={currentTranslations.subText(upEmail)}
-      />
-      <Heading5
-        className="flex justify-center"
-        blackHeading={`${currentTranslations.timerLabel} ${formatTime(timer)}`}
-      />
+
+      <Typography as="h2" size="xl">
+        {currentTranslations.heading}
+      </Typography>
+      <Typography as="p" size="sm">
+        {currentTranslations.subText(upEmail)}
+      </Typography>
+      <Typography as="h5" size="md">
+        {`${currentTranslations.timerLabel} ${formatTime(timer)}`}
+      </Typography>
+
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Heading5
-          className="text-center text-lg font-semibold"
-          blackHeading={currentTranslations.enterOtp}
-        />
+        <Typography as="h5" size="md">
+          {currentTranslations.enterOtp}
+        </Typography>
         <div className="grid grid-cols-1 gap-6">
           <div className="w-full flex items-center justify-center mt-4">
-            <div className="max-w-112.5 ">
-              <RHFOtpField name="code" />
+            <div className="max-w-112.5">
+              <OtpInput name="code" />
             </div>
           </div>
           <div className="flex justify-center gap-2">
@@ -159,33 +174,34 @@ const OtpVerification = ({ email }) => {
               type="submit"
               disabled={isSubmitting}
               loading={isSubmitting}
+              variant="primary"
               className="w-full"
-              variant={`secondary`}
-              text={currentTranslations.verify}
-            />
+            >
+              {currentTranslations.verify}
+            </Button>
             <Button
-              type="submit"
+              type="button"
               onClick={resendOtpHandler}
               disabled={loading || timer > 0}
               loading={loading}
-              variant={`secondary`}
-              text={currentTranslations.resend}
-              className={`w-full ${
-                timer > 0 ? "opacity-50 cursor-not-allowed" : ""
-              }`}
-            />
+              variant="primary"
+              className={`w-full ${timer > 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+            >
+              {currentTranslations.resend}
+            </Button>
           </div>
         </div>
       </FormProvider>
+
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="grid place-items-center">
-          <Paragraph
-            className=""
-            blackText1={currentTranslations.knowPassword}
-          />
+          <Typography as="p" size="sm">
+            {currentTranslations.knowPassword}
+          </Typography>
           <LanguageAwareLink
             href={textToRouteUrl("/signup")}
-            className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary">
+            className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary"
+          >
             {currentTranslations.signUp}
           </LanguageAwareLink>
         </div>

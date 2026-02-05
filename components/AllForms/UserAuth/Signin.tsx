@@ -1,24 +1,22 @@
 "use client";
-import React, { useContext, useMemo } from "react";
+import { useContext, useMemo } from "react";
 import { SIGN_IN } from "@/actions/actions";
 import { useRouter } from "next/navigation";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
-import Button from "@/components/Button/Button";
+import Button from "@/components/Button";
 import { toast } from "sonner";
-import useVendorStore from "@/stores/vendor-store";
-import Paragraph from "@/components/Typography/Paragraph";
 import TextInput from "@/components/FormFields/TextInput";
 import { FormProvider as Form } from "react-hook-form";
 import PasswordInput from "@/components/FormFields/PasswordInput";
 import CheckboxInput from "@/components/FormFields/CheckboxInput";
-import LanguageAwareLink from "@/components/LanguageAwareLink/LanguageAwareLink";
 import { textToRouteUrl } from "@/utils/apiHelper";
-import { LanguageContext } from "@/app/[locale]/(MAIN)/context/LanguageContext";
 import Image from "next/image";
-import Heading2 from "@/components/Typography/Heading2";
-import SocialAuthentication from "@/components/SocialSignUp/SocialAuthentication";
+import useVendorStore from "@/stores/vendorStore";
+import { LanguageContext } from "@/context/LanguageContext";
+import LanguageAwareLink from "@/components/LanguageAwareLink";
+import Typography from "@/components/Typography";
 
 const translations = {
   en: {
@@ -65,7 +63,7 @@ const Signin = () => {
       password: "",
       rememberMe: false,
     }),
-    []
+    [],
   );
 
   const formSchema = z.object({
@@ -114,9 +112,10 @@ const Signin = () => {
       <div className="flex items-center justify-center w-full mb-3">
         <LanguageAwareLink
           href={textToRouteUrl("/")}
-          className="cursor-pointer">
+          className="cursor-pointer"
+        >
           <Image
-            src={`/assets/images/car_solution_logo.svg`}
+            src={`/icons/dfl_logo2.svg`}
             alt="logo"
             width={70}
             height={64}
@@ -124,7 +123,9 @@ const Signin = () => {
           />
         </LanguageAwareLink>
       </div>
-      <Heading2 blackHeading={currentTranslations?.signinTitle} />
+      <Typography as="h2" size="xl" align="center">
+        {currentTranslations?.signinTitle}
+      </Typography>
       <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-8"}>
         <div className="space-y-6 mb-6">
           <div className="space-y-8">
@@ -152,7 +153,8 @@ const Signin = () => {
             </div>
             <LanguageAwareLink
               href={textToRouteUrl("/forgotpassword")}
-              className="displayPara cursor-pointer">
+              className="displayPara cursor-pointer"
+            >
               {currentTranslations?.forgotPassword}
             </LanguageAwareLink>
           </div>
@@ -162,29 +164,32 @@ const Signin = () => {
             type="submit"
             disabled={isSubmitting}
             loading={isSubmitting}
-            variant={"secondary"}
+            variant="primary"
             className="w-full"
-            text={currentTranslations?.signIn}
-          />
+          >
+            {currentTranslations?.signIn}
+          </Button>
         </div>
         <div className="mt-4">
           <div className="flex gap-2 items-center justify-center">
-            <Paragraph blackText1={currentTranslations?.dontHaveAccount} />
+            <Typography as="p" size="sm" align="center">
+              {currentTranslations?.dontHaveAccount}
+            </Typography>
           </div>
           <div className="flex gap-2 items-center justify-center">
             <LanguageAwareLink
               href={textToRouteUrl("/signup")}
-              className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary">
+              className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary"
+            >
               {currentTranslations?.signUp}
             </LanguageAwareLink>
           </div>
           <div className="flex items-center gap-2 w-full">
             <div className="grow h-px bg-gray-300" />
             <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Paragraph
-                blackText1={currentTranslations?.orContinueWith}
-                className="text-semibold"
-              />
+              <Typography as="p" size="sm" align="center">
+                {currentTranslations?.orContinueWith}
+              </Typography>
             </div>
             <div className="grow h-px bg-gray-300" />
           </div>

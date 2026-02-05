@@ -13,6 +13,8 @@ interface AuthEndpoints {
   UPDATE_PASSWORD: string;
   UPDATE_EMAIL: string;
   UPDATE_USER: string;
+  RESEND_VERIFY_OTP: string;
+  VERIFY_OTP: string;
 }
 
 interface BlogEndpoints {
@@ -38,7 +40,7 @@ export interface EndPoints {
   GETMETA: string;
   GETGLOBALSCRIPT: string;
   GET_FAQS: string;
-  INQUIRY: string;
+  INQUIRIES: string;
   HIRE: string;
   COMMENTS: CommentEndpoints;
   TESTIMONIALS: TestimonialEndpoints;
@@ -47,7 +49,7 @@ export interface EndPoints {
 const endPoints: EndPoints = {
   NEWSLETTER: `${REAL_STATE_API_DOMAIN}/blogapi/add_subscription`,
   CONTACT_US: `${DEVAPI}/api/senddirectfromlandloard_ContactFormEmail`,
-  INQUIRY: `${DEVAPI}/api/senddirectfromlandloard_InquiryFormEmail`,
+  INQUIRIES: `${DEVAPI}/api/senddirectfromlandloard_InquiryFormEmail`,
   GETMETA: API_DOMAIN + "/seoapi/get-schema",
   GETGLOBALSCRIPT: API_DOMAIN + "/seoapi/get-customcode-bywebsite",
   GET_FAQS: API_DOMAIN + "/seoapi/get-customcode-bywebsite",
@@ -65,6 +67,8 @@ const endPoints: EndPoints = {
     UPDATE_PASSWORD: `${API_DOMAIN}/update-password`,
     UPDATE_EMAIL: `${API_DOMAIN}/update-email`,
     UPDATE_USER: `${API_DOMAIN}/update-user`,
+    RESEND_VERIFY_OTP: `${API_DOMAIN}/resend-verify-otp`,
+    VERIFY_OTP: `${API_DOMAIN}/verify-otp`,
   },
   TESTIMONIALS: {
     GET: `${API_DOMAIN}/Alltestimonials`,

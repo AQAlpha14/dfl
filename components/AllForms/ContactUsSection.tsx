@@ -37,7 +37,7 @@ const ContactUsSection = () => {
   return (
     <>
       <HeroSection
-        className={`md:bg-[url(/assets/images/bg_8.webp)] bg-[url(/assets/images/bg_8.webp)] bgimg`}
+        className={`md:bg-[url(/images/bg_8.webp)] bg-[url(/images/bg_8.webp)] bgimg`}
         heading={content.title}
         cAlign
       />
@@ -56,7 +56,7 @@ const ContactUsSection = () => {
 
             <div className={``}>
               <Image
-              src={`/assets/images/image_62.webp`}
+              src={`/images/image_62.webp`}
               width={500}
               height={500}
               alt={``}

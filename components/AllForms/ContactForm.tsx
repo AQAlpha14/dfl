@@ -94,7 +94,7 @@ const ContactForm = ({ gridCol }) => {
       message: "",
       termsOfService: false,
     }),
-    []
+    [],
   );
 
   const methods = useForm({
@@ -187,10 +187,11 @@ const ContactForm = ({ gridCol }) => {
         </div>
         <Button
           loading={isSubmitting}
-          variant={`primary`}
-          className={`mt-5! w-[120px]`}
-          text={t.submit}
-        />
+          variant="primary"
+          className={`mt-5! w-30`}
+        >
+          {t.submit}
+        </Button>
       </form>
     </Form>
   );

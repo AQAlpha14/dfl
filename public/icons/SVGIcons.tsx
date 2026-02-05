@@ -51,6 +51,32 @@ export const CheckSVG = (props: React.SVGProps<SVGSVGElement>) => (
     <path stroke="currentColor" d="m6 10 3 3 5-6" />
   </svg>
 );
+export const CheckedSVG = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg
+    {...props}
+    xmlns="http://www.w3.org/2000/svg"
+    width={77}
+    height={77}
+    fill="none"
+  >
+    <path
+      fill="#17A152"
+      d="M38.5 77C59.763 77 77 59.763 77 38.5S59.763 0 38.5 0 0 17.237 0 38.5 17.237 77 38.5 77Z"
+    />
+    <path
+      fill="#005123"
+      fillRule="evenodd"
+      d="M38.5 0C59.763 0 77 17.237 77 38.5S59.763 77 38.5 77c-.809 0-1.61-.028-2.406-.077C56.235 75.68 72.187 58.955 72.187 38.5c0-20.455-15.952-37.18-36.093-38.423C36.89.027 37.69 0 38.5 0Z"
+      clipRule="evenodd"
+    />
+    <path
+      fill="#F4F8F8"
+      fillRule="evenodd"
+      d="M20.479 40.786a4 4 0 1 1 5.417-5.887l8.201 7.532 16.944-16.223a3.997 3.997 0 1 1 5.543 5.761L37.023 50.698a4 4 0 0 1-5.58.157L20.48 40.785Z"
+      clipRule="evenodd"
+    />
+  </svg>
+);
 export const TildeSVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

@@ -3,7 +3,6 @@ import React, { useEffect, useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
-import { endpoints } from "@/utils/endpoints";
 import { toast } from "sonner";
 import { POSTSIMPLE } from "@/actions/actions";
 
