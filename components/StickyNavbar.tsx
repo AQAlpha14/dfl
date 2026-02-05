@@ -239,6 +239,7 @@ export function StickyNavbar() {
             path === "hotel-listing" ||
             path === "category" ||
             path === "tag" ||
+            lastPath === "rent" ||
             lastPath === "billing" ||
             lastPath === "billing" ||
             lastPath === "booking" ||

@@ -1,5 +1,4 @@
 "use client";
-import { useState } from "react";
 import Link from "@/components/Link";
 import Typography from "@/components/Typography";
 import Image from "@/components/Image";
@@ -18,12 +17,9 @@ interface AssetSectionProps {
   imageAlignEnd?: boolean;
   tags?: string[];
   bgblue?: boolean;
-  link2?: string;
-  link2Lext?: string;
   btntag?: string;
   link?: string;
   linkLext?: string;
-  iconSvg?: any;
   data?: any;
   video?: string;
   tagicon?: string;
@@ -60,8 +56,9 @@ const AssetSection = ({
       <div className="container">
         <div className="grid lg:grid-cols-2 gap-10">
           <div
-            className={`flex flex-col justify-center ${imageAlignEnd ? "lg:pb-14" : ""
-              }`}
+            className={`flex flex-col justify-center ${
+              imageAlignEnd ? "lg:pb-14" : ""
+            }`}
           >
             {btntag && (
               <div className="">
@@ -149,7 +146,9 @@ const AssetSection = ({
               )}
             </div>
           </div>
-          <div className={`flex justify-center items-center ${reverse ? "lg:order-first order-last" : ""}`}>
+          <div
+            className={`flex justify-center items-center ${reverse ? "lg:order-first order-last" : ""}`}
+          >
             {/* VIDEO BLOCK */}
             {video && (
               <video

@@ -46,8 +46,8 @@ export interface EndPoints {
 
 const endPoints: EndPoints = {
   NEWSLETTER: `${REAL_STATE_API_DOMAIN}/blogapi/add_subscription`,
-  CONTACT_US: `${DEVAPI}/api/senddirectfromlanloard_ContactFormEmail`,
-  INQUIRY: `${DEVAPI}/api/senddirectfromlanloard_InquiryFormEmail`,
+  CONTACT_US: `${DEVAPI}/api/senddirectfromlandloard_ContactFormEmail`,
+  INQUIRY: `${DEVAPI}/api/senddirectfromlandloard_InquiryFormEmail`,
   GETMETA: API_DOMAIN + "/seoapi/get-schema",
   GETGLOBALSCRIPT: API_DOMAIN + "/seoapi/get-customcode-bywebsite",
   GET_FAQS: API_DOMAIN + "/seoapi/get-customcode-bywebsite",

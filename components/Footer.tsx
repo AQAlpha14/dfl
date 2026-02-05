@@ -109,7 +109,7 @@ const Footer = () => {
           <div className="py-4 border-t">
             <div className="flex flex-wrap items-center justify-center">
               <Typography as="p" size="sm" color="white">
-                {`© ${currentYear} directfromlanloard. All Rights Reserved`}
+                {`© ${currentYear} directfromlandloard. All Rights Reserved`}
               </Typography>
             </div>
           </div>

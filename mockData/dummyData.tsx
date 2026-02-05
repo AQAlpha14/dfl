@@ -428,9 +428,9 @@ export const icons = {
   doller: "mdi:currency-usd",
 };
 export const socialLinks = [
-  { href: "https://www.facebook.com/directfromlanloard/", icon: <FBSVG /> },
-  { href: "https://www.instagram.com/directfromlanloard/", icon: <InstaSVG /> },
-  { href: "https://x.com/directfromlanloard", icon: <XSVG /> },
+  { href: "https://www.facebook.com/directfromlandloard/", icon: <FBSVG /> },
+  { href: "https://www.instagram.com/directfromlandloard/", icon: <InstaSVG /> },
+  { href: "https://x.com/directfromlandloard", icon: <XSVG /> },
   // { href: "https://www.linkedin.com", icon: <INSVG /> },
   // { href: "https://www.youtube.com", icon: <YoutubeSVG /> },
 ];
