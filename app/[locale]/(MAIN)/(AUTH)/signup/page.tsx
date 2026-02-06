@@ -1,10 +1,11 @@
 import { SEOAction } from "@/actions/seo-action";
-import Image from "@/components/Image/Image";
-import OtpVerification from "@/components/UserAuth/OtpVerification";
+import Image from "@/components/Image";
 import { isIndex, nocache } from "@/constants/constants";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
+import type { Metadata } from "next";
+import Signup from "@/components/AllForms/UserAuth/Signup";
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   const vMetaData = await SEOAction();
 
   return {
@@ -19,16 +20,13 @@ export async function generateMetadata() {
       index: isIndex,
       nocache: nocache,
     },
-    h1: vMetaData?.h1 || "",
-    faq: vMetaData?.faq?.mainEntity || null,
     icons: {
       icon: "/icon.jpg",
     },
-  };
+  } as Metadata;
 }
 
-const Page = async ({ params }) => {
-  const { email } = await params;
+const Page: React.FC = () => {
   return (
     <>
       <section className="md:pt-32 pt-20 md:pb-20 pb-6">
@@ -36,11 +34,11 @@ const Page = async ({ params }) => {
           <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
             <div className="md:block hidden relative">
               <Image
-                src={`/images/image_121.webp`}
+                src="/images/image_19.webp"
                 width={845}
                 height={1024}
-                alt={`Auth Image`}
-                className="object-cover"
+                alt="Authentication image"
+                className="object-cover w-full h-full"
               />
               <span className="absolute bottom-8 left-8 display2 text-white max-w-96">
                 Please sign in to securely access your account.
@@ -49,7 +47,7 @@ const Page = async ({ params }) => {
             <div className="flex justify-center items-center h-full md:px-4 px-0 py-6">
               <div className="w-full max-w-lg">
                 <Suspense>
-                  <OtpVerification email={email} />
+                  <Signup />
                 </Suspense>
               </div>
             </div>

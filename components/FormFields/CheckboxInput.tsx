@@ -30,7 +30,8 @@ export default function CheckboxInput({
               props.checked || props.defaultChecked
                 ? `${is_Modal ? "border-white" : "border-primary"} bg-primary`
                 : ""
-            }`}>
+            }`}
+          >
             <Icon
               icon="material-symbols:check-rounded"
               className={`h-4 w-4 ${
@@ -48,7 +49,8 @@ export default function CheckboxInput({
           <Typography
             as="span"
             size="sm"
-            className={`${is_Modal ? "text-white" : "text-grayDark"}`}>
+            className={`${is_Modal ? "text-white" : "text-grayDark"}`}
+          >
             {title}
           </Typography>
         </div>
@@ -57,7 +59,8 @@ export default function CheckboxInput({
         <div
           className={`${
             is_Modal ? "text-white" : "text-red-500"
-          } text-[10px] mt-1`}>
+          } text-[10px] mt-1`}
+        >
           {error}
         </div>
       )}

@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Suspense } from "react";
 import { SEOAction } from "@/actions/seo-action";
 import Image from "@/components/Image";
-import Signin from "@/components/UserAuth/Signin";
 import { isIndex } from "@/constants/constants";
+import Signin from "@/components/AllForms/UserAuth/Signin";
 
 /* =========================
    SEO METADATA
@@ -32,15 +32,13 @@ export async function generateMetadata(): Promise<Metadata> {
 /* =========================
    PAGE
 ========================= */
-const Page = async () => {
+const Page: React.FC = async () => {
   const vMetaData = await SEOAction();
 
   return (
     <>
       {/* SEO H1 (for crawlers, not UI) */}
-      {vMetaData?.h1 && (
-        <h1 className="sr-only">{vMetaData.h1}</h1>
-      )}
+      {vMetaData?.h1 && <h1 className="sr-only">{vMetaData.h1}</h1>}
 
       {/* FAQ Schema */}
       {vMetaData?.faq && (
@@ -55,7 +53,6 @@ const Page = async () => {
       <section className="md:pt-32 pt-20 md:pb-20 pb-6">
         <div className="container">
           <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
-            
             {/* LEFT IMAGE */}
             <div className="md:block hidden relative">
               <Image
@@ -78,7 +75,6 @@ const Page = async () => {
                 </Suspense>
               </div>
             </div>
-
           </div>
         </div>
       </section>

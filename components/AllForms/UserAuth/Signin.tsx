@@ -12,13 +12,41 @@ import { FormProvider as Form } from "react-hook-form";
 import PasswordInput from "@/components/FormFields/PasswordInput";
 import CheckboxInput from "@/components/FormFields/CheckboxInput";
 import { textToRouteUrl } from "@/utils/apiHelper";
-import Image from "next/image";
 import useVendorStore from "@/stores/vendorStore";
 import { LanguageContext } from "@/context/LanguageContext";
 import LanguageAwareLink from "@/components/LanguageAwareLink";
 import Typography from "@/components/Typography";
+import SocialAuthentication from "./SocialAuthentication";
 
-const translations = {
+/* ----------------------------- Types ----------------------------- */
+
+type Locale = "en" | "ar";
+
+type TranslationSchema = {
+  signinTitle: string;
+  email: string;
+  password: string;
+  rememberMe: string;
+  forgotPassword: string;
+  signin: string;
+  dontHaveAccount: string;
+  signUp: string;
+  orContinueWith: string;
+  errors: {
+    email: string;
+    password: string;
+  };
+};
+
+type SigninFormData = {
+  email: string;
+  password: string;
+  rememberMe?: boolean;
+};
+
+/* ----------------------------- Translations ----------------------------- */
+
+const translations: Record<Locale, TranslationSchema> = {
   en: {
     signinTitle: "Log In to access your account",
     email: "Email address",
@@ -51,12 +79,13 @@ const translations = {
   },
 };
 
-const Signin = () => {
+/* ----------------------------- Component ----------------------------- */
+
+const Signin: React.FC = () => {
   const { setVendor } = useVendorStore();
   const router = useRouter();
   const { locale } = useContext(LanguageContext);
-  const currentTranslations = translations[locale] || translations.en;
-
+  const currentTranslations = translations[locale as Locale] || translations.en;
   const defaultValues = useMemo(
     () => ({
       email: "",
@@ -65,7 +94,6 @@ const Signin = () => {
     }),
     [],
   );
-
   const formSchema = z.object({
     email: z.string().email({
       message: currentTranslations.errors.email,
@@ -73,8 +101,8 @@ const Signin = () => {
     password: z.string().min(8, {
       message: currentTranslations.errors.password,
     }),
+    rememberMe: z.boolean().optional(),
   });
-
   const methods = useForm({
     resolver: zodResolver(formSchema),
     defaultValues,
@@ -87,13 +115,11 @@ const Signin = () => {
     formState: { isSubmitting, errors },
   } = methods;
 
-  const isChecked = watch("rememberMe");
-
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
       const res = await SIGN_IN(data);
       if (res?.status === 200) {
-        setVendor(res?.data);
+        setVendor(res?.data ?? null);
         toast.success(res?.message);
         router.push(`/${locale}`);
       } else if (res?.status === 403) {
@@ -103,13 +129,13 @@ const Signin = () => {
         toast.error(res?.message);
       }
     } catch (error) {
-      toast.error(error);
+      toast.error(error instanceof Error ? error.message : "An error occurred");
     }
   };
-
+  const isChecked = watch("rememberMe");
   return (
     <Form {...methods}>
-      <div className="flex items-center justify-center w-full mb-3">
+      {/* <div className="flex items-center justify-center w-full mb-3">
         <LanguageAwareLink
           href={textToRouteUrl("/")}
           className="cursor-pointer"
@@ -122,7 +148,7 @@ const Signin = () => {
             className={`w-auto lg:h-28 h-14`}
           />
         </LanguageAwareLink>
-      </div>
+      </div> */}
       <Typography as="h2" size="xl" align="center">
         {currentTranslations?.signinTitle}
       </Typography>
@@ -165,9 +191,9 @@ const Signin = () => {
             disabled={isSubmitting}
             loading={isSubmitting}
             variant="primary"
-            className="w-full"
+            className="w-36"
           >
-            {currentTranslations?.signIn}
+            {currentTranslations?.signin}
           </Button>
         </div>
         <div className="mt-4">

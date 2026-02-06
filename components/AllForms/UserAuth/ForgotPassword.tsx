@@ -106,7 +106,10 @@ const ForgotPassword: React.FC = () => {
   return (
     <Form {...methods}>
       <div className="flex items-center justify-center w-full mb-3">
-        <LanguageAwareLink href={textToRouteUrl("/")} className="cursor-pointer">
+        <LanguageAwareLink
+          href={textToRouteUrl("/")}
+          className="cursor-pointer"
+        >
           <Image
             src={`/images/car_solution_logo.svg`}
             alt="logo"

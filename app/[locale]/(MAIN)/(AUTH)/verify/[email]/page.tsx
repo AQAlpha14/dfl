@@ -1,10 +1,11 @@
 import { SEOAction } from "@/actions/seo-action";
-import Image from "@/components/Image/Image";
-import ForgotPassword from "@/components/UserAuth/ForgotPassword";
+import OtpVerification from "@/components/AllForms/UserAuth/OtpVerification";
+import Image from "@/components/Image";
 import { isIndex, nocache } from "@/constants/constants";
-import React, { Suspense } from "react";
+import { Suspense } from "react";
+import type { Metadata } from "next";
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   const vMetaData = await SEOAction();
 
   return {
@@ -19,15 +20,18 @@ export async function generateMetadata() {
       index: isIndex,
       nocache: nocache,
     },
-    h1: vMetaData?.h1 || "",
-    faq: vMetaData?.faq?.mainEntity || null,
     icons: {
       icon: "/icon.jpg",
     },
-  };
+  } as Metadata;
 }
 
-const Page = () => {
+interface PageProps {
+  params: Promise<{ email: string }>;
+}
+
+const Page = async ({ params }: PageProps) => {
+  const { email } = await params;
   return (
     <>
       <section className="md:pt-32 pt-20 md:pb-20 pb-6">
@@ -45,10 +49,10 @@ const Page = () => {
                 Please sign in to securely access your account.
               </span>
             </div>
-            <div className="flex justify-center items-center h-full md:px-4 px-1 py-6">
+            <div className="flex justify-center items-center h-full md:px-4 px-0 py-6">
               <div className="w-full max-w-lg">
                 <Suspense>
-                  <ForgotPassword />
+                  <OtpVerification email={email} />
                 </Suspense>
               </div>
             </div>

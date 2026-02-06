@@ -1,9 +1,9 @@
 import { SEOAction } from "@/actions/seo-action";
+import ResetSuccess from "@/components/AllForms/UserAuth/ResetSuccess";
 import { isIndex, nocache } from "@/constants/constants";
-import ResetSuccess from "@/sections/Forms/ResetSuccess";
-import React from "react";
+import type { Metadata } from "next";
 
-export async function generateMetadata() {
+export async function generateMetadata(): Promise<Metadata> {
   const vMetaData = await SEOAction();
 
   return {
@@ -18,14 +18,13 @@ export async function generateMetadata() {
       index: isIndex,
       nocache: nocache,
     },
-    h1: vMetaData?.h1 || "",
-    faq: vMetaData?.faq?.mainEntity || null,
     icons: {
       icon: "/icon.jpg",
     },
-  };
+  } as Metadata;
 }
-const Page = async () => {
+
+const Page: React.FC = async () => {
   return (
     <div>
       <ResetSuccess />

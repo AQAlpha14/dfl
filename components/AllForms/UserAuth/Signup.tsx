@@ -1,10 +1,6 @@
 "use client";
-
 import { POST } from "@/actions/actions";
-import Button from "@/components/Button/Button";
-import SocialAuthentication from "@/components/SocialSignUp/SocialAuthentication";
-import Paragraph from "@/components/Typography/Paragraph";
-import { endpoints } from "@/utils/endpoints";
+import Button from "@/components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -14,15 +10,56 @@ import { FormProvider as Form } from "react-hook-form";
 import PasswordInput from "@/components/FormFields/PasswordInput";
 import CheckboxInput from "@/components/FormFields/CheckboxInput";
 import TextInput from "@/components/FormFields/TextInput";
-import NumberInput from "./NumberInput";
-import LanguageAwareLink from "@/components/LanguageAwareLink/LanguageAwareLink";
 import { textToRouteUrl } from "@/utils/apiHelper";
-import { LanguageContext } from "@/app/[locale]/(MAIN)/context/LanguageContext";
 import { useContext } from "react";
-import Heading2 from "@/components/Typography/Heading2";
-import Image from "next/image";
+import { LanguageContext } from "@/context/LanguageContext";
+import endPoints from "@/constants/endPionts";
+import LanguageAwareLink from "@/components/LanguageAwareLink";
+import Typography from "@/components/Typography";
+import SocialAuthentication from "./SocialAuthentication";
+import PhoneNumberInput from "@/components/FormFields/PhoneNumberInput";
 
-const translations = {
+/* ----------------------------- Types ----------------------------- */
+
+type Locale = "en" | "ar";
+
+type TranslationSchema = {
+  createAccount: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirmPassword: string;
+  agreeTerms: string;
+  signUp: string;
+  alreadyHaveAccount: string;
+  signin: string;
+  orContinueWith: string;
+  requiredFirstName: string;
+  requiredLastName: string;
+  requiredEmail: string;
+  requiredPhone: string;
+  requiredPassword: string;
+  requiredConfirmPassword: string;
+  passwordMismatch: string;
+  agreeValidation: string;
+};
+
+type SignupFormData = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  email: string;
+  phone: string;
+  password: string;
+  confirmPassword: string;
+  agreed: boolean;
+};
+
+/* ----------------------------- Translations ----------------------------- */
+
+const translations: Record<Locale, TranslationSchema> = {
   en: {
     createAccount: "Create Account",
     firstName: "First Name",
@@ -74,9 +111,11 @@ const translations = {
   },
 };
 
-const Signup = () => {
+/* ----------------------------- Component ----------------------------- */
+
+const Signup: React.FC = () => {
   const { locale } = useContext(LanguageContext);
-  const currentTranslations = translations[locale] || translations.en;
+  const currentTranslations = translations[locale as Locale] || translations.en;
 
   const router = useRouter();
   const formSchema = z
@@ -122,12 +161,10 @@ const Signup = () => {
     handleSubmit,
     formState: { isSubmitting, errors },
   } = methods;
-
   const isChecked = watch("agreed");
-
-  const onSubmit = async (data) => {
+  const onSubmit = async (data: z.infer<typeof formSchema>) => {
     try {
-      const res = await POST(endpoints.AUTH.SIGN_UP, data);
+      const res = await POST(endPoints.AUTH.SIGN_UP, data);
       if (res?.status === 200 || res?.status === 201) {
         toast.success(res?.message);
         router.push(`/${locale}/verify/${data?.email}`);
@@ -139,16 +176,17 @@ const Signup = () => {
       }
     } catch (error) {
       console.error(error);
-      toast.error(error?.message);
+      toast.error(error instanceof Error ? error.message : "An error occurred");
     }
   };
 
   return (
     <Form {...methods}>
-      <div className="flex items-center justify-center w-full mb-3">
+      {/* <div className="flex items-center justify-center w-full mb-3">
         <LanguageAwareLink
           href={textToRouteUrl("/")}
-          className="cursor-pointer">
+          className="cursor-pointer"
+        >
           <Image
             src={`/assets/car_solution_logo.svg`}
             alt="logo"
@@ -157,8 +195,10 @@ const Signup = () => {
             className={`w-auto lg:h-28 h-14`}
           />
         </LanguageAwareLink>
-      </div>
-      <Heading2 blackHeading={currentTranslations?.createAccount} />
+      </div> */}
+      <Typography as="h2" size="xl">
+        {currentTranslations?.createAccount}
+      </Typography>
       <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-8"}>
         <div className="space-y-6 mb-6">
           <div className="space-y-8">
@@ -180,12 +220,12 @@ const Signup = () => {
               error={errors.email?.message}
               {...register("email")}
             />
-            <NumberInput
+            {/* <PhoneNumberInput
               label={currentTranslations?.phone}
               error={errors.phone?.message}
               autoComplete="off"
               {...register("phone")}
-            />
+            /> */}
             <PasswordInput
               label={currentTranslations?.password}
               type="password"
@@ -214,28 +254,31 @@ const Signup = () => {
             disabled={isSubmitting}
             loading={isSubmitting}
             className="w-full"
-            variant={`secondary`}
-            text={currentTranslations?.signUp}
-          />
+            variant={`primary`}
+          >
+            {currentTranslations?.signUp}
+          </Button>
 
           <div className="mt-4 w-full">
             <div className="flex gap-2 items-center justify-center">
-              <Paragraph blackText1={currentTranslations?.alreadyHaveAccount} />
+              <Typography as="p" size="sm">
+                {currentTranslations?.alreadyHaveAccount}
+              </Typography>
             </div>
             <div className="flex gap-2 items-center justify-center">
               <LanguageAwareLink
                 href={textToRouteUrl("/signin")}
-                className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary">
+                className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary"
+              >
                 {currentTranslations?.signin}
               </LanguageAwareLink>
             </div>
             <div className="flex items-center gap-2 w-full">
               <div className="grow h-px bg-gray-300" />
               <div className="flex items-center gap-2 text-sm text-gray-600">
-                <Paragraph
-                  blackText1={currentTranslations?.orContinueWith}
-                  className="text-semibold"
-                />
+                <Typography as="p" size="sm">
+                  {currentTranslations?.orContinueWith}
+                </Typography>
               </div>
               <div className="grow h-px bg-gray-300" />
             </div>
