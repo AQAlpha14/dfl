@@ -33,7 +33,7 @@ const Page: React.FC = () => {
           <div className="">
             <div className="flex justify-center items-center h-full md:px-4 px-0 py-6">
               <div className="w-full max-w-lg">
-                <Suspense>
+                <Suspense fallback={<div>Loading...</div>}>
                   <Signup />
                 </Suspense>
               </div>

@@ -17,14 +17,15 @@ import endPoints from "@/constants/endPionts";
 import LanguageAwareLink from "@/components/LanguageAwareLink";
 import Typography from "@/components/Typography";
 import SocialAuthentication from "./SocialAuthentication";
-import PhoneNumberInput from "@/components/FormFields/PhoneNumberInput";
+import RHFField from "@/components/FormFields/RHFField";
 
 /* ----------------------------- Types ----------------------------- */
 
 type Locale = "en" | "ar";
 
 type TranslationSchema = {
-  createAccount: string;
+  title: string;
+  desciption: string;
   firstName: string;
   lastName: string;
   email: string;
@@ -32,6 +33,7 @@ type TranslationSchema = {
   password: string;
   confirmPassword: string;
   agreeTerms: string;
+  organization: string;
   signUp: string;
   alreadyHaveAccount: string;
   signin: string;
@@ -44,30 +46,29 @@ type TranslationSchema = {
   requiredConfirmPassword: string;
   passwordMismatch: string;
   agreeValidation: string;
-};
-
-type SignupFormData = {
-  id: number;
-  first_name: string;
-  last_name: string;
-  email: string;
-  phone: string;
-  password: string;
-  confirmPassword: string;
-  agreed: boolean;
+  placeholder: {
+    full_name: string;
+    last_name: string;
+    email: string;
+    password: string;
+    organization: string;
+  
+  };
 };
 
 /* ----------------------------- Translations ----------------------------- */
 
 const translations: Record<Locale, TranslationSchema> = {
   en: {
-    createAccount: "Create Account",
+    title: "Create Your Account",
+    desciption: "Let's get started with your basic information",
     firstName: "First Name",
     lastName: "Last Name",
     email: "Email",
     phone: "Phone Number",
     password: "Password",
     confirmPassword: "Confirm Password",
+    organization: "Organization (Optional)",
     agreeTerms:
       "I have read and I agree to the HJK Car Rental’s, Terms of use and Privacy Notice",
     signUp: "Sign Up",
@@ -83,15 +84,24 @@ const translations: Record<Locale, TranslationSchema> = {
       "Confirm Password must be at least 8 characters long.",
     passwordMismatch: "Passwords do not match",
     agreeValidation: "You must agree to the terms and conditions",
+    placeholder: {
+      full_name: "Abdul",
+      last_name: "Ahmed",
+      email: "Enter your email",
+      password: "********",
+      organization: "Abdul",     
+    },
   },
   ar: {
-    createAccount: "إنشاء حساب",
+    title: "إنشاء حساب",
+    desciption: "إنشاء حساب",
     firstName: "الاسم الأول",
     lastName: "اسم العائلة",
     email: "البريد الإلكتروني",
     phone: "رقم الهاتف",
     password: "كلمة المرور",
     confirmPassword: "تأكيد كلمة المرور",
+    organization: "شركة (اختياري)",
     agreeTerms:
       "لقد قرأت وأوافق على شروط الاستخدام وإشعار الخصوصية لشركة HJK Car Rental",
     signUp: "سجل",
@@ -108,6 +118,13 @@ const translations: Record<Locale, TranslationSchema> = {
       "يجب أن تتكون كلمة تأكيد كلمة المرور من 8 أحرف على الأقل.",
     passwordMismatch: "كلمات المرور غير متطابقة",
     agreeValidation: "يجب أن توافق على الشروط والأحكام",
+    placeholder: {
+      full_name: "Abdul",
+      last_name: "Ahmed",
+      email: "Enter your email",
+      password: "********",
+      organization: "Abdul",
+    },
   },
 };
 
@@ -182,63 +199,68 @@ const Signup: React.FC = () => {
 
   return (
     <Form {...methods}>
-      {/* <div className="flex items-center justify-center w-full mb-3">
-        <LanguageAwareLink
-          href={textToRouteUrl("/")}
-          className="cursor-pointer"
-        >
-          <Image
-            src={`/assets/car_solution_logo.svg`}
-            alt="logo"
-            width={70}
-            height={64}
-            className={`w-auto lg:h-28 h-14`}
-          />
-        </LanguageAwareLink>
-      </div> */}
-      <Typography as="h2" size="xl">
-        {currentTranslations?.createAccount}
+      <Typography as="h2" size="xl" weight="bold">
+        {currentTranslations?.title}
+      </Typography>
+      <Typography as="p" size="sm">
+        {currentTranslations?.desciption}
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-8"}>
-        <div className="space-y-6 mb-6">
-          <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 space-y-8">
-            <TextInput
-              label={currentTranslations?.firstName}
-              type="first_name"
-              error={errors.first_name?.message}
-              {...register("first_name")}
-            />
-            <TextInput
-              label={currentTranslations?.lastName}
-              type="last_name"
-              error={errors.last_name?.message}
-              {...register("last_name")}
-            />
-            <TextInput
+        <div className="">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 ">
+            <RHFField
+              name="full_name"
               label={currentTranslations?.email}
-              type="email"
-              error={errors.email?.message}
-              {...register("email")}
+              placeholder={currentTranslations?.placeholder?.email}
+              type="text"
+              required
+              inputIcon={`/icons/icon_59.svg`}
             />
-            {/* <PhoneNumberInput
-              error={errors.phone?.message}
-              autoComplete="off"
-              {...register("phone")}
-            /> */}
-            <PasswordInput
+            <RHFField
+              name="last_name"
+              label={currentTranslations?.email}
+              placeholder={currentTranslations?.placeholder?.email}
+              type="text"
+              required
+              inputIcon={`/icons/icon_59.svg`}
+            />
+              <RHFField
+                name="last_name"
+                label={currentTranslations?.email}
+                placeholder={currentTranslations?.placeholder?.email}
+                type="text"
+                required
+                inputIcon={`/icons/icon_59.svg`}
+                className="col-span-2"
+              />
+            <RHFField
+              name="password"
               label={currentTranslations?.password}
-              type="password"
-              error={errors.password?.message}
-              {...register("password")}
+              placeholder={currentTranslations?.placeholder?.password}
+              type="text"
+              required
+              inputIcon={`/icons/icon_60.svg`}
             />
-            <PasswordInput
-              label={currentTranslations?.confirmPassword}
-              type="password"
-              error={errors.confirmPassword?.message}
-              {...register("confirmPassword")}
+            <RHFField
+              name="conform_password"
+              label={currentTranslations?.password}
+              placeholder={currentTranslations?.placeholder?.password}
+              type="text"
+              required
+              inputIcon={`/icons/icon_60.svg`}
             />
+            <RHFField
+                name="organizatione"
+                label={currentTranslations?.organization}
+                placeholder={currentTranslations?.placeholder?.organization}
+                type="text"
+                required
+                inputIcon={`/icons/icon_59.svg`}
+                className="col-span-2"
+              />
+           
           </div>
-          <div>
+          <div className="py-4">
             <CheckboxInput
               title={currentTranslations?.agreeTerms}
               error={errors.agreed?.message}

@@ -50,7 +50,7 @@ const Page: React.FC = async () => {
         />
       )}
 
-      <section className="secPadding">
+      <section className="secPadding bgimg">
         <div className="">
           <div className="flex justify-center items-center">
             <div className="max-w-sm w-full">

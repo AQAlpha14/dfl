@@ -42,7 +42,7 @@ const options = {
 };
 const SocialCommunitySection = () => {
   return (
-    <section className="secPadding bg-[url(/assets/icons/car_icon.svg)] bg-contain bg-no-repeat bg-bottom">
+    <section className="secPadding bg-[url(/icons/car_icon.svg)] bg-contain bg-no-repeat bg-bottom">
       <div className="container relative">
         <div className="xs:pb-4 md:flex md:items-start md:justify-between gap-4">
           <div className="max-w-112.5 w-full">

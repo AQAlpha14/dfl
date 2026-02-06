@@ -21,11 +21,14 @@ import RHFField from "@/components/FormFields/RHFField";
 type Locale = "en" | "ar";
 
 type TranslationSchema = {
-  signinTitle: string;
-  credentials: string;
+  title: string;
+  desciption: string;
   email: string;
   password: string;
-  placeholder: string;
+  placeholder: {
+    email: string;
+    password: string;
+  };
   rememberMe: string;
   forgotPassword: string;
   signin: string;
@@ -42,31 +45,37 @@ type TranslationSchema = {
 
 const translations: Record<Locale, TranslationSchema> = {
   en: {
-    signinTitle: "Sign in to your account",
-    credentials: "Enter your credentials to continue",
-    email: "Email address",
+    title: "Sign in to your account",
+    desciption: "Enter your credentials to continue",
+    email: "Email Address",
     password: "Password",
     forgotPassword: "Forgot Password?",
     rememberMe: "Remember Me",
     signin: "Sign in",
     signUp: "Sign Up",
-    placeholder: "you@example.com",
     dontHaveAccount: "Don't have an Account?",
     orContinueWith: "Or continue with",
     errors: {
       email: "Email is required and must be a valid email address.",
       password: "Password must be at least 8 characters long.",
     },
+    placeholder: {
+      email: "Enter your email",
+      password: "Enter your password",
+    },
   },
   ar: {
-    credentials: "Enter your credentials to continue",
-    signinTitle: "تسجيل الدخول للوصول إلى حسابك",
+    title: "تسجيل الدخول للوصول إلى حسابك",
+    desciption: "Enter your credentials to continue",
     email: "عنوان البريد الإلكتروني",
     password: "كلمة المرور",
     rememberMe: "تذكرني",
     forgotPassword: "هل نسيت كلمة المرور؟",
     signin: "تسجيل الدخول",
-    placeholder: "you@example.com",
+    placeholder: {
+      email: "you@example.com",
+      password: "أدخل كلمة المرور",
+    },
     dontHaveAccount: "ليس لديك حساب؟",
     signUp: "إنشاء حساب",
     orContinueWith: "أو تابع باستخدام",
@@ -133,28 +142,30 @@ const Signin: React.FC = () => {
   const isChecked = watch("rememberMe");
   return (
     <Form {...methods}>
-      <Typography as="h2" size="xl">
-        {currentTranslations?.signinTitle}
+      <Typography as="h2" size="xl" weight="bold">
+        {currentTranslations?.title}
       </Typography>
       <Typography as="p" size="sm">
-        {currentTranslations?.credentials}
+        {currentTranslations?.desciption}
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-6"}>
         <div className="space-y-6 mb-6">
           <div className="space-y-6">
             <RHFField
               name="email"
-              label="Email address *"
-              placeholder="Enter your email"
+              label={currentTranslations?.email}
+              placeholder={currentTranslations?.placeholder?.email}
               type="email"
               required
+              inputIcon={`/icons/icon_59.svg`}
             />
             <RHFField
               name="password"
-              label="Password *"
-              placeholder="Enter password"
+              label={currentTranslations?.password}
+              placeholder={currentTranslations?.placeholder?.password}
               type="password"
-              required="Password is mandatory"
+              required
+              inputIcon={`/icons/icon_60.svg`}
             />
           </div>
           <div className="flex items-center justify-between gap-3">
@@ -185,7 +196,7 @@ const Signin: React.FC = () => {
             {currentTranslations?.signin}
           </Button>
         </div>
-        <div className="py-4">
+        <div className="py-8">
           <div className="flex items-center gap-2 w-full">
             <div className="grow h-px bg-gray-300" />
             <div className="flex items-center gap-2 text-sm text-gray-600">
