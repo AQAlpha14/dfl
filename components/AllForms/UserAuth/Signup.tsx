@@ -201,7 +201,7 @@ const Signup: React.FC = () => {
       </Typography>
       <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-8"}>
         <div className="space-y-6 mb-6">
-          <div className="space-y-8">
+          <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 space-y-8">
             <TextInput
               label={currentTranslations?.firstName}
               type="first_name"
@@ -221,7 +221,6 @@ const Signup: React.FC = () => {
               {...register("email")}
             />
             {/* <PhoneNumberInput
-              label={currentTranslations?.phone}
               error={errors.phone?.message}
               autoComplete="off"
               {...register("phone")}

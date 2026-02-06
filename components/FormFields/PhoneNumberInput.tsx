@@ -46,7 +46,7 @@ const PhoneNumberInput = ({
       <div
         className={`relative border-b ${
           error ? "border-red-500" : "border-gray-dark"
-        } focus-within:border-primary transition-all min-h-12 flex items-center ${
+        } focus-within:border-primary transition-all flex items-center ${
           disabled || loading ? "opacity-70 cursor-not-allowed" : ""
         }`}>
         {/* Icon (optional) */}
@@ -69,7 +69,7 @@ const PhoneNumberInput = ({
             value={val}
             onChange={handleChange}
             inputClass={`bg-transparent! border-none! shadow-none! text-sm! w-full! focus:outline-none! ${
-              ar ? "pr-7! text-right!" : "pl-8! text-left!"
+              ar ? "pr-10! text-right!" : "pl-10! text-left!"
             }`}
             buttonClass="bg-transparent! border-none! hover:bg-transparent!"
             containerClass="w-full relative"

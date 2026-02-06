@@ -7,16 +7,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import Button from "@/components/Button";
 import { toast } from "sonner";
-import TextInput from "@/components/FormFields/TextInput";
 import { FormProvider as Form } from "react-hook-form";
-import PasswordInput from "@/components/FormFields/PasswordInput";
 import CheckboxInput from "@/components/FormFields/CheckboxInput";
 import { textToRouteUrl } from "@/utils/apiHelper";
 import useVendorStore from "@/stores/vendorStore";
 import { LanguageContext } from "@/context/LanguageContext";
 import LanguageAwareLink from "@/components/LanguageAwareLink";
 import Typography from "@/components/Typography";
-import SocialAuthentication from "./SocialAuthentication";
+import RHFField from "@/components/FormFields/RHFField";
 
 /* ----------------------------- Types ----------------------------- */
 
@@ -24,8 +22,10 @@ type Locale = "en" | "ar";
 
 type TranslationSchema = {
   signinTitle: string;
+  credentials: string;
   email: string;
   password: string;
+  placeholder: string;
   rememberMe: string;
   forgotPassword: string;
   signin: string;
@@ -38,24 +38,20 @@ type TranslationSchema = {
   };
 };
 
-type SigninFormData = {
-  email: string;
-  password: string;
-  rememberMe?: boolean;
-};
-
 /* ----------------------------- Translations ----------------------------- */
 
 const translations: Record<Locale, TranslationSchema> = {
   en: {
-    signinTitle: "Log In to access your account",
+    signinTitle: "Sign in to your account",
+    credentials: "Enter your credentials to continue",
     email: "Email address",
     password: "Password",
-    rememberMe: "Remember Me",
     forgotPassword: "Forgot Password?",
+    rememberMe: "Remember Me",
     signin: "Sign in",
-    dontHaveAccount: "Don't have an Account?",
     signUp: "Sign Up",
+    placeholder: "you@example.com",
+    dontHaveAccount: "Don't have an Account?",
     orContinueWith: "Or continue with",
     errors: {
       email: "Email is required and must be a valid email address.",
@@ -63,12 +59,14 @@ const translations: Record<Locale, TranslationSchema> = {
     },
   },
   ar: {
+    credentials: "Enter your credentials to continue",
     signinTitle: "تسجيل الدخول للوصول إلى حسابك",
     email: "عنوان البريد الإلكتروني",
     password: "كلمة المرور",
     rememberMe: "تذكرني",
     forgotPassword: "هل نسيت كلمة المرور؟",
     signin: "تسجيل الدخول",
+    placeholder: "you@example.com",
     dontHaveAccount: "ليس لديك حساب؟",
     signUp: "إنشاء حساب",
     orContinueWith: "أو تابع باستخدام",
@@ -135,37 +133,28 @@ const Signin: React.FC = () => {
   const isChecked = watch("rememberMe");
   return (
     <Form {...methods}>
-      {/* <div className="flex items-center justify-center w-full mb-3">
-        <LanguageAwareLink
-          href={textToRouteUrl("/")}
-          className="cursor-pointer"
-        >
-          <Image
-            src={`/icons/dfl_logo2.svg`}
-            alt="logo"
-            width={70}
-            height={64}
-            className={`w-auto lg:h-28 h-14`}
-          />
-        </LanguageAwareLink>
-      </div> */}
-      <Typography as="h2" size="xl" align="center">
+      <Typography as="h2" size="xl">
         {currentTranslations?.signinTitle}
       </Typography>
-      <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-8"}>
+      <Typography as="p" size="sm">
+        {currentTranslations?.credentials}
+      </Typography>
+      <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-6"}>
         <div className="space-y-6 mb-6">
-          <div className="space-y-8">
-            <TextInput
-              label={currentTranslations?.email}
+          <div className="space-y-6">
+            <RHFField
+              name="email"
+              label="Email address *"
+              placeholder="Enter your email"
               type="email"
-              error={errors.email?.message}
-              {...register("email")}
+              required
             />
-            <PasswordInput
-              label={currentTranslations?.password}
+            <RHFField
+              name="password"
+              label="Password *"
+              placeholder="Enter password"
               type="password"
-              error={errors.password?.message}
-              {...register("password")}
+              required="Password is mandatory"
             />
           </div>
           <div className="flex items-center justify-between gap-3">
@@ -191,35 +180,32 @@ const Signin: React.FC = () => {
             disabled={isSubmitting}
             loading={isSubmitting}
             variant="primary"
-            className="w-36"
+            className="w-full"
           >
             {currentTranslations?.signin}
           </Button>
         </div>
-        <div className="mt-4">
-          <div className="flex gap-2 items-center justify-center">
-            <Typography as="p" size="sm" align="center">
-              {currentTranslations?.dontHaveAccount}
-            </Typography>
-          </div>
-          <div className="flex gap-2 items-center justify-center">
-            <LanguageAwareLink
-              href={textToRouteUrl("/signup")}
-              className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary"
-            >
-              {currentTranslations?.signUp}
-            </LanguageAwareLink>
-          </div>
+        <div className="py-4">
           <div className="flex items-center gap-2 w-full">
             <div className="grow h-px bg-gray-300" />
             <div className="flex items-center gap-2 text-sm text-gray-600">
               <Typography as="p" size="sm" align="center">
-                {currentTranslations?.orContinueWith}
+                {`or`}
               </Typography>
             </div>
             <div className="grow h-px bg-gray-300" />
           </div>
-          <SocialAuthentication />
+          <div className="flex gap-2 items-center justify-center py-4">
+            <Typography as="p" size="sm" align="center">
+              {currentTranslations?.dontHaveAccount}
+            </Typography>
+            <LanguageAwareLink
+              href={textToRouteUrl("/signup")}
+              className="font-medium displayPara cursor-pointer text-primary"
+            >
+              {currentTranslations?.signUp}
+            </LanguageAwareLink>
+          </div>
         </div>
       </form>
     </Form>
