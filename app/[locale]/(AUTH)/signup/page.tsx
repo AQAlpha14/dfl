@@ -3,6 +3,7 @@ import { isIndex, nocache } from "@/constants/constants";
 import { Suspense } from "react";
 import type { Metadata } from "next";
 import Signup from "@/components/AllForms/UserAuth/Signup";
+import RoleSelection from "@/components/AllForms/UserAuth/RoleSelection";
 
 export async function generateMetadata(): Promise<Metadata> {
   const vMetaData = await SEOAction();
@@ -32,9 +33,10 @@ const Page: React.FC = () => {
         <div className="container">
           <div className="">
             <div className="flex justify-center items-center h-full md:px-4 px-0 py-6">
-              <div className="w-full max-w-lg">
+              <div className="w-full max-w-sm">
                 <Suspense fallback={<div>Loading...</div>}>
                   <Signup />
+                  <RoleSelection />
                 </Suspense>
               </div>
             </div>

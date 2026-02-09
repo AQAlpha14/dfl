@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { SEOAction } from "@/actions/seo-action";
-import Image from "@/components/Image";
 import { isIndex } from "@/constants/constants";
 import Signin from "@/components/AllForms/UserAuth/Signin";
 
