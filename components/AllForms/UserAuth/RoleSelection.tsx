@@ -108,7 +108,6 @@ const budget: Role[] = [
 // --- Component ---
 export default function RoleSelectionMultiStep() {
   const [step, setStep] = useState(1);
-
   const [selectedRole, setSelectedRole] = useState<string>("");
   const [properties, setProperties] = useState<string>("");
   const [selectedType, setSelectedType] = useState<string>("");
@@ -120,7 +119,7 @@ export default function RoleSelectionMultiStep() {
     switch (step) {
       case 1:
         if (selectedRole === "landlord" || selectedRole === "manager") {
-          return selectedRole !== "" && properties !== "";
+          return properties !== "";
         }
         return selectedRole !== "";
       case 2:
@@ -135,7 +134,6 @@ export default function RoleSelectionMultiStep() {
         return false;
     }
   };
-
   // Handlers
   const handleRoleSelect = (roleId: string) => {
     setSelectedRole(roleId);
@@ -147,13 +145,11 @@ export default function RoleSelectionMultiStep() {
       prev.includes(id) ? prev.filter((loc) => loc !== id) : [...prev, id],
     );
   const handleBudgetSelect = (id: string) => setSelectedBudget(id);
-
   const nextStep = () => {
     if (!isStepValid()) return; // stop if invalid
     setStep((prev) => Math.min(prev + 1, 3));
   };
   const prevStep = () => setStep((prev) => Math.max(prev - 1, 1));
-
   return (
     <section className="max-w-5xl mx-auto bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
       {/* Step 1 */}
@@ -165,13 +161,12 @@ export default function RoleSelectionMultiStep() {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
+          <Typography as="h3" size="lg" weight="semibold" className="pb-2">
             Tell Us About Yourself
-          </h2>
-          <p className="text-gray-500 mb-4">
+          </Typography>
+          <Typography as="p" size="sm">
             This helps us personalize your experience
-          </p>
-
+          </Typography>
           <p className="text-sm font-medium text-gray-700 mb-3">
             Choose Your Role <span className="text-red-500">*</span>
           </p>
@@ -250,7 +245,9 @@ export default function RoleSelectionMultiStep() {
 
           <div className="flex justify-between mt-6">
             <Button type="button" onClick={prevStep} variant="outline">
-              <Icon icon="mdi:arrow-left" /> {btnText.back}
+              <span className="flex items-center gap-2">
+                <Icon icon="mdi:arrow-left" /> {btnText.back}
+              </span>
             </Button>
             <Button
               type="button"
@@ -273,10 +270,12 @@ export default function RoleSelectionMultiStep() {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
+          <Typography as="h3" size="lg" weight="semibold" className="pb-2">
             What would you like to do first?
-          </h2>
-          <p className="text-gray-500 mb-4">Choose an action to get started</p>
+          </Typography>
+          <Typography as="p" size="sm">
+            Choose an action to get started
+          </Typography>
 
           <div className="space-y-4 mb-6">
             {roles2.map((role) => {
@@ -332,7 +331,9 @@ export default function RoleSelectionMultiStep() {
 
           <div className="flex justify-between mt-6">
             <Button type="button" onClick={prevStep} variant="outline">
-              <Icon icon="mdi:arrow-left" /> {btnText.back}
+              <span className="flex items-center gap-2">
+                <Icon icon="mdi:arrow-left" /> {btnText.back}
+              </span>
             </Button>
             <Button
               type="button"
@@ -355,12 +356,12 @@ export default function RoleSelectionMultiStep() {
           exit={{ opacity: 0, x: -20 }}
           transition={{ duration: 0.3 }}
         >
-          <h2 className="text-xl md:text-2xl font-semibold text-gray-900 mb-2">
+          <Typography as="h3" size="lg" weight="semibold" className="pb-2">
             Your preferences
-          </h2>
-          <p className="text-gray-500 mb-4">
+          </Typography>
+          <Typography as="p" size="sm">
             Help us find the perfect property for you
-          </p>
+          </Typography>
 
           {/* Property Type */}
           <div className="mb-4">
@@ -458,6 +459,11 @@ export default function RoleSelectionMultiStep() {
                         : "border-gray-200 hover:border-primaryLight hover:shadow-sm"
                     }`}
                   >
+                    {active && (
+                      <div className="absolute right-2 top-2 w-7 h-7 text-primary rounded-full flex items-center justify-center">
+                        <Icon icon="mdi:check" />
+                      </div>
+                    )}
                     <div className="flex items-center gap-4">
                       <div
                         className={`w-14 h-14 rounded-xl border shadow-sm flex items-center justify-center ${
@@ -485,7 +491,9 @@ export default function RoleSelectionMultiStep() {
 
           <div className="flex justify-between mt-6">
             <Button type="button" onClick={prevStep} variant="outline">
-              <Icon icon="mdi:arrow-left" /> {btnText.back}
+              <span className="flex items-center gap-2">
+                <Icon icon="mdi:arrow-left" /> {btnText.back}
+              </span>
             </Button>
             <Button type="button" disabled={!isStepValid()} icon2>
               {btnText.continue}
