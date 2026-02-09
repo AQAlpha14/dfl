@@ -1,7 +1,7 @@
 "use client";
-import Button from "@/components/Button/Button";
+import Button from "@/components/Button";
 import { Icon } from "@iconify/react";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const PaymentForm = () => {
   const [useShippingAddress, setUseShippingAddress] = useState(true);
@@ -79,9 +79,10 @@ const PaymentForm = () => {
 
       <Button
         className="mt-4"
-        variant={`primary`}
-        text={`Add Payment Method`}
-      />
+        variant="primary"
+        >
+          {`Add Payment Method`}
+        </Button>
     </div>
   );
 };

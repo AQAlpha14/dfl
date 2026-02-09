@@ -3,6 +3,7 @@ import { Suspense } from "react";
 import { SEOAction } from "@/actions/seo-action";
 import { isIndex } from "@/constants/constants";
 import Signin from "@/components/AllForms/UserAuth/Signin";
+import Typography from "@/components/Typography";
 
 /* =========================
    SEO METADATA
@@ -49,10 +50,20 @@ const Page: React.FC = async () => {
         />
       )}
 
-      <section className="secPadding bgimg">
-        <div className="">
-          <div className="flex justify-center items-center">
-            <div className="max-w-sm w-full">
+      <section className="h-screen bg-primaryLight ">
+        <div className="flex gap-8 h-full">
+          <div className="max-w-md hidden lg:block basis-1/4">
+            <div className="bgimg bg-[url('/images/bg_left.webp')] h-full">
+              <Typography as="h3" size="lg" weight="semibold" className="pb-2">
+                Tell Us About Yourself
+              </Typography>
+              <Typography as="p" size="sm">
+                This helps us personalize your experience
+              </Typography>
+            </div>
+          </div>
+          <div className="flex justify-center items-center w-full sm:px-6 px-0">
+            <div className="max-w-sm w-full bg-white p-8 rounded-lg shadow-lg">
               <Suspense fallback={<div>Loading...</div>}>
                 <Signin />
               </Suspense>
