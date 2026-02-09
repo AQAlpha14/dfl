@@ -11,11 +11,10 @@ import {
   TechSupportSVG,
   XSVG,
 } from "@/public/icons/SVGIcons";
-import { count } from "console";
 
 export const contactDetail = {
   telNo: "+971 50 123 4567",
-  email: "support@directfromlandlords.com",
+  email: "support@dfl.com",
   location: "Al Wasl Plaza, Dubai, UAE, 00000",
 };
 
