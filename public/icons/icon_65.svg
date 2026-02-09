@@ -1,28 +1,6 @@
-<svg width="104" height="90" viewBox="0 0 104 90" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_dd_5153_28522)">
-<path d="M20 16C20 7.16344 27.1634 0 36 0H68C76.8366 0 84 7.16344 84 16V48C84 56.8366 76.8366 64 68 64H36C27.1634 64 20 56.8366 20 48V16Z" fill="white" shape-rendering="crispEdges"/>
-<path d="M50.75 24.5C54.5517 24.5979 58.2674 23.3594 61.25 21C61.4357 20.8607 61.6565 20.7759 61.8877 20.7551C62.1189 20.7342 62.3514 20.7782 62.559 20.882C62.7666 20.9858 62.9413 21.1454 63.0633 21.3428C63.1854 21.5403 63.25 21.7679 63.25 22V37C63.25 37.2321 63.1854 37.4597 63.0633 37.6572C62.9413 37.8546 62.7666 38.0142 62.559 38.118C62.3514 38.2218 62.1189 38.2658 61.8877 38.245C61.6565 38.2241 61.4357 38.1393 61.25 38C58.2674 35.6406 54.5517 34.4021 50.75 34.5H43.25C42.587 34.5 41.9511 34.2366 41.4822 33.7678C41.0134 33.2989 40.75 32.663 40.75 32V27C40.75 26.337 41.0134 25.7011 41.4822 25.2322C41.9511 24.7634 42.587 24.5 43.25 24.5H50.75Z" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M44.5 34.5C44.5 37.7456 45.5527 40.9036 47.5 43.5C47.8978 44.0304 48.4901 44.3811 49.1464 44.4749C49.8028 44.5686 50.4696 44.3978 51 44C51.5304 43.6022 51.8811 43.0099 51.9749 42.3536C52.0686 41.6972 51.8978 41.0304 51.5 40.5C50.2018 38.769 49.5 36.6637 49.5 34.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M47 24.5V34.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_dd_5153_28522" x="0" y="0" width="104" height="104" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="6" operator="erode" in="SourceAlpha" result="effect1_dropShadow_5153_28522"/>
-<feOffset dy="8"/>
-<feGaussianBlur stdDeviation="5"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5153_28522"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="5" operator="erode" in="SourceAlpha" result="effect2_dropShadow_5153_28522"/>
-<feOffset dy="20"/>
-<feGaussianBlur stdDeviation="12.5"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="effect1_dropShadow_5153_28522" result="effect2_dropShadow_5153_28522"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_5153_28522" result="shape"/>
-</filter>
-</defs>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 16C0 7.16344 7.1634 0 16 0H48C56.8366 0 64 7.16344 64 16V48C64 56.8366 56.8366 64 48 64H16C7.1634 64 0 56.8366 0 48V16Z" fill="white"/>
+<path d="M30.75 24.5C34.5517 24.5979 38.2674 23.3594 41.25 21C41.4357 20.8607 41.6565 20.7759 41.8877 20.7551C42.1189 20.7342 42.3514 20.7782 42.559 20.882C42.7666 20.9858 42.9413 21.1454 43.0633 21.3428C43.1854 21.5403 43.25 21.7679 43.25 22V37C43.25 37.2321 43.1854 37.4597 43.0633 37.6572C42.9413 37.8546 42.7666 38.0142 42.559 38.118C42.3514 38.2218 42.1189 38.2658 41.8877 38.245C41.6565 38.2241 41.4357 38.1393 41.25 38C38.2674 35.6406 34.5517 34.4021 30.75 34.5H23.25C22.587 34.5 21.9511 34.2366 21.4822 33.7678C21.0134 33.2989 20.75 32.663 20.75 32V27C20.75 26.337 21.0134 25.7011 21.4822 25.2322C21.9511 24.7634 22.587 24.5 23.25 24.5H30.75Z" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 34.5C24.5 37.7456 25.5527 40.9036 27.5 43.5C27.8978 44.0304 28.4901 44.3811 29.1464 44.4749C29.8028 44.5686 30.4696 44.3978 31 44C31.5304 43.6022 31.8811 43.0099 31.9749 42.3536C32.0686 41.6972 31.8978 41.0304 31.5 40.5C30.2018 38.769 29.5 36.6637 29.5 34.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M27 24.5V34.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>

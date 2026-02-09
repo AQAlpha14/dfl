@@ -1,30 +1,8 @@
-<svg width="74" height="74" viewBox="0 0 74 74" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g filter="url(#filter0_dd_5144_26394)">
-<path d="M5 17C5 8.16344 12.1634 1 21 1H53C61.8366 1 69 8.16344 69 17V49C69 57.8366 61.8366 65 53 65H21C12.1634 65 5 57.8366 5 49V17Z" fill="white" shape-rendering="crispEdges"/>
-<path d="M34.5 33H39.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M34.5 28H39.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M39.5 44.25V40.5C39.5 39.837 39.2366 39.2011 38.7678 38.7322C38.2989 38.2634 37.663 38 37 38C36.337 38 35.7011 38.2634 35.2322 38.7322C34.7634 39.2011 34.5 39.837 34.5 40.5V44.25" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M29.5 30.5H27C26.337 30.5 25.7011 30.7634 25.2322 31.2322C24.7634 31.7011 24.5 32.337 24.5 33V41.75C24.5 42.413 24.7634 43.0489 25.2322 43.5178C25.7011 43.9866 26.337 44.25 27 44.25H47C47.663 44.25 48.2989 43.9866 48.7678 43.5178C49.2366 43.0489 49.5 42.413 49.5 41.75V29.25C49.5 28.587 49.2366 27.9511 48.7678 27.4822C48.2989 27.0134 47.663 26.75 47 26.75H44.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M29.5 44.25V24.25C29.5 23.587 29.7634 22.9511 30.2322 22.4822C30.7011 22.0134 31.337 21.75 32 21.75H42C42.663 21.75 43.2989 22.0134 43.7678 22.4822C44.2366 22.9511 44.5 23.587 44.5 24.25V44.25" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
-<defs>
-<filter id="filter0_dd_5144_26394" x="0" y="0" width="74" height="74" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="2" operator="erode" in="SourceAlpha" result="effect1_dropShadow_5144_26394"/>
-<feOffset dy="2"/>
-<feGaussianBlur stdDeviation="2"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_5144_26394"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feMorphology radius="1" operator="erode" in="SourceAlpha" result="effect2_dropShadow_5144_26394"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="3"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="effect1_dropShadow_5144_26394" result="effect2_dropShadow_5144_26394"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect2_dropShadow_5144_26394" result="shape"/>
-</filter>
-</defs>
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 16C0 7.16344 7.1634 0 16 0H48C56.8366 0 64 7.16344 64 16V48C64 56.8366 56.8366 64 48 64H16C7.1634 64 0 56.8366 0 48V16Z" fill="white"/>
+<path d="M29.5 32H34.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M29.5 27H34.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M34.5 43.25V39.5C34.5 38.837 34.2366 38.2011 33.7678 37.7322C33.2989 37.2634 32.663 37 32 37C31.337 37 30.7011 37.2634 30.2322 37.7322C29.7634 38.2011 29.5 38.837 29.5 39.5V43.25" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 29.5H22C21.337 29.5 20.7011 29.7634 20.2322 30.2322C19.7634 30.7011 19.5 31.337 19.5 32V40.75C19.5 41.413 19.7634 42.0489 20.2322 42.5178C20.7011 42.9866 21.337 43.25 22 43.25H42C42.663 43.25 43.2989 42.9866 43.7678 42.5178C44.2366 42.0489 44.5 41.413 44.5 40.75V28.25C44.5 27.587 44.2366 26.9511 43.7678 26.4822C43.2989 26.0134 42.663 25.75 42 25.75H39.5" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24.5 43.25V23.25C24.5 22.587 24.7634 21.9511 25.2322 21.4822C25.7011 21.0134 26.337 20.75 27 20.75H37C37.663 20.75 38.2989 21.0134 38.7678 21.4822C39.2366 21.9511 39.5 22.587 39.5 23.25V43.25" stroke="#4A5565" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
