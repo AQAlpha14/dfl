@@ -1,23 +1,30 @@
 "use client";
-import { zodResolver } from "@hookform/resolvers/zod";
+
 import React, { useContext, useMemo } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, FormProvider as Form, Controller } from "react-hook-form";
 import { z } from "zod";
-import { FormProvider as Form } from "react-hook-form";
-import Button from "@/components/Button/Button";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { toast } from "sonner";
+
+import Button from "@/components/Button";
 import TextInput from "@/components/FormFields/TextInput";
-import NumberInput from "../../components/AllForms/NumberInput";
 import CheckboxInput from "@/components/FormFields/CheckboxInput";
 import MultilineInput from "@/components/FormFields/MultilineInput";
-import { toast } from "sonner";
-import { endpoints } from "@/utils/endpoints";
-import { POST } from "@/actions/actions";
-import { LanguageContext } from "@/app/[locale]/(MAIN)/context/LanguageContext";
 import RHFSelect from "@/components/FormFields/RHFSelect";
+import NumberInput from "@/components/FormFields/NumberInput";
 
-const ContactForm = ({ gridCol }) => {
+import { POST } from "@/actions/actions";
+import { LanguageContext } from "@/context/LanguageContext";
+import endPoints from "@/constants/endPionts";
+
+type ContactFormProps = {
+  gridCol?: string;
+};
+
+const ContactForm: React.FC<ContactFormProps> = ({ gridCol }) => {
   const { locale } = useContext(LanguageContext);
 
+  /* -------------------------------- translations -------------------------------- */
   const t = {
     en: {
       firstName: "First Name",
@@ -59,136 +66,171 @@ const ContactForm = ({ gridCol }) => {
     },
   }[locale];
 
-  const validateSchema = z.object({
-    id: z.number(),
+  /* -------------------------------- schema -------------------------------- */
+  const schema = z.object({
     first_name: z
       .string()
       .min(1, { message: t.validations.requiredFirstName })
       .regex(/^[a-zA-Z\s]+$/, {
         message: t.validations.onlyAlphabets,
       }),
+
     last_name: z
       .string()
       .min(1, { message: t.validations.requiredLastName })
       .regex(/^[a-zA-Z\s]+$/, {
         message: t.validations.onlyAlphabets,
       }),
+
     email: z
       .string()
-      .email(t.validations.invalidEmail)
-      .min(1, { message: t.validations.requiredEmail }),
-    phone_number: z.string().min(1, { message: t.validations.requiredPhone }),
-    message: z.string().min(1, { message: t.validations.requiredMessage }),
-    agreed: z.boolean().refine((value) => value === true, {
-      message: t.validations.acceptTerms,
+      .min(1, { message: t.validations.requiredEmail })
+      .email(t.validations.invalidEmail),
+
+    phone_number: z.string().min(1, {
+      message: t.validations.requiredPhone,
+    }),
+
+    modal_id: z.string().optional(),
+
+    message: z.string().min(1, {
+      message: t.validations.requiredMessage,
+    }),
+
+    agreed: z.literal(true, {
+      errorMap: () => ({ message: t.validations.acceptTerms }),
     }),
   });
 
-  const defaultValues = useMemo(
+  type FormValues = z.infer<typeof schema>;
+
+  /* -------------------------------- default values -------------------------------- */
+  const defaultValues = useMemo<FormValues>(
     () => ({
-      id: 0,
       first_name: "",
       last_name: "",
       email: "",
       phone_number: "",
+      modal_id: "",
       message: "",
-      termsOfService: false,
+      agreed: false,
     }),
     [],
   );
 
-  const methods = useForm({
-    resolver: zodResolver(validateSchema),
+  /* -------------------------------- form -------------------------------- */
+  const methods = useForm<FormValues>({
+    resolver: zodResolver(schema),
     defaultValues,
   });
 
   const {
-    watch,
-    register,
     handleSubmit,
     reset,
+    watch,
+    control,
+    register,
     formState: { isSubmitting, errors },
   } = methods;
 
   const isChecked = watch("agreed");
 
-  const onSubmit = async (data) => {
+  /* -------------------------------- submit -------------------------------- */
+  const onSubmit = async (data: FormValues) => {
     try {
-      const res = await POST(endpoints.AUTH.CONTACT_US, data);
+      const res = await POST(endPoints.CONTACT_US, data);
+
       if (res?.status === 200 || res?.status === 201) {
         reset();
         toast.success(res?.message);
       } else {
         toast.error(res?.message);
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      toast.error(error?.message);
+      toast.error(error?.message || "Something went wrong");
     }
   };
+
+  /* -------------------------------- select options -------------------------------- */
   const carModal = [
-    { label: "Flight Booking", value: "Abu Dhabi" },
-    { label: "Hotel Reservations", value: "Dubai" },
-    { label: "Visa Assistance", value: "Sharjah" },
-    { label: "Transfers", value: "Ajman" },
-    { label: "Travel Management", value: "Ajman" },
+    { label: "Flight Booking", value: "flight" },
+    { label: "Hotel Reservations", value: "hotel" },
+    { label: "Visa Assistance", value: "visa" },
+    { label: "Transfers", value: "transfer" },
+    { label: "Travel Management", value: "travel" },
   ];
+
+  /* -------------------------------- UI -------------------------------- */
   return (
     <Form {...methods}>
-      <form onSubmit={handleSubmit(onSubmit)} className="">
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div
-          className={`grid sm:grid-cols-2 grid-cols-1 gap-2 space-y-3 ${gridCol}`}
+          className={`grid grid-cols-1 sm:grid-cols-2 gap-3 ${gridCol ?? ""}`}
         >
           <TextInput
             label={t.firstName}
-            type="first_name"
+            type="text"
             error={errors.first_name?.message}
             {...register("first_name")}
           />
+
           <TextInput
             label={t.lastName}
-            type="last_name"
+            type="text"
             error={errors.last_name?.message}
             {...register("last_name")}
           />
+
           <TextInput
             label={t.email}
             type="email"
             error={errors.email?.message}
             {...register("email")}
           />
-          <NumberInput
-            label={t.phone}
-            error={errors.phone_number?.message}
-            autoComplete="off"
-            {...register("phone_number")}
+
+          <Controller
+            name="phone_number"
+            control={control}
+            render={({ field }) => (
+              <NumberInput
+                label={t.phone}
+                error={errors.phone_number?.message}
+                autoComplete="off"
+                {...field}
+              />
+            )}
           />
+
           <RHFSelect
             name="modal_id"
-            type="text"
             placeholder="Choose A Topic"
-            className="border-b! sm:col-span-2"
+            className="sm:col-span-2 border-b!"
             options={carModal}
           />
         </div>
-        <div className="space-y-3 pt-8">
+
+        <div className="pt-8 space-y-4">
           <MultilineInput
             label={t.message}
+            rows={5}
             error={errors.message?.message}
             {...register("message")}
-            rows={5}
           />
+
           <CheckboxInput
             title={t.accept}
-            error={errors.agreed?.message}
             checked={isChecked}
+            error={errors.agreed?.message}
             {...register("agreed")}
           />
         </div>
+
         <Button
           loading={isSubmitting}
           variant="primary"
-          className={`mt-5! w-30`}
+          className="mt-5 w-30"
+          type="submit"
         >
           {t.submit}
         </Button>

@@ -211,7 +211,7 @@ const Signup: React.FC = () => {
                 placeholder={currentTranslations?.placeholder?.firstName}
                 type="text"
                 required
-                inputIcon={`/icons/icon_27.svg`}
+                inputIcon={`/icons/icon_36.svg`}
               />
               <RHFField
                 name="last_name"
@@ -219,10 +219,10 @@ const Signup: React.FC = () => {
                 placeholder={currentTranslations?.placeholder?.lastName}
                 type="text"
                 required
-                inputIcon={`/icons/icon_27.svg`}
+                inputIcon={`/icons/icon_36.svg`}
               />
               <RHFField
-                name="last_name"
+                name="email"
                 label={currentTranslations?.email}
                 placeholder={currentTranslations?.placeholder?.email}
                 type="text"
@@ -230,11 +230,12 @@ const Signup: React.FC = () => {
                 inputIcon={`/icons/icon_59.svg`}
                 className="sm:col-span-2"
               />
+             
               <RHFField
                 name="password"
                 label={currentTranslations?.password}
                 placeholder={currentTranslations?.placeholder?.password}
-                type="text"
+                type="password"
                 required
                 inputIcon={`/icons/icon_60.svg`}
               />
@@ -242,7 +243,7 @@ const Signup: React.FC = () => {
                 name="conform_password"
                 label={currentTranslations?.password}
                 placeholder={currentTranslations?.placeholder?.password}
-                type="text"
+                type="password"
                 required
                 inputIcon={`/icons/icon_60.svg`}
               />
