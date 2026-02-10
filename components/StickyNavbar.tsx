@@ -240,18 +240,9 @@ export function StickyNavbar() {
             path === "category" ||
             path === "tag" ||
             lastPath === "rent" ||
+            lastPath === "guides" ||
             lastPath === "contact-us" ||
-            lastPath === "billing" ||
-            lastPath === "billing" ||
-            lastPath === "booking" ||
-            lastPath === "signin" ||
-            lastPath === "signup" ||
-            lastPath === "forgotpassword" ||
-            lastPath === "passwordresetsuccess" ||
-            lastPath === "order" ||
-            lastPath === "update-password" ||
             lastPath === "favourities" ||
-            lastPath === "career-form" ||
             lastPath === "privacy-policy" ||
             lastPath === "terms-of-service" ||
             lastPath === "form"

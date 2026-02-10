@@ -1,12 +1,15 @@
+import HeroSection from "@/sections/HeroSection/HeroSection";
 import ListingPage from "@/view/ListingPage";
 
 const Page = () => {
   return (
-    <section className="secPadding">
-      <div className="container">
-        <ListingPage />
-      </div>
-    </section>
+    <>
+      <HeroSection
+        heading="Find Residential Properties for Rent at ~Direct from Landlords"
+        className="bg-[url('/images/bg_1.webp')] bg-img"
+      />
+      <ListingPage />
+    </>
   );
 };
 export default Page;

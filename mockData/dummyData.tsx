@@ -32,6 +32,7 @@ export const btnText = {
   continue: "Continue",
   calculate: "calculate",
   back: "Back",
+  save_search: "Save Search",
   reset: "Reset",
   browse_properties: "Browse Properties",
   contact_agent: "Contact Agent",

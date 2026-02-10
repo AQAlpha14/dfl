@@ -50,7 +50,37 @@ const SearchBar: FC = () => {
       value: item.id,
     })) ?? [];
 
-  const catOptions: SelectOption[] =
+  const cityOptions: SelectOption[] =
+    vendorUtility?.[1]?.propert_type?.map((item: any) => ({
+      label: item.title,
+      value: item.id,
+    })) ?? [];
+  const priceOptions: SelectOption[] =
+    vendorUtility?.[1]?.propert_type?.map((item: any) => ({
+      label: item.title,
+      value: item.id,
+    })) ?? [];
+  const areaOptions: SelectOption[] =
+    vendorUtility?.[1]?.propert_type?.map((item: any) => ({
+      label: item.title,
+      value: item.id,
+    })) ?? [];
+  const furnishingOptions: SelectOption[] =
+    vendorUtility?.[1]?.propert_type?.map((item: any) => ({
+      label: item.title,
+      value: item.id,
+    })) ?? [];
+  const propertyAreaOptions: SelectOption[] =
+    vendorUtility?.[1]?.propert_type?.map((item: any) => ({
+      label: item.title,
+      value: item.id,
+    })) ?? [];
+  const bedroomsOptions: SelectOption[] =
+    vendorUtility?.[1]?.propert_type?.map((item: any) => ({
+      label: item.title,
+      value: item.id,
+    })) ?? [];
+  const selectAreaOptions: SelectOption[] =
     vendorUtility?.[1]?.propert_type?.map((item: any) => ({
       label: item.title,
       value: item.id,
@@ -103,156 +133,144 @@ const SearchBar: FC = () => {
     router.push(url);
   };
 
-
   return (
     <div className="">
-      <div className="rounded-xl shadow-xl bg-white px-4 py-2 ">
-        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex lg:flex-nowrap flex-wrap items-center justify-between space-x-0 lg:space-x-2 space-y-2 lg:space-y-0">
-            <div className="lg:w-xl w-full">
-              <RHFTextField
-                name="keywords"
-                type="text"
-                placeholder="Address, City, Zip, Neighborhood"
-                className="text-primary! border-primary! bg-primaryLight"
-                variant="outlined"
-                isHidden
-              />
-            </div>
-            <RHFSelect
-              name="property_type"
-              placeholder="Property Type"
-              options={purposeOptions}
-              className="w-full"
-              isLoading={loading}
+      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+        <div className="flex lg:flex-nowrap flex-wrap items-center justify-between space-x-0 lg:space-x-2 space-y-2 lg:space-y-0">
+          <div className="lg:w-xl w-full">
+            <RHFTextField
+              name="keywords"
+              type="text"
+              placeholder="Address, City, Zip, Neighborhood"
+              className="text-primary! border-primary! bg-primaryLight"
+              variant="outlined"
               isHidden
             />
-            <RHFSelect
-              name="city"
-              placeholder="Select City"
-              options={catOptions}
-              className="w-full text-primary!"
-              isLoading={loading}
-              isHidden
-            />
-            <RHFSelect
-              name="price"
-              placeholder="Price"
-              options={catOptions}
-              className="w-full text-primary!"
-              isLoading={loading}
-              isHidden
-            />
-            <RHFSelect
-              name="area"
-              placeholder="Area (Sqft)"
-              options={catOptions}
-              className="w-full text-primary!"
-              isLoading={loading}
-              isHidden
-            />
-            <div className="flex justify-around items-center">
-              <Button
-                variant="primary"
-                type="submit"
-                disabled={isSubmitting || loading}
-                loading={isSubmitting}
-                className="md:rounded-md! flex items-center bg-primary w-full md:w-fit"
-              >
-                <Icon
-                  icon="mdi:search"
-                  width="1.2rem"
-                  height="1.2rem"
-                  className="mx-auto"
-                />
-                {btnText.search_properties}
-              </Button>
-            </div>
-            <div className="flex justify-around items-center">
-              <Button
-                variant="txt"
-                type="button"
-                onClick={() => setIsOpenBar((prev) => !prev)}
-                className="flex items-center w-full border-none gap-1"
-              >
-                <Icon
-                  icon="mage:filter"
-                  width="1.2rem"
-                  height="1.2rem"
-                  className="mx-auto"
-                />
-
-                {btnText.advance_filter}
-
-                {/* ROTATING ARROW */}
-                <motion.div
-                  animate={{ rotate: isOpenBar ? 90 : 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="mx-auto"
-                >
-                  <Icon
-                    icon="lsicon:right-outline"
-                    width="1.2rem"
-                    height="1.2rem"
-                  />
-                </motion.div>
-              </Button>
-            </div>
           </div>
-          <AnimatePresence>
-            {isOpenBar && (
+          <RHFSelect
+            name="property_type"
+            placeholder="Property Type"
+            options={purposeOptions}
+            className="w-full"
+            isLoading={loading}
+            isHidden
+          />
+          <RHFSelect
+            name="city"
+            placeholder="Select City"
+            options={cityOptions}
+            className="w-full text-primary!"
+            isLoading={loading}
+            isHidden
+          />
+          <RHFSelect
+            name="price"
+            placeholder="Price"
+            options={priceOptions}
+            className="w-full text-primary!"
+            isLoading={loading}
+            isHidden
+          />
+          <RHFSelect
+            name="area"
+            placeholder="Area (Sqft)"
+            options={areaOptions}
+            className="w-full text-primary!"
+            isLoading={loading}
+            isHidden
+          />
+          <div className="flex justify-around items-center">
+            <Button
+              variant="primary"
+              type="submit"
+              // disabled={isSubmitting || loading}
+              // loading={isSubmitting}
+              className="md:rounded-md! flex items-center bg-primary w-full md:w-fit"
+            >
+              {btnText.save_search}
+            </Button>
+          </div>
+          <div className="flex justify-around items-center">
+            <Button
+              variant="txt"
+              type="button"
+              onClick={() => setIsOpenBar((prev) => !prev)}
+              className="flex items-center w-full border-none gap-1"
+            >
+              <Icon
+                icon="mage:filter"
+                width="1.2rem"
+                height="1.2rem"
+                className="mx-auto"
+              />
+              {isOpenBar ? btnText.less_filters : btnText.more_filters}
               <motion.div
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: "auto", opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.35, ease: "easeInOut" }}
-                className="overflow-hidden"
+                animate={{ rotate: isOpenBar ? 90 : 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="mx-auto"
               >
-                <div className="flex">
-                  <div className="md:basis-4/5 basis-full">
-                    <motion.div
-                      initial={{ y: -10 }}
-                      animate={{ y: 0 }}
-                      exit={{ y: -10 }}
-                      transition={{ duration: 0.3 }}
-                      className="md:flex lg:flex-nowrap flex-wrap items-center gap-2 pt-2"
-                    >
-                      <RHFSelect
-                        name="furnishing_status"
-                        placeholder="Furnishing Status"
-                        options={purposeOptions}
-                        className="w-full text-primary! border-gray-100 bg-white"
-                        isLoading={loading}
-                      />
-                      <RHFSelect
-                        name="property_area"
-                        placeholder="Property Area"
-                        options={catOptions}
-                        className="w-full text-primary!"
-                        isLoading={loading}
-                      />
-                      <RHFSelect
-                        name="bedrooms"
-                        placeholder="Bed & Bath"
-                        options={catOptions}
-                        className="w-full text-primary!"
-                        isLoading={loading}
-                      />
-                      <RHFSelect
-                        name="area"
-                        placeholder="Select Area"
-                        options={catOptions}
-                        className="w-full text-primary!"
-                        isLoading={loading}
-                      />
-                    </motion.div>
-                  </div>
-                </div>
+                <Icon
+                  icon="lsicon:right-outline"
+                  width="1.2rem"
+                  height="1.2rem"
+                />
               </motion.div>
-            )}
-          </AnimatePresence>
-        </FormProvider>
-      </div>
+            </Button>
+          </div>
+        </div>
+        <AnimatePresence>
+          {isOpenBar && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className="overflow-hidden"
+            >
+              <div className="flex">
+                <div className="md:basis-4/5 basis-full">
+                  <motion.div
+                    initial={{ y: -10 }}
+                    animate={{ y: 0 }}
+                    exit={{ y: -10 }}
+                    transition={{ duration: 0.3 }}
+                    className="md:flex lg:flex-nowrap flex-wrap items-center gap-2 pt-2"
+                  >
+                    <RHFSelect
+                      name="furnishing_status"
+                      placeholder="Furnishing Status"
+                      options={furnishingOptions}
+                      className="w-full text-primary! border-gray-100 bg-white"
+                      isLoading={loading}
+                    />
+                    <RHFSelect
+                      name="property_area"
+                      placeholder="Property Area"
+                      options={propertyAreaOptions}
+                      className="w-full text-primary!"
+                      isLoading={loading}
+                    />
+                    <RHFSelect
+                      name="bedrooms"
+                      placeholder="Bed & Bath"
+                      options={bedroomsOptions}
+                      className="w-full text-primary!"
+                      isLoading={loading}
+                    />
+                    <RHFSelect
+                      name="area"
+                      placeholder="Select Area"
+                      options={selectAreaOptions}
+                      className="w-full text-primary!"
+                      isLoading={loading}
+                    />
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </FormProvider>
     </div>
   );
 };
