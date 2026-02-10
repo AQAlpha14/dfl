@@ -30,9 +30,6 @@ const Footer = () => {
                 />
               </Link>
               <div className="pt-2 ">
-                {/* <Typography as="h6" size="md" weight="bold" color="white">
-                {"Run Your Entire Business from One Powerful Platform"}
-              </Typography> */}
                 <Typography as="p" size="sm" color="white">
                   {
                     "DFL empowers landlords and tenants through smart, commission-free services, providing one-to-one communication, vetted listings, and hassle-free rental journeys tailored for the UAE market."
@@ -41,7 +38,7 @@ const Footer = () => {
               </div>
             </div>
             <div className="flex md:justify-end justify-center items-center">
-              <div className="max-w-[470px] w-full">
+              <div className="max-w-117.5 w-full">
                 <NewsLetterForm />
               </div>
             </div>

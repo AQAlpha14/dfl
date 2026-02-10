@@ -285,10 +285,6 @@ export const footerSections = [
         link: "/meet-the-team",
       },
       {
-        name: "Careers",
-        link: "/careers",
-      },
-      {
         name: "Terms of Service",
         link: "/terms-of-service",
       },

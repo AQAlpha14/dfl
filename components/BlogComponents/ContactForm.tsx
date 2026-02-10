@@ -1,16 +1,19 @@
 "use client";
+
 import React, { useMemo } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { toast } from "sonner";
-import TextInput from "@/components/FormFields/TextInput";
+
 import MultilineInput from "@/components/FormFields/MultilineInput";
 import CheckboxInput from "@/components/FormFields/CheckboxInput";
 import Button from "@/components/Button";
+import RHFField from "../FormFields/RHFField";
+
 import { POST } from "@/actions/actions";
 import endPoints from "@/constants/endPionts";
-import NumberInput from "../FormFields/NumberInput";
+import { btnText } from "@/mockData/dummyData";
 
 interface ContactFormProps {
   gridCol?: boolean;
@@ -29,50 +32,89 @@ interface ContactFormData {
   agreed: boolean;
 }
 
-const ContactForm: React.FC<ContactFormProps> = ({ gridCol }) => {
-  const t = {
+type Locale = "en" | "ar";
+
+type TranslationSchema = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phone: string;
+  message: string;
+  acceptTerms: string;
+  requiredFirstName: string;
+  requiredLastName: string;
+  requiredEmail: string;
+  requiredPhone: string;
+  requiredMessage: string;
+  placeholder: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    phone: string;
+  };
+};
+
+const translations: Record<Locale, TranslationSchema> = {
+  en: {
     firstName: "First Name",
     lastName: "Last Name",
     email: "Email",
     phone: "Phone Number",
-    message: "Type your message...",
-    accept: "I accept the Terms",
-    submit: "Submit",
-    validations: {
-      requiredFirstName: "First Name is required",
-      requiredLastName: "Last Name is required",
-      onlyAlphabets: "Only alphabets are allowed for this field",
-      requiredEmail: "Email is required",
-      invalidEmail: "Invalid email format",
-      requiredPhone: "Contact Number is required",
-      requiredMessage: "Message is required",
-      acceptTerms: "Please accept.",
+    message: "Message",
+    acceptTerms: "I agree to the terms and conditions",
+    requiredFirstName: "First name is required.",
+    requiredLastName: "Last name is required.",
+    requiredEmail: "Valid email is required.",
+    requiredPhone: "Phone number is required.",
+    requiredMessage: "Message is required.",
+    placeholder: {
+      firstName: "Abdul",
+      lastName: "Ahmed",
+      email: "Enter your email",
+      phone: "Enter your phone number",
     },
-  };
+  },
+  ar: {
+    firstName: "الاسم الأول",
+    lastName: "اسم العائلة",
+    email: "البريد الإلكتروني",
+    phone: "رقم الهاتف",
+    message: "رسالة",
+    acceptTerms: "أوافق على الشروط والأحكام",
+    requiredFirstName: "الاسم الأول مطلوب.",
+    requiredLastName: "اسم العائلة مطلوب.",
+    requiredEmail: "البريد الإلكتروني مطلوب.",
+    requiredPhone: "رقم الهاتف مطلوب.",
+    requiredMessage: "الرسالة مطلوبة.",
+    placeholder: {
+      firstName: "Abdul",
+      lastName: "Ahmed",
+      email: "أدخل بريدك الإلكتروني",
+      phone: "أدخل رقم هاتفك",
+    },
+  },
+};
 
-  // Zod validation schema
-  const validateSchema = z.object({
-    id: z.number(),
-    first_name: z
-      .string()
-      .min(1, { message: t.validations.requiredFirstName })
-      .regex(/^[a-zA-Z\s]+$/, { message: t.validations.onlyAlphabets }),
-    last_name: z
-      .string()
-      .min(1, { message: t.validations.requiredLastName })
-      .regex(/^[a-zA-Z\s]+$/, { message: t.validations.onlyAlphabets }),
-    email: z
-      .string()
-      .min(1, { message: t.validations.requiredEmail })
-      .email(t.validations.invalidEmail),
-    phone_number: z.string().min(1, { message: t.validations.requiredPhone }),
-    message: z.string().min(1, { message: t.validations.requiredMessage }),
-    agreed: z.boolean().refine((value) => value === true, {
-      message: t.validations.acceptTerms,
-    }),
-  });
+const ContactForm: React.FC<ContactFormProps> = ({ gridCol }) => {
+  const locale: Locale = "en";
+  const t = translations[locale];
 
-  // Default values for form
+  const validateSchema = useMemo(
+    () =>
+      z.object({
+        id: z.number(),
+        first_name: z.string().min(1, t.requiredFirstName),
+        last_name: z.string().min(1, t.requiredLastName),
+        email: z.string().min(1, t.requiredEmail).email(t.requiredEmail),
+        phone_number: z.string().min(1, t.requiredPhone),
+        message: z.string().min(1, t.requiredMessage),
+        agreed: z.boolean().refine((v) => v === true, {
+          message: "You must accept the terms.",
+        }),
+      }),
+    [t],
+  );
+
   const defaultValues = useMemo<ContactFormData>(
     () => ({
       id: 0,
@@ -83,7 +125,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ gridCol }) => {
       message: "",
       agreed: false,
     }),
-    []
+    [],
   );
 
   const methods = useForm<ContactFormData>({
@@ -92,16 +134,12 @@ const ContactForm: React.FC<ContactFormProps> = ({ gridCol }) => {
   });
 
   const {
-    watch,
-    register,
     handleSubmit,
+    register,
     reset,
     formState: { isSubmitting, errors },
   } = methods;
 
-  const isChecked = watch("agreed");
-
-  // Form submission
   const onSubmit = async (data: ContactFormData) => {
     try {
       const res = await POST(endPoints.CONTACT_US, data);
@@ -113,7 +151,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ gridCol }) => {
         toast.error(res?.message || "Failed to send message.");
       }
     } catch (error: any) {
-      console.error(error);
       toast.error(error?.message || "Something went wrong!");
     }
   };
@@ -122,69 +159,64 @@ const ContactForm: React.FC<ContactFormProps> = ({ gridCol }) => {
     <FormProvider {...methods}>
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         <div
-          className={`grid gap-2 space-y-4 ${
+          className={`grid gap-4 ${
             gridCol ? "!sm:grid-cols-1" : "sm:grid-cols-2 grid-cols-1"
           }`}
         >
-          <TextInput
+          <RHFField
+            name="first_name"
             label={t.firstName}
+            placeholder={t.placeholder.firstName}
             type="text"
-            error={errors.first_name?.message}
-            {...register("first_name")}
-            aria-invalid={!!errors.first_name}
-            aria-describedby="first_name_error"
+            required
+            inputIcon="/icons/icon_36.svg"
           />
-          <TextInput
+
+          <RHFField
+            name="last_name"
             label={t.lastName}
+            placeholder={t.placeholder.lastName}
             type="text"
-            error={errors.last_name?.message}
-            {...register("last_name")}
-            aria-invalid={!!errors.last_name}
-            aria-describedby="last_name_error"
+            required
+            inputIcon="/icons/icon_36.svg"
           />
-          <TextInput
+
+          <RHFField
+            name="email"
             label={t.email}
+            placeholder={t.placeholder.email}
             type="email"
-            error={errors.email?.message}
-            {...register("email")}
-            aria-invalid={!!errors.email}
-            aria-describedby="email_error"
+            required
+            inputIcon="/icons/icon_36.svg"
           />
-          <NumberInput
-            type="number"
+
+          <RHFField
+            name="phone_number"
             label={t.phone}
-            error={errors.phone_number?.message}
-            {...register("phone_number")}
-            aria-invalid={!!errors.phone_number}
-            aria-describedby="phone_number_error"
+            placeholder={t.placeholder.phone}
+            type="tel"
+            required
+            inputIcon="/icons/icon_36.svg"
           />
         </div>
 
         <div className="space-y-3 pt-6">
-          <MultilineInput
+          <RHFField
+            name="message"
             label={t.message}
-            error={errors.message?.message}
-            {...register("message")}
+            placeholder={t.message}
+            type="textarea"
+            required
             rows={5}
-            aria-invalid={!!errors.message}
-            aria-describedby="message_error"
-          />
-          <CheckboxInput
-            title={t.accept}
-            error={errors.agreed?.message}
-            checked={isChecked}
-            {...register("agreed")}
-            aria-invalid={!!errors.agreed}
-            aria-describedby="agreed_error"
           />
         </div>
 
         <Button
           loading={isSubmitting}
           variant="primary"
-          className="mt-5! w-30"
+          className="mt-5 w-30"
         >
-          {t.submit}
+          {btnText.submit}
         </Button>
       </form>
     </FormProvider>

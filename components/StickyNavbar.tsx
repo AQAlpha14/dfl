@@ -240,6 +240,7 @@ export function StickyNavbar() {
             path === "category" ||
             path === "tag" ||
             lastPath === "rent" ||
+            lastPath === "contact-us" ||
             lastPath === "billing" ||
             lastPath === "billing" ||
             lastPath === "booking" ||

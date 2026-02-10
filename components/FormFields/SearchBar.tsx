@@ -100,9 +100,9 @@ const SearchBar: FC = () => {
     if (Array.from(queryParams).length > 0) {
       url += `?${queryParams.toString()}`;
     }
-
     router.push(url);
   };
+
 
   return (
     <div className="">

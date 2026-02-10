@@ -9,10 +9,6 @@ import Image from "@/components/Image";
 /*                                   Types                                    */
 /* -------------------------------------------------------------------------- */
 
-interface AffiliateSectionProps {
-  heading: string;
-}
-
 interface TelecomCompany {
   alt: string;
   src: string;
@@ -22,7 +18,7 @@ interface TelecomCompany {
 /*                               Component                                    */
 /* -------------------------------------------------------------------------- */
 
-const AffiliateSection: React.FC<AffiliateSectionProps> = ({ heading }) => {
+const AffiliateSection: React.FC = () => {
   const telecomCompanies: TelecomCompany[] = [
     { alt: "Facebook", src: "/icons/frame39251.svg" },
     { alt: "Facebook", src: "/icons/frame39252.svg" },
@@ -58,10 +54,9 @@ const AffiliateSection: React.FC<AffiliateSectionProps> = ({ heading }) => {
       <div className="container">
         <div className="pb-4">
           <Typography as="h2" size="lg" weight="semibold" align="center">
-            {heading}
+            {"Trusted By The Best!"}
           </Typography>
         </div>
-
         <div className="">
           <SplideSlider data={telecomCompanies} options={options}>
             <Image src="" width={210} height={100} alt="" />

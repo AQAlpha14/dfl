@@ -1,6 +1,4 @@
 "use client";
-import { useContext } from "react";
-import { LanguageContext } from "@/context/LanguageContext";
 import AffiliateSection from "@/sections/AffiliateSection";
 import FeaturedListingsSection from "@/sections/FeaturedListingsSection";
 import HeroSection from "@/sections/HeroSection/HeroSection";
@@ -35,7 +33,6 @@ const heroData = {
   bookFreeDemo: true,
 };
 export default function HomePage() {
-  const { locale } = useContext(LanguageContext);
   return (
     <div className="">
       <HeroSection
@@ -44,13 +41,7 @@ export default function HomePage() {
         Countertabs
         className="bg-[url('/images/bg_1.webp')] bg-img"
       />
-      <AffiliateSection
-        heading={
-          locale === "ar"
-            ? "خدمة تأجير السيارات الفاخرة الرائدة في دبي"
-            : "Trusted By The Best!"
-        }
-      />
+      <AffiliateSection />
       <FeaturedListingsSection
         heading="Explore Our Featured Listings"
         paragraph={[
