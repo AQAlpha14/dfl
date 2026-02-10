@@ -37,19 +37,15 @@ export default function OtpInput({
     setOtp(newOtp);
 
     setValue(props.name, newOtp.join(""));
-
-    // Move to next input if current input has a value
     if (value && index < length - 1) {
       inputRefs.current[index + 1]?.focus();
     }
-
-    // // Trigger onChange with complete OTP string
-    // if (onChange) {
-    //   onChange(newOtp.join(""));
-    // }
   };
 
-  const handleKeyDown = (index: number, e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
     // Move to previous input on backspace if current input is empty
     if (e.key === "Backspace" && !otp[index] && index > 0) {
       inputRefs.current[index - 1]?.focus();
@@ -81,16 +77,16 @@ export default function OtpInput({
   };
 
   return (
-    <div className="mb-4">
-      <label className="block text-sm font-medium text-gray-dark mb-2">
-        {label}
-      </label>
+    <div className="pb-6 text-center">
+      <label className="text-sm text-gray-dark">{label}</label>
 
-      <div className="flex space-x-2 sm:space-x-4 justify-center">
+      <div className="flex space-x-2 sm:space-x-4 justify-center pt-4">
         {Array.from({ length }).map((_, index) => (
           <input
             key={index}
-            ref={(el) => { inputRefs.current[index] = el; }}
+            ref={(el) => {
+              inputRefs.current[index] = el;
+            }}
             type="number"
             maxLength={1}
             value={otp[index]}

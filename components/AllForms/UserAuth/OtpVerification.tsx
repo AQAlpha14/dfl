@@ -9,13 +9,12 @@ import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { POST } from "@/actions/actions";
 import { textToRouteUrl } from "@/utils/apiHelper";
-import Image from "next/image";
 import { LanguageContext } from "@/context/LanguageContext";
 import endPoints from "@/constants/endPionts";
 import LanguageAwareLink from "@/components/LanguageAwareLink";
 import Typography from "@/components/Typography";
 import OtpInput from "@/components/FormFields/OtpInput";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 type Locale = "en" | "ar";
 
@@ -23,11 +22,10 @@ interface TranslationSet {
   heading: string;
   subText: (email?: string) => string;
   timerLabel: string;
-  enterOtp: string;
   verify: string;
   resend: string;
   knowPassword: string;
-  signUp: string;
+  signin: string;
   otpLengthError: string;
   otpTypeError: string;
 }
@@ -46,11 +44,10 @@ const translations: Record<Locale, TranslationSet> = {
     subText: (email) =>
       `Please enter 6 digit verification code sent to ${email}`,
     timerLabel: "Didn’t get the OTP code?",
-    enterOtp: "Enter OTP Code",
     verify: "Verify",
     resend: "Resend",
     knowPassword: "Know your password?",
-    signUp: "Sign Up",
+    signin: "Sign In",
     otpLengthError: "OTP must be exactly 6 digits long.",
     otpTypeError: "OTP must contain only numeric characters.",
   },
@@ -59,11 +56,10 @@ const translations: Record<Locale, TranslationSet> = {
     subText: (email) =>
       `يرجى إدخال رمز التحقق المكون من 6 أرقام المرسل إلى ${email}`,
     timerLabel: "لم تحصل على رمز التحقق؟",
-    enterOtp: "أدخل رمز التحقق",
     verify: "تحقق",
     resend: "إعادة الإرسال",
     knowPassword: "هل تعرف كلمة المرور؟",
-    signUp: "اشتراك",
+    signin: "اشتراك",
     otpLengthError: "يجب أن يكون رمز التحقق مكونًا من 6 أرقام.",
     otpTypeError: "يجب أن يحتوي رمز التحقق على أرقام فقط.",
   },
@@ -119,7 +115,9 @@ const OtpVerification: React.FC<OtpVerificationProps> = ({ email }) => {
   const resendOtpHandler = async () => {
     try {
       setLoading(true);
-      const res = await POST(endPoints.AUTH.RESEND_VERIFY_OTP, { email: upEmail });
+      const res = await POST(endPoints.AUTH.RESEND_VERIFY_OTP, {
+        email: upEmail,
+      });
       setLoading(false);
       if (res?.status === 200) toast.success(res?.message);
       else toast.error(res?.message);
@@ -136,73 +134,58 @@ const OtpVerification: React.FC<OtpVerificationProps> = ({ email }) => {
   };
 
   return (
-    <div className="w-full space-y-4 p-4">
-      <div className="flex items-center justify-center w-full mb-3">
-        <LanguageAwareLink href={textToRouteUrl("/")} className="cursor-pointer">
-          <Image
-            src={`/icons/dfl_logo2.svg`}
-            alt="logo"
-            width={70}
-            height={64}
-            className="w-auto lg:h-28 h-14"
-          />
-        </LanguageAwareLink>
-      </div>
-
-      <Typography as="h2" size="xl">
-        {currentTranslations.heading}
-      </Typography>
-      <Typography as="p" size="sm">
-        {currentTranslations.subText(upEmail)}
-      </Typography>
-      <Typography as="h5" size="md">
-        {`${currentTranslations.timerLabel} ${formatTime(timer)}`}
-      </Typography>
-
-      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Typography as="h5" size="md">
-          {currentTranslations.enterOtp}
+    <div className="max-w-112 w-full mx-auto space-y-4 bg-white rounded-xl shadow-lg p-6">
+      <div className="text-center">
+        <Typography as="h2" size="xl">
+          {currentTranslations.heading}
         </Typography>
+        <Typography as="p" size="sm">
+          {currentTranslations.subText(upEmail)}
+        </Typography>
+        <Typography as="h5" size="md">
+          {`${currentTranslations.timerLabel} ${formatTime(timer)}`}
+        </Typography>
+      </div>
+      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
         <div className="grid grid-cols-1 gap-6">
           <div className="w-full flex items-center justify-center mt-4">
-            <div className="max-w-112.5">
+            <div className="max-w-sm">
               <OtpInput name="code" />
+              <div className="flex justify-center gap-2">
+                <Button
+                  type="submit"
+                  disabled={isSubmitting}
+                  loading={isSubmitting}
+                  variant="primary"
+                  className="w-full"
+                >
+                  {currentTranslations.verify}
+                </Button>
+                <Button
+                  type="button"
+                  onClick={resendOtpHandler}
+                  disabled={loading || timer > 0}
+                  loading={loading}
+                  variant="primary"
+                  className={`w-full ${timer > 0 ? "opacity-50 cursor-not-allowed" : ""}`}
+                >
+                  {currentTranslations.resend}
+                </Button>
+              </div>
             </div>
-          </div>
-          <div className="flex justify-center gap-2">
-            <Button
-              type="submit"
-              disabled={isSubmitting}
-              loading={isSubmitting}
-              variant="primary"
-              className="w-full"
-            >
-              {currentTranslations.verify}
-            </Button>
-            <Button
-              type="button"
-              onClick={resendOtpHandler}
-              disabled={loading || timer > 0}
-              loading={loading}
-              variant="primary"
-              className={`w-full ${timer > 0 ? "opacity-50 cursor-not-allowed" : ""}`}
-            >
-              {currentTranslations.resend}
-            </Button>
           </div>
         </div>
       </FormProvider>
-
       <div className="flex flex-col items-center justify-center gap-4">
         <div className="grid place-items-center">
           <Typography as="p" size="sm">
             {currentTranslations.knowPassword}
           </Typography>
           <LanguageAwareLink
-            href={textToRouteUrl("/signup")}
-            className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary"
+            href={textToRouteUrl("/signin")}
+            className="font-medium cursor-pointer text-lg text-primary"
           >
-            {currentTranslations.signUp}
+            {currentTranslations.signin}
           </LanguageAwareLink>
         </div>
       </div>
