@@ -141,85 +141,87 @@ const Signin: React.FC = () => {
   };
   const isChecked = watch("rememberMe");
   return (
-    <Form {...methods}>
-      <Typography as="h2" size="xl" weight="bold">
-        {currentTranslations?.title}
-      </Typography>
-      <Typography as="p" size="sm">
-        {currentTranslations?.desciption}
-      </Typography>
-      <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-6"}>
-        <div className="space-y-6 mb-6">
-          <div className="space-y-6">
-            <RHFField
-              name="email"
-              label={currentTranslations?.email}
-              placeholder={currentTranslations?.placeholder?.email}
-              type="email"
-              required
-              inputIcon={`/icons/icon_59.svg`}
-            />
-            <RHFField
-              name="password"
-              label={currentTranslations?.password}
-              placeholder={currentTranslations?.placeholder?.password}
-              type="password"
-              required
-              inputIcon={`/icons/icon_60.svg`}
-            />
-          </div>
-          <div className="flex items-center justify-between gap-3">
-            <div>
-              <CheckboxInput
-                title={currentTranslations?.rememberMe}
-                error={errors.rememberMe?.message}
-                checked={isChecked}
-                {...register("rememberMe")}
+    <div className="bg-white p-8 rounded-lg shadow-lg w-full">
+      <Form {...methods}>
+        <Typography as="h2" size="xl" weight="bold">
+          {currentTranslations?.title}
+        </Typography>
+        <Typography as="p" size="sm">
+          {currentTranslations?.desciption}
+        </Typography>
+        <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-6"}>
+          <div className="space-y-6 mb-6">
+            <div className="space-y-6">
+              <RHFField
+                name="email"
+                label={currentTranslations?.email}
+                placeholder={currentTranslations?.placeholder?.email}
+                type="email"
+                required
+                inputIcon={`/icons/icon_59.svg`}
+              />
+              <RHFField
+                name="password"
+                label={currentTranslations?.password}
+                placeholder={currentTranslations?.placeholder?.password}
+                type="password"
+                required
+                inputIcon={`/icons/icon_60.svg`}
               />
             </div>
-            <LanguageAwareLink
-              href={textToRouteUrl("/forgotpassword")}
-              className="displayPara cursor-pointer"
-            >
-              {currentTranslations?.forgotPassword}
-            </LanguageAwareLink>
-          </div>
-        </div>
-        <div className="flex justify-center">
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            loading={isSubmitting}
-            variant="primary"
-            className="w-full"
-          >
-            {currentTranslations?.signin}
-          </Button>
-        </div>
-        <div className="py-8">
-          <div className="flex items-center gap-2 w-full">
-            <div className="grow h-px bg-gray-300" />
-            <div className="flex items-center gap-2 text-sm text-gray-600">
-              <Typography as="p" size="sm" align="center">
-                {`or`}
-              </Typography>
+            <div className="flex items-center justify-between gap-3">
+              <div>
+                <CheckboxInput
+                  title={currentTranslations?.rememberMe}
+                  error={errors.rememberMe?.message}
+                  checked={isChecked}
+                  {...register("rememberMe")}
+                />
+              </div>
+              <LanguageAwareLink
+                href={textToRouteUrl("/forgotpassword")}
+                className="displayPara cursor-pointer"
+              >
+                {currentTranslations?.forgotPassword}
+              </LanguageAwareLink>
             </div>
-            <div className="grow h-px bg-gray-300" />
           </div>
-          <div className="flex gap-2 items-center justify-center py-4">
-            <Typography as="p" size="sm" align="center">
-              {currentTranslations?.dontHaveAccount}
-            </Typography>
-            <LanguageAwareLink
-              href={textToRouteUrl("/signup")}
-              className="font-medium displayPara cursor-pointer text-primary"
+          <div className="flex justify-center">
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              loading={isSubmitting}
+              variant="primary"
+              className="w-full"
             >
-              {currentTranslations?.signUp}
-            </LanguageAwareLink>
+              {currentTranslations?.signin}
+            </Button>
           </div>
-        </div>
-      </form>
-    </Form>
+          <div className="py-8">
+            <div className="flex items-center gap-2 w-full">
+              <div className="grow h-px bg-gray-300" />
+              <div className="flex items-center gap-2 text-sm text-gray-600">
+                <Typography as="p" size="sm" align="center">
+                  {`or`}
+                </Typography>
+              </div>
+              <div className="grow h-px bg-gray-300" />
+            </div>
+            <div className="flex gap-2 items-center justify-center py-4">
+              <Typography as="p" size="sm" align="center">
+                {currentTranslations?.dontHaveAccount}
+              </Typography>
+              <LanguageAwareLink
+                href={textToRouteUrl("/signup")}
+                className="font-medium displayPara cursor-pointer text-primary"
+              >
+                {currentTranslations?.signUp}
+              </LanguageAwareLink>
+            </div>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 };
 

@@ -1,12 +1,18 @@
 "use client";
+
 import { POST } from "@/actions/actions";
 import Button from "@/components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useContext, useMemo } from "react";
-import { useForm, SubmitHandler, FormProvider as Form } from "react-hook-form";
+import {
+  useForm,
+  SubmitHandler,
+  FormProvider as Form,
+} from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
+
 import { logoutUser, textToRouteUrl } from "@/utils/apiHelper";
 import LanguageAwareLink from "@/components/LanguageAwareLink";
 import Typography from "@/components/Typography";
@@ -19,7 +25,7 @@ type Locale = "en" | "ar";
 
 interface TranslationSet {
   heading: string;
-  emailLabel: string;
+  email: string;
   sendButton: string;
   rememberText: string;
   signin: string;
@@ -32,22 +38,24 @@ interface TranslationSet {
 const translations: Record<Locale, TranslationSet> = {
   en: {
     heading: "Forgot Password?",
-    emailLabel: "Email address",
+    email: "Email address",
     sendButton: "Send",
     rememberText: "Remember Your Password?",
     signin: "Sign in",
-    requiredEmail: "Email is required and must be a valid email address.",
+    requiredEmail:
+      "Email is required and must be a valid email address.",
     placeholder: {
       email: "you@example.com",
     },
   },
   ar: {
     heading: "هل نسيت كلمة المرور؟",
-    emailLabel: "عنوان البريد الإلكتروني",
+    email: "عنوان البريد الإلكتروني",
     sendButton: "إرسال",
     rememberText: "هل تتذكر كلمة المرور؟",
     signin: "تسجيل الدخول",
-    requiredEmail: "البريد الإلكتروني مطلوب ويجب أن يكون عنوانًا صحيحًا.",
+    requiredEmail:
+      "البريد الإلكتروني مطلوب ويجب أن يكون عنوانًا صحيحًا.",
     placeholder: {
       email: "you@example.com",
     },
@@ -63,21 +71,24 @@ const ForgotPassword: React.FC = () => {
   const { setVendor } = useVendorStore();
   const { locale } = useContext(LanguageContext) as { locale: Locale };
 
-  const currentTranslations = translations[locale] || translations.en;
+  const t = translations[locale] ?? translations.en;
 
   const defaultValues = useMemo<ForgotPasswordFormValues>(
-    () => ({
-      email: "",
-    }),
+    () => ({ email: "" }),
     [],
   );
 
-  const formSchema = z.object({
-    email: z
-      .string()
-      .min(1, currentTranslations.requiredEmail)
-      .email(currentTranslations.requiredEmail),
-  });
+  // Memoize schema to avoid recreation
+  const formSchema = useMemo(
+    () =>
+      z.object({
+        email: z
+          .string()
+          .min(1, t.requiredEmail)
+          .email(t.requiredEmail),
+      }),
+    [t.requiredEmail],
+  );
 
   const methods = useForm<ForgotPasswordFormValues>({
     resolver: zodResolver(formSchema),
@@ -85,14 +96,18 @@ const ForgotPassword: React.FC = () => {
   });
 
   const {
-    register,
     handleSubmit,
-    formState: { isSubmitting, errors },
+    formState: { isSubmitting },
   } = methods;
 
-  const onSubmit: SubmitHandler<ForgotPasswordFormValues> = async (data) => {
+  const onSubmit: SubmitHandler<ForgotPasswordFormValues> = async (
+    data,
+  ) => {
     try {
-      const res = await POST(endPoints.AUTH.FORGOT_PASSWORD, data);
+      const res = await POST(
+        endPoints.AUTH.FORGOT_PASSWORD,
+        data,
+      );
 
       if (res?.detail) {
         toast.error(res.detail);
@@ -115,47 +130,52 @@ const ForgotPassword: React.FC = () => {
   };
 
   return (
-    <Form {...methods}>
-      <Typography as="h2" size="xl">
-        {currentTranslations.heading}
-      </Typography>
+    <div className="bg-white p-8 rounded-lg shadow-md w-full">
+      <Form {...methods}>
+        <Typography as="h2" size="xl">
+          {t.heading}
+        </Typography>
 
-      <form onSubmit={handleSubmit(onSubmit)} className="w-full mt-8">
-        <div className="mb-6">
-          <RHFField
-            name="email"
-            label={currentTranslations?.email}
-            placeholder={currentTranslations?.placeholder?.email}
-            type="email"
-            required
-            inputIcon={`/icons/icon_59.svg`}
-          />
-        </div>
-
-        <Button
-          type="submit"
-          disabled={isSubmitting}
-          loading={isSubmitting}
-          variant="primary"
-          className="mb-4 w-full"
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="w-full mt-8"
         >
-          {currentTranslations.sendButton}
-        </Button>
+          <div className="mb-6">
+            <RHFField
+              name="email"
+              label={t.email}
+              placeholder={t.placeholder.email}
+              type="email"
+              required
+              inputIcon="/icons/icon_59.svg"
+            />
+          </div>
 
-        <div className="flex flex-col items-center justify-center">
-          <Typography as="p" size="sm">
-            {currentTranslations.rememberText}
-          </Typography>
-
-          <LanguageAwareLink
-            href={textToRouteUrl("/signin")}
-            className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary"
+          <Button
+            type="submit"
+            disabled={isSubmitting}
+            loading={isSubmitting}
+            variant="primary"
+            className="mb-4 w-full"
           >
-            {currentTranslations.signin}
-          </LanguageAwareLink>
-        </div>
-      </form>
-    </Form>
+            {t.sendButton}
+          </Button>
+
+          <div className="flex flex-col items-center justify-center">
+            <Typography as="p" size="sm">
+              {t.rememberText}
+            </Typography>
+
+            <LanguageAwareLink
+              href={textToRouteUrl("/signin")}
+              className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary"
+            >
+              {t.signin}
+            </LanguageAwareLink>
+          </div>
+        </form>
+      </Form>
+    </div>
   );
 };
 

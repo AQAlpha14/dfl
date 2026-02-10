@@ -9,32 +9,28 @@ import { textToRouteUrl } from "@/utils/apiHelper";
 const ResetSuccess: React.FC = () => {
   const { locale } = useContext(LanguageContext) as { locale: "en" | "ar" };
   return (
-    <section className="md:pt-32 pt-20 md:pb-20 pb-6">
-      <div className="flex justify-center items-center h-full md:px-4 px-0 py-6">
-        <div className="w-full max-w-lg">
-          <div className="w-full max-w-lg">
-            <Suspense>
-              <div className="space-y-4 shadow-lg p-4 border rounded-md lg:border-0 lg:p-0 lg:shadow-none">
-                <div className="flex justify-center">
-                  <CheckedSVG />
-                </div>
-                <Typography as="h2" size="xl" align="center">
-                  {locale === "ar"
-                    ? "تم إعادة تعيين كلمة المرور بنجاح"
-                    : "Password Reset Successfully"}
-                </Typography>
-                <div className="w-60 mx-auto">
-                  <LanguageAwareLink
-                    href={textToRouteUrl("/signin")}
-                    className="flex justify-center bg-primary text-white p-3 rounded-full"
-                  >
-                    {locale === "ar" ? "تسجيل الدخول" : "Sign in"}
-                  </LanguageAwareLink>
-                </div>
-              </div>
-            </Suspense>
+    <section className=" bg-white rounded-md shadow-lg px-6 py-8">
+      <div className="w-full max-w-sm">
+        <Suspense>
+          <div className="space-y-4 shadow-lg p-4 border rounded-md lg:border-0 lg:p-0 lg:shadow-none">
+            <div className="flex justify-center">
+              <CheckedSVG />
+            </div>
+            <Typography as="h2" size="lg" align="center">
+              {locale === "ar"
+                ? "تم إعادة تعيين كلمة المرور بنجاح"
+                : "Password Reset Successfully"}
+            </Typography>
+            <div className="w-40 mx-auto">
+              <LanguageAwareLink
+                href={textToRouteUrl("/signin")}
+                className="flex justify-center bg-primary text-white p-3 rounded-md"
+              >
+                {locale === "ar" ? "تسجيل الدخول" : "Sign in"}
+              </LanguageAwareLink>
+            </div>
           </div>
-        </div>
+        </Suspense>
       </div>
     </section>
   );

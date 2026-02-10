@@ -77,6 +77,7 @@ const RHFField: FC<RHFFieldProps> = ({
               }`}
             >
               {label}
+              {required && <span className="text-red-500 ml-1">*</span>}
             </label>
           )}
           {type === "textarea" ? (

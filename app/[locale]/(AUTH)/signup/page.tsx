@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Signup from "@/components/AllForms/UserAuth/Signup";
 import RoleSelection from "@/components/AllForms/UserAuth/RoleSelection";
-import LeftSideBar from "@/components/LeftSideBar";
+import AuthLayout from "@/components/AllForms/UserAuth/AuthLayout";
 
 export async function generateMetadata(): Promise<Metadata> {
   const vMetaData = await SEOAction();
@@ -30,19 +30,12 @@ export async function generateMetadata(): Promise<Metadata> {
 const Page: React.FC = () => {
   return (
     <>
-      <section className="h-screen bg-primaryLight bg-[url('/icons/wm_03.svg')] bg-no-repeat bg-top-right">
-        <div className="flex gap-8">
-          <LeftSideBar />
-          <div className="flex justify-center items-center w-full sm:px-6 px-4">
-            <div className="max-w-sm w-full">
-               <Suspense>
-                  <Signup />
-                  {/* <RoleSelection /> */}
-                </Suspense>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AuthLayout>
+        <Suspense>
+          <Signup />
+          {/* <RoleSelection /> */}
+        </Suspense>
+      </AuthLayout>
     </>
   );
 };

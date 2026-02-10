@@ -59,7 +59,7 @@ const translations: Record<Locale, TranslationSchema> = {
     title: "Create Your Account",
     desciption: "Let's get started with your basic information",
     firstName: "First Name",
-    lastName: "Last Name",
+    lastName: "Last Name (Optional)",
     email: "Email",
     phone: "Phone Number",
     password: "Password",
@@ -194,7 +194,7 @@ const Signup: React.FC = () => {
   };
 
   return (
-    <div className="bg-white shadow-md rounded-xl py-6 px-4 max-w-sm">
+    <div className="bg-white shadow-md rounded-xl py-6 px-4">
       <Form {...methods}>
         <Typography as="h2" size="xl" weight="bold">
           {currentTranslations?.title}
@@ -218,7 +218,6 @@ const Signup: React.FC = () => {
                 label={currentTranslations?.lastName}
                 placeholder={currentTranslations?.placeholder?.lastName}
                 type="text"
-                required
                 inputIcon={`/icons/icon_36.svg`}
               />
               <RHFField
@@ -252,7 +251,6 @@ const Signup: React.FC = () => {
                 label={currentTranslations?.organization}
                 placeholder={currentTranslations?.placeholder?.organization}
                 type="text"
-                required
                 inputIcon={`/icons/icon_25.svg`}
                 className="sm:col-span-2"
               />

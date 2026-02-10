@@ -3,7 +3,7 @@ import OtpVerification from "@/components/AllForms/UserAuth/OtpVerification";
 import { isIndex, nocache } from "@/constants/constants";
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import LeftSideBar from "@/components/LeftSideBar";
+import AuthLayout from "@/components/AllForms/UserAuth/AuthLayout";
 
 export async function generateMetadata(): Promise<Metadata> {
   const vMetaData = await SEOAction();
@@ -34,18 +34,13 @@ const Page = async ({ params }: PageProps) => {
   const { email } = await params;
   return (
     <>
-      <section className="h-screen bg-primaryLight bg-[url('/icons/wm_03.svg')] bg-no-repeat bg-top-right">
-        <div className="flex gap-8">
-          <LeftSideBar />
-          <div className="flex justify-center items-center w-full sm:px-6 px-4">
-            <div className="max-w-sm w-full">
-              <Suspense>
-                <OtpVerification email={email} />
-              </Suspense>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="">
+        <AuthLayout>
+          <Suspense>
+            <OtpVerification email={email} />
+          </Suspense>
+        </AuthLayout>
+      </div>
     </>
   );
 };
