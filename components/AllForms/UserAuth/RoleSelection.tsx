@@ -167,7 +167,7 @@ export default function RoleSelectionMultiStep() {
           <Typography as="p" size="sm">
             This helps us personalize your experience
           </Typography>
-          <p className="text-sm font-medium text-gray-700 mb-3">
+          <p className="text-sm font-medium text-gray-700 py-3">
             Choose Your Role <span className="text-red-500">*</span>
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6">
@@ -178,7 +178,7 @@ export default function RoleSelectionMultiStep() {
                   key={role.id}
                   type="button"
                   onClick={() => handleRoleSelect(role.id)}
-                  className={`relative bg-[#F3F3F5] p-6 rounded-xl border transition-all duration-200 ${
+                  className={`relative bg-[#F3F3F5] py-6 px-4 rounded-xl border transition-all duration-200 ${
                     active
                       ? "border-primary bg-blue-50 shadow-md"
                       : "border-gray-200 hover:border-primaryLight hover:shadow-sm"
@@ -231,7 +231,7 @@ export default function RoleSelectionMultiStep() {
               <select
                 value={properties}
                 onChange={(e) => setProperties(e.target.value)}
-                className="w-full border border-gray-300 rounded-lg px-4 py-3"
+                className="w-full border border-gray-300 bg-gray-100 rounded-lg px-4 py-3"
               >
                 <option value="">Select number of properties</option>
                 <option>1 Property</option>

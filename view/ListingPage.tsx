@@ -1,10 +1,9 @@
+import SearchBar from "@/components/FormFields/SearchBar";
+
 const ListingPage = () => {
   return (
-    <div className="container">
-      <div>Rent page</div>
-      <div>Rent page</div>
-      <div>Rent page</div>
-      <div>Rent page</div>
+    <div className="sm:pt-24 pt-20">
+      <SearchBar />
     </div>
   );
 }; 

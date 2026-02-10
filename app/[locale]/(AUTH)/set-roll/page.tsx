@@ -2,7 +2,7 @@ import { SEOAction } from "@/actions/seo-action";
 import { isIndex, nocache } from "@/constants/constants";
 import { Suspense } from "react";
 import type { Metadata } from "next";
-import Signup from "@/components/AllForms/UserAuth/Signup";
+import RoleSelection from "@/components/AllForms/UserAuth/RoleSelection";
 import AuthLayout from "@/components/AllForms/UserAuth/AuthLayout";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -31,7 +31,7 @@ const Page: React.FC = () => {
     <>
       <AuthLayout>
         <Suspense>
-          <Signup />
+          <RoleSelection />
         </Suspense>
       </AuthLayout>
     </>
