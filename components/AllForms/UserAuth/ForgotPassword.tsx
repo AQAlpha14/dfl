@@ -1,22 +1,19 @@
 "use client";
-
 import { POST } from "@/actions/actions";
 import Button from "@/components/Button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useContext, useMemo } from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm, SubmitHandler, FormProvider as Form } from "react-hook-form";
 import { toast } from "sonner";
 import { z } from "zod";
-import TextInput from "@/components/FormFields/TextInput";
-import { FormProvider as Form } from "react-hook-form";
 import { logoutUser, textToRouteUrl } from "@/utils/apiHelper";
-import Image from "next/image";
 import LanguageAwareLink from "@/components/LanguageAwareLink";
 import Typography from "@/components/Typography";
 import useVendorStore from "@/stores/vendorStore";
 import { LanguageContext } from "@/context/LanguageContext";
 import endPoints from "@/constants/endPionts";
+import RHFField from "@/components/FormFields/RHFField";
 
 type Locale = "en" | "ar";
 
@@ -27,6 +24,9 @@ interface TranslationSet {
   rememberText: string;
   signin: string;
   requiredEmail: string;
+  placeholder: {
+    email: string;
+  };
 }
 
 const translations: Record<Locale, TranslationSet> = {
@@ -37,6 +37,9 @@ const translations: Record<Locale, TranslationSet> = {
     rememberText: "Remember Your Password?",
     signin: "Sign in",
     requiredEmail: "Email is required and must be a valid email address.",
+    placeholder: {
+      email: "you@example.com",
+    },
   },
   ar: {
     heading: "هل نسيت كلمة المرور؟",
@@ -45,6 +48,9 @@ const translations: Record<Locale, TranslationSet> = {
     rememberText: "هل تتذكر كلمة المرور؟",
     signin: "تسجيل الدخول",
     requiredEmail: "البريد الإلكتروني مطلوب ويجب أن يكون عنوانًا صحيحًا.",
+    placeholder: {
+      email: "you@example.com",
+    },
   },
 };
 
@@ -54,8 +60,9 @@ interface ForgotPasswordFormValues {
 
 const ForgotPassword: React.FC = () => {
   const router = useRouter();
-  const { vendor, setVendor } = useVendorStore();
+  const { setVendor } = useVendorStore();
   const { locale } = useContext(LanguageContext) as { locale: Locale };
+
   const currentTranslations = translations[locale] || translations.en;
 
   const defaultValues = useMemo<ForgotPasswordFormValues>(
@@ -66,9 +73,10 @@ const ForgotPassword: React.FC = () => {
   );
 
   const formSchema = z.object({
-    email: z.string().email({
-      message: currentTranslations.requiredEmail,
-    }),
+    email: z
+      .string()
+      .min(1, currentTranslations.requiredEmail)
+      .email(currentTranslations.requiredEmail),
   });
 
   const methods = useForm<ForgotPasswordFormValues>({
@@ -77,7 +85,6 @@ const ForgotPassword: React.FC = () => {
   });
 
   const {
-    watch,
     register,
     handleSubmit,
     formState: { isSubmitting, errors },
@@ -87,16 +94,20 @@ const ForgotPassword: React.FC = () => {
     try {
       const res = await POST(endPoints.AUTH.FORGOT_PASSWORD, data);
 
-      if (res?.detail !== undefined) {
+      if (res?.detail) {
         toast.error(res.detail);
-        setVendor({});
         logoutUser();
-      } else if (res?.status === 200) {
-        toast.success(res?.message);
-        router.push(`/${locale}/passwordresetsuccess`);
-      } else {
-        toast.error(res?.message);
+        setVendor(null);
+        return;
       }
+
+      if (res?.status === 200) {
+        toast.success(res?.message || "Email sent successfully");
+        router.push(`/${locale}/passwordresetsuccess`);
+        return;
+      }
+
+      toast.error(res?.message || "Something went wrong");
     } catch (error) {
       console.error(error);
       if (error instanceof Error) toast.error(error.message);
@@ -105,32 +116,19 @@ const ForgotPassword: React.FC = () => {
 
   return (
     <Form {...methods}>
-      <div className="flex items-center justify-center w-full mb-3">
-        <LanguageAwareLink
-          href={textToRouteUrl("/")}
-          className="cursor-pointer"
-        >
-          <Image
-            src={`/images/car_solution_logo.svg`}
-            alt="logo"
-            width={70}
-            height={64}
-            className="w-auto lg:h-28 h-14"
-          />
-        </LanguageAwareLink>
-      </div>
-
       <Typography as="h2" size="xl">
         {currentTranslations.heading}
       </Typography>
 
       <form onSubmit={handleSubmit(onSubmit)} className="w-full mt-8">
         <div className="mb-6">
-          <TextInput
-            label={currentTranslations.emailLabel}
+          <RHFField
+            name="email"
+            label={currentTranslations?.email}
+            placeholder={currentTranslations?.placeholder?.email}
             type="email"
-            error={errors.email?.message}
-            {...register("email")}
+            required
+            inputIcon={`/icons/icon_59.svg`}
           />
         </div>
 
@@ -148,6 +146,7 @@ const ForgotPassword: React.FC = () => {
           <Typography as="p" size="sm">
             {currentTranslations.rememberText}
           </Typography>
+
           <LanguageAwareLink
             href={textToRouteUrl("/signin")}
             className="font-bold displayPara underline underline-offset-4 cursor-pointer text-secondary"

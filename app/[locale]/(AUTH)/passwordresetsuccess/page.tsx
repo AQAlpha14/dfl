@@ -1,7 +1,8 @@
 import { SEOAction } from "@/actions/seo-action";
-import ResetSuccess from "@/components/AllForms/UserAuth/ResetSuccess";
 import { isIndex, nocache } from "@/constants/constants";
 import type { Metadata } from "next";
+import LeftSideBar from "@/components/LeftSideBar";
+import ResetSuccess from "@/components/AllForms/UserAuth/ResetSuccess";
 
 export async function generateMetadata(): Promise<Metadata> {
   const vMetaData = await SEOAction();
@@ -24,11 +25,25 @@ export async function generateMetadata(): Promise<Metadata> {
   } as Metadata;
 }
 
-const Page: React.FC = async () => {
+interface PageProps {
+  params: Promise<{ email: string }>;
+}
+
+const Page = async ({ params }: PageProps) => {
+  const { email } = await params;
   return (
-    <div>
-      <ResetSuccess />
-    </div>
+    <>
+      <section className="h-screen bg-primaryLight bg-[url('/icons/wm_03.svg')] bg-no-repeat bg-top-right">
+        <div className="flex gap-8">
+          <LeftSideBar />
+          <div className="flex justify-center items-center w-full sm:px-6 px-4">
+            <div className="max-w-md w-full">
+              <ResetSuccess />
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
   );
 };
 
