@@ -36,7 +36,7 @@ const Page: React.FC = async () => {
   return (
     <>
       <section className="h-screen bg-primaryLight bg-[url('/icons/wm_03.svg')] bg-no-repeat bg-top-right">
-        <div className="flex gap-8">
+        <div className="flex gap-8 h-full">
           <LeftSideBar />
           <div className="flex justify-center items-center w-full sm:px-6 px-4">
             <div className="max-w-sm w-full bg-white p-8 rounded-lg shadow-lg">

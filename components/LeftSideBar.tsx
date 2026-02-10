@@ -23,17 +23,18 @@ const listings: ListingItem[] = [
 
 const LeftSideBar = ({}: LeftSideBarProps) => {
   return (
-    <div className="basis-1/4 hidden lg:block">
-      <div className="bg-[url('/images/bg_left.webp')] px-6 py-10">
-        {/* Header */}
-        <Image
-          src="/icons/dfl_logo1.svg"
-          alt="Logo"
-          width={150}
-          height={50}
-          className="pb-8"
-        />
-
+    <div className="hidden lg:block h-screen">
+      <div className="bg-[url('/images/bg_left.webp')] bgimg px-6 py-10 h-full overflow-y-auto">
+        {/* Header */}{" "}
+        <Link href="/">
+          <Image
+            src="/icons/dfl_logo1.svg"
+            alt="Logo"
+            width={150}
+            height={50}
+            className="pb-8"
+          />
+        </Link>
         <Typography
           as="h3"
           size="lg"
@@ -43,11 +44,9 @@ const LeftSideBar = ({}: LeftSideBarProps) => {
         >
           {`Welcome back!`}
         </Typography>
-
         <Typography as="p" size="sm" color="white">
           {` Sign in to access your account and manage your properties`}
         </Typography>
-
         {/* Features */}
         <div className="pt-6">
           {listings.map((item) => (
@@ -87,7 +86,6 @@ const LeftSideBar = ({}: LeftSideBarProps) => {
             </div>
           ))}
         </div>
-
         {/* Support Section */}
         <div className="pt-20">
           <div className="px-4 rounded-2xl bg-white/5 border-y border-white/50">

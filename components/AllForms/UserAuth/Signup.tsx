@@ -204,14 +204,14 @@ const Signup: React.FC = () => {
         </Typography>
         <form onSubmit={handleSubmit(onSubmit)} className={"w-full mt-8"}>
           <div className="">
-            <div className="grid lg:grid-cols-2 grid-cols-1 gap-6 ">
+            <div className="grid sm:grid-cols-2 grid-cols-1 gap-6">
               <RHFField
                 name="full_name"
                 label={currentTranslations?.firstName}
                 placeholder={currentTranslations?.placeholder?.firstName}
                 type="text"
                 required
-                inputIcon={`/icons/icon_59.svg`}
+                inputIcon={`/icons/icon_27.svg`}
               />
               <RHFField
                 name="last_name"
@@ -219,7 +219,7 @@ const Signup: React.FC = () => {
                 placeholder={currentTranslations?.placeholder?.lastName}
                 type="text"
                 required
-                inputIcon={`/icons/icon_59.svg`}
+                inputIcon={`/icons/icon_27.svg`}
               />
               <RHFField
                 name="last_name"
@@ -228,7 +228,7 @@ const Signup: React.FC = () => {
                 type="text"
                 required
                 inputIcon={`/icons/icon_59.svg`}
-                className="col-span-2"
+                className="sm:col-span-2"
               />
               <RHFField
                 name="password"
@@ -252,8 +252,8 @@ const Signup: React.FC = () => {
                 placeholder={currentTranslations?.placeholder?.organization}
                 type="text"
                 required
-                inputIcon={`/icons/icon_59.svg`}
-                className="col-span-2"
+                inputIcon={`/icons/icon_25.svg`}
+                className="sm:col-span-2"
               />
             </div>
             <div className="py-4">

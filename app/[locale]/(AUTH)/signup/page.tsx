@@ -4,6 +4,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import Signup from "@/components/AllForms/UserAuth/Signup";
 import RoleSelection from "@/components/AllForms/UserAuth/RoleSelection";
+import LeftSideBar from "@/components/LeftSideBar";
 
 export async function generateMetadata(): Promise<Metadata> {
   const vMetaData = await SEOAction();
@@ -29,16 +30,15 @@ export async function generateMetadata(): Promise<Metadata> {
 const Page: React.FC = () => {
   return (
     <>
-      <section className="md:pt-32 pt-20 md:pb-20 pb-6">
-        <div className="container">
-          <div className="">
-            <div className="flex justify-center items-center h-full md:px-4 px-0 py-6">
-              <div className="w-full max-w-sm">
-                <Suspense fallback={<div>Loading...</div>}>
+      <section className="h-screen bg-primaryLight bg-[url('/icons/wm_03.svg')] bg-no-repeat bg-top-right">
+        <div className="flex gap-8">
+          <LeftSideBar />
+          <div className="flex justify-center items-center w-full sm:px-6 px-4">
+            <div className="max-w-sm w-full">
+               <Suspense>
                   <Signup />
-                  <RoleSelection />
+                  {/* <RoleSelection /> */}
                 </Suspense>
-              </div>
             </div>
           </div>
         </div>
