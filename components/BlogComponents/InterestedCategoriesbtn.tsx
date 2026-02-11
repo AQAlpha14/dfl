@@ -2,24 +2,23 @@ import Link from "next/link";
 
 interface InterestedCategoriesBtnProps {
   id?: number | string;
-  title?: string;
+  label?: string;
   maxChars?: number;
 }
 
 const InterestedCategoriesBtn = ({
   id,
-  title,
+  label,
   maxChars = 20,
 }: InterestedCategoriesBtnProps) => {
-  const slug = title?.replace(/\s+/g, "-").toLowerCase() || "";
+  const slug = label?.replace(/\s+/g, "-").toLowerCase() || "";
 
   const truncatedTitle =
-    title && title.length > maxChars ? `${title.slice(0, maxChars)}...` : title;
-
+    label && label.length > maxChars ? `${label.slice(0, maxChars)}...` : label;
   return (
     <Link
-      href={`/blog/category/${slug}?category_id=${id}`}
-      className="flex justify-center items-center text-nowrap text-center px-3 py-2 bg-primaryLight rounded-full"
+      href={`/listing/category/${slug}?category_id=${id}`}
+      className="flex justify-center items-center text-nowrap text-center px-3 py-2 bg-white  rounded-md text-sm border border-gray-300 hover:bg-gray-100 transition-colors duration-200"
     >
       {truncatedTitle}
     </Link>

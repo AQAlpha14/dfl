@@ -26,6 +26,7 @@ interface InterestedCategoriesSectionProps {
   isStickyBar?: boolean;
   catId?: number;
   className?: string;
+  heading?: string;
 }
 
 /* ===================== SPLIDE OPTIONS ===================== */
@@ -38,16 +39,15 @@ const options: Options = {
   perMove: 1,
   pagination: false,
   gap: "15px",
-  arrows: false,
+  arrows: true,
   autoplay: true,
   autoScroll: {
     speed: 1,
   },
   breakpoints: {
     480: { perPage: 2 },
-    768: { perPage: 3 },
+    768: { arrows: true, perPage: 3 },
     1024: { perPage: 5 },
-    1280: { perPage: 6 },
   },
 };
 /* ===================== COMPONENT ===================== */
@@ -55,11 +55,22 @@ const InterestedCategoriesSection = ({
   className = "",
   isSingleIndex = false,
   isStickyBar = false,
+  heading = "",
   catId,
 }: InterestedCategoriesSectionProps) => {
   const [loading, setLoading] = useState<boolean>(true);
   const [data, setData] = useState<Category[]>([]);
   const [singleCat, setSingleCat] = useState<Category | null>(null);
+
+  const interestedCategories: Category[] = [
+    { id: 1, label: "Villas" },
+    { id: 2, label: "Houses" },
+    { id: 3, label: "Apartments" },
+    { id: 4, label: "Townhouses" },
+    { id: 5, label: "Penthouses" },
+    { id: 6, label: "Bunglows" },
+    { id: 7, label: "Studio Apartments" },
+  ];
 
   /* ===================== FETCH CATEGORIES ===================== */
 
@@ -73,7 +84,8 @@ const InterestedCategoriesSection = ({
         ShowAll: true,
       };
       const res = await getBlogCategories(body);
-      setData(res);
+      setData(interestedCategories);
+      // setData(res);
       setLoading(false);
     };
 
@@ -93,7 +105,7 @@ const InterestedCategoriesSection = ({
   if (isSingleIndex) {
     return singleCat ? (
       <Link
-        href={`/blog/category/${singleCat.label
+        href={`/listing/category/${singleCat.label
           .replace(/\s+/g, "-")
           .toLowerCase()}?category_id=${singleCat.id}`}
       >
@@ -108,11 +120,12 @@ const InterestedCategoriesSection = ({
     return (
       <div className="mb-5 border p-4">
         <div className="">
-          <Typography as="h3" size="lg" weight="medium" className="pb-2">
-            {`Categories`}
-          </Typography>
+          {heading && (
+            <Typography as="h3" size="lg" weight="medium" className="pb-2">
+              {heading}
+            </Typography>
+          )}
         </div>
-
         <ul className="list-disc ml-6">
           {loading
             ? [...Array(8)].map((_, index) => (
@@ -138,20 +151,14 @@ const InterestedCategoriesSection = ({
   }
 
   return (
-    <section
-      className={`py-10 bg-cover bg-top-right bg-no-repeat ${className}`}
-    >
-      <div className="container">
-        <div className="max-w-5xl mx-auto mb-5">
-          <Typography
-            as="h2"
-            size="xl"
-            weight="medium"
-            className="pb-2"
-            align="center"
-          >
-            {`Categories`}
-          </Typography>
+    <section className={`${className}`}>
+      <div className="">
+        <div className="max-w-xl mx-auto mb-5">
+          {heading && (
+            <Typography as="h3" size="lg" weight="medium" className="pb-2">
+              {heading}
+            </Typography>
+          )}
         </div>
 
         {loading ? (
@@ -161,9 +168,11 @@ const InterestedCategoriesSection = ({
             ))}
           </div>
         ) : data?.length ? (
-          <SplideSlider options={options} data={data}>
+          <div className="categories">
+          <SplideSlider options={options} data={interestedCategories}>
             <InterestedCategoriesBtn />
           </SplideSlider>
+          </div>
         ) : (
           <NotFound />
         )}

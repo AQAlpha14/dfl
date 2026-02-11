@@ -1,8 +1,8 @@
+import InterestedCategoriesSection from "@/components/BlogComponents/InterestedCategoriesSection";
 import FeaturedCards, { Property } from "@/components/cards/FeaturedCards";
 import SearchBar from "@/components/FormFields/SearchBar";
 import Typography from "@/components/Typography";
 import homeData from "@/mockData/homeData.json";
-import PropertyTypeBtnSection from "@/sections/PropertyTypeBtnSection";
 
 const ListingPage = () => {
   return (
@@ -11,12 +11,12 @@ const ListingPage = () => {
         <div className="container">
           <SearchBar />
           <div className="pt-10">
-            <div className="pb-8">
-              <Typography as="h2" size="lg" weight="semibold">
-                Residential Properties for rent in UAE
-              </Typography>
-              <div className="pt-4">
-                <PropertyTypeBtnSection />
+            <div className="max-w-md w-full pb-8">
+              <div className="">
+                <Typography as="h2" size="lg" weight="semibold">
+                  Residential Properties for rent in UAE
+                </Typography>
+                <InterestedCategoriesSection />
               </div>
             </div>
             <div className="flex justify-between gap-4">
