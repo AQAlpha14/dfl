@@ -41,7 +41,6 @@ const SplideSlider = <T,>({
         (ScrollingAuto && { AutoScroll }) ||
         (isGrid && { Grid }) ||
         undefined;
-
     return (
         <Splide
             options={options}
@@ -63,7 +62,6 @@ const SplideSlider = <T,>({
                             return child;
                         }
                     );
-
                     return (
                         <SplideSlide aria-roledescription="none" key={index}>
                             {childrenWithProps}

@@ -23,11 +23,9 @@ const FeaturedListingsSection = ({
   paragraph = [],
 }: FeaturedListingsSectionProps = {}) => {
   const [selectedType, setSelectedType] = useState<string>("all");
-
   // Extract unique property types with counts
   const propertyTypes = useMemo(() => {
     const allData = homeData.featuredCardsData || [];
-
     // Hardcoded property types with icons
     const predefinedTypes = [
       { name: "all", label: "All", icons: "/icons/icon_15.svg" },
@@ -40,7 +38,6 @@ const FeaturedListingsSection = ({
       { name: "villa", label: "Villa", icons: "/icons/icon_11.svg" },
       { name: "studio", label: "Studios", icons: "/icons/icon_12.svg" },
     ];
-
     return predefinedTypes.map((type) => ({
       ...type,
       count:
