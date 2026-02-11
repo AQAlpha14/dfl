@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 :root {
-  --primary: #3C8FCA;
-  --primaryDark: #00182A;
-  --primaryL: #66BFFF;
-  --primaryLight: #EBF7FF;
+  --primary: #3c8fca;
+  --primaryDark: #00182a;
+  --primaryL: #66bfff;
+  --primaryLight: #ebf7ff;
   --secondary: #434343;
   --secondaryLight: #f2f4ff;
-  --purple: #59168B;
-  --green: #5DC647;
-  --greenDark: #37894E;
+  --purple: #59168b;
+  --green: #5dc647;
+  --greenDark: #37894e;
   --font-creatoDisplay: "creatoDisplay";
 }
 
@@ -69,21 +69,40 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* SPLIDE */
 .splide__arrow--prev {
-    left: -1em !important;
+  left: -1em !important;
 }
 .splide__arrow--next {
-    right: -1em !important;
+  right: -1em !important;
 }
 .splide__pagination {
-    bottom: -1.5em !important;
+  bottom: -1.5em !important;
 }
 .splide__arrow {
-    opacity: 1 !important;
-    background: var(--color-primary) !important;
+  opacity: 1 !important;
+  background: var(--color-primary) !important;
 }
 .react-tel-input .selected-flag {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 .react-tel-input .form-control {
-    height: 28px !important;
+  height: 28px !important;
+}
+
+.categories .splide__arrow--prev {
+  left: -2em !important;
+}
+.categories .splide__arrow--next {
+  right: -2em !important;
+}
+.categories .splide__arrow svg {
+    fill: #FFF !important;
+}
+.categories .splide__arrow {
+  opacity: 1 !important;
+  background: var(--color-primary) !important;
+  border-radius: 5px !important;
+  -webkit-border-radius: 5px !important;
+  -moz-border-radius: 5px !important;
+  -ms-border-radius: 5px !important;
+  -o-border-radius: 5px !important;
 }

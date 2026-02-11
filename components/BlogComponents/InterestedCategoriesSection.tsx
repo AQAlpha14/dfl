@@ -34,7 +34,7 @@ interface InterestedCategoriesSectionProps {
 const options: Options = {
   type: "loop",
   rewind: true,
-  perPage: 8,
+  perPage: 5,
   padding: "0.8rem",
   perMove: 1,
   pagination: false,
@@ -47,7 +47,6 @@ const options: Options = {
   breakpoints: {
     480: { perPage: 2 },
     768: { arrows: true, perPage: 3 },
-    1024: { perPage: 5 },
   },
 };
 /* ===================== COMPONENT ===================== */
@@ -153,14 +152,13 @@ const InterestedCategoriesSection = ({
   return (
     <section className={`${className}`}>
       <div className="">
-        <div className="max-w-xl mx-auto mb-5">
+        <div className="max-w-xl mx-auto pb-4">
           {heading && (
             <Typography as="h3" size="lg" weight="medium" className="pb-2">
               {heading}
             </Typography>
           )}
         </div>
-
         {loading ? (
           <div className="flex justify-between">
             {[...Array(8)].map((_, index) => (
@@ -168,10 +166,10 @@ const InterestedCategoriesSection = ({
             ))}
           </div>
         ) : data?.length ? (
-          <div className="categories">
-          <SplideSlider options={options} data={interestedCategories}>
-            <InterestedCategoriesBtn />
-          </SplideSlider>
+          <div className="categories lg:pl-8">
+            <SplideSlider options={options} data={interestedCategories}>
+              <InterestedCategoriesBtn />
+            </SplideSlider>
           </div>
         ) : (
           <NotFound />
