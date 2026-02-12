@@ -46,7 +46,7 @@ const options: Options = {
   },
   breakpoints: {
     480: { perPage: 2 },
-    768: { arrows: true, perPage: 3 },
+    768: { arrows: false, perPage: 3 },
   },
 };
 /* ===================== COMPONENT ===================== */
@@ -87,7 +87,6 @@ const InterestedCategoriesSection = ({
       // setData(res);
       setLoading(false);
     };
-
     fetchCategories();
   }, []);
 
