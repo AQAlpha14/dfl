@@ -6,7 +6,7 @@ import FeaturedCards, { Property } from "@/components/cards/FeaturedCards";
 import SearchBar from "@/components/FormFields/SearchBar";
 import Typography from "@/components/Typography";
 import homeData from "@/mockData/homeData.json";
-import { Grid, Grid2X2, Magnet, Menu } from "lucide-react";
+import { Grid2X2, Menu } from "lucide-react";
 import { useMemo, useState } from "react";
 
 interface ListingPageProps {
@@ -111,9 +111,9 @@ const ListingPage = ({ heading }: ListingPageProps) => {
         {/* Listing + sidebar */}
         <div className="flex justify-between gap-4">
           {/* Cards */}
-          <div className="grid grid-cols-2 gap-4 flex-1">
+          <div className="grid md:grid-cols-2 grid-cols-1 gap-4 flex-1">
             {/* View Switch */}
-            <div className="col-span-2">
+            <div className="md:col-span-2">
               <div className="flex items-center justify-between gap-2 w-full pb-4">
                 <Typography as="h3" size="xl" weight="medium">
                   {heading || "Residential Properties for rent in UAE"}
@@ -147,7 +147,7 @@ const ListingPage = ({ heading }: ListingPageProps) => {
             ))}
           </div>
           {/* Recommended searches */}
-          <div className="space-y-4 basis-1/4">
+          <div className="lg:block hidden space-y-4 basis-1/4">
             <div className="flex items-center justify-end gap-3 pb-6">
               {/* Sorting */}
               <select
