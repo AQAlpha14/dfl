@@ -183,8 +183,8 @@ const SearchBar: FC = () => {
             <Button
               variant="primary"
               type="button"
-              // disabled={isSubmitting || loading}
-              // loading={isSubmitting}
+              disabled={isSubmitting || loading}
+              loading={isSubmitting}
               className="md:rounded-md! flex items-center bg-primary w-full md:w-fit"
             >
               {btnText.save_search}
