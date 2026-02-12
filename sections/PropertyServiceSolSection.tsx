@@ -19,7 +19,6 @@ interface PropertyServiceSolSectionProps {
 
 const PropertyServiceSolSection = ({
   heading,
-  isGrid,
   paragraph = [],
 }: PropertyServiceSolSectionProps) => {
   const [selectedCategory, setSelectedCategory] =
@@ -57,7 +56,6 @@ const PropertyServiceSolSection = ({
                 {heading}
               </Typography>
             )}
-
             {paragraph.map((para, index) => (
               <Typography key={index} as="p" size="sm" className="mt-2">
                 {para}
@@ -87,7 +85,6 @@ const PropertyServiceSolSection = ({
                   >
                     {tab.tabTitle}
                   </Typography>
-
                   <Typography
                     as="span"
                     size="sm"
@@ -101,7 +98,6 @@ const PropertyServiceSolSection = ({
             })}
           </div>
         </div>
-
         {/* ===================== GRID ===================== */}
         <div 
           key={selectedCategory}

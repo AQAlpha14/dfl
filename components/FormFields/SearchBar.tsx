@@ -142,7 +142,7 @@ const SearchBar: FC = () => {
               name="keywords"
               type="text"
               placeholder="Address, City, Zip, Neighborhood"
-              className="text-primary! border-primary! bg-primaryLight"
+              className="border-gray-400! bg-white!"
               variant="outlined"
               isHidden
             />
@@ -182,7 +182,7 @@ const SearchBar: FC = () => {
           <div className="flex justify-around items-center">
             <Button
               variant="primary"
-              type="submit"
+              type="button"
               // disabled={isSubmitting || loading}
               // loading={isSubmitting}
               className="md:rounded-md! flex items-center bg-primary w-full md:w-fit"

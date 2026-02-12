@@ -13,6 +13,7 @@ import RHFSelect from "./RHFSelect";
 import { vendorId } from "@/constants/constants";
 import { btnText } from "@/mockData/dummyData";
 import { motion, AnimatePresence } from "framer-motion";
+import { Bed, DollarSign, Home, HomeIcon, Scan, Star } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Types                                    */
@@ -114,7 +115,7 @@ const HeaderSearch: FC = () => {
       <div className="rounded-xl shadow-xl bg-white px-4 py-2 ">
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
           <div className="flex lg:flex-nowrap flex-wrap items-center justify-between space-x-0 lg:space-x-2 space-y-2 lg:space-y-0">
-            <div className="lg:w-xl w-full">
+            <div className="w-full">
               <RHFTextField
                 name="keywords"
                 type="text"
@@ -125,35 +126,43 @@ const HeaderSearch: FC = () => {
               />
             </div>
             <RHFSelect
-              name="property_purpose"
-              placeholder="Purpose"
+              name="property_type"
+              placeholder="Property Type"
               options={purposeOptions}
-              className="w-full text-primary!"
+              className="w-full"
+              innerDivClassName
               isLoading={loading}
               isHidden
+              placeholderIcon={<HomeIcon className="text-primary!" size={18} />}
             />
             <RHFSelect
-              name="property_type"
-              placeholder="Categories"
+              name="budget"
+              placeholder="Budget"
               options={catOptions}
-              className="w-full text-primary!"
+              className="w-full"
+              innerDivClassName
               isLoading={loading}
               isHidden
+              placeholderIcon={
+                <DollarSign className="text-primary!" size={18} />
+              }
             />
             <RHFSelect
-              name="property_type"
-              placeholder="Categories"
+              name="amenities"
+              placeholder="Amenities"
               options={catOptions}
-              className="w-full text-primary!"
+              className="w-full"
+              innerDivClassName
               isLoading={loading}
               isHidden
+              placeholderIcon={<Star className="text-primary!" size={18} />}
             />
             <div className="flex justify-around items-center">
               <Button
                 variant="primary"
-                type="submit"
-                disabled={isSubmitting || loading}
-                loading={isSubmitting}
+                type="button"
+                // disabled={isSubmitting || loading}
+                // loading={isSubmitting}
                 className="md:rounded-md! flex items-center bg-primary w-full md:w-fit"
               >
                 <Icon
@@ -170,7 +179,7 @@ const HeaderSearch: FC = () => {
                 variant="txt"
                 type="button"
                 onClick={() => setIsOpenBar((prev) => !prev)}
-                className="flex items-center w-full border-none gap-1"
+                className="flex items-center w-full border-none gap-1 text-gray-500!"
               >
                 <Icon
                   icon="mage:filter"
@@ -178,9 +187,7 @@ const HeaderSearch: FC = () => {
                   height="1.2rem"
                   className="mx-auto"
                 />
-
                 {btnText.advance_filter}
-
                 {/* ROTATING ARROW */}
                 <motion.div
                   animate={{ rotate: isOpenBar ? 90 : 0 }}
@@ -215,29 +222,38 @@ const HeaderSearch: FC = () => {
                       className="md:flex lg:flex-nowrap flex-wrap items-center gap-2 pt-2"
                     >
                       <RHFSelect
-                        name="property_purpose"
-                        placeholder="Purpose"
+                        name="furnishing_status"
+                        placeholder="Furnishing Status"
                         options={purposeOptions}
-                        className="w-full text-primary!"
+                        className="w-full"
+                        innerDivClassName
                         isLoading={loading}
+                        placeholderIcon={
+                          <Home className="text-primary!" size={18} />
+                        }
                       />
-
                       <RHFSelect
-                        name="property_type"
-                        placeholder="Categories"
+                        name="property_area"
+                        placeholder="Property Area"
                         options={catOptions}
-                        className="w-full text-primary!"
+                        className="w-full"
+                        innerDivClassName
                         isLoading={loading}
+                        placeholderIcon={
+                          <Scan className="text-primary!" size={18} />
+                        }
                       />
-
                       <RHFSelect
-                        name="property_sub_type"
-                        placeholder="Sub Categories"
+                        name="bed_baths"
+                        placeholder="Bed & Baths"
                         options={catOptions}
-                        className="w-full text-primary!"
+                        className="w-full"
+                        innerDivClassName
                         isLoading={loading}
+                        placeholderIcon={
+                          <Bed className="text-primary!" size={18} />
+                        }
                       />
-
                       <Button
                         variant="outline"
                         type="button"
