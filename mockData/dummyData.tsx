@@ -425,7 +425,10 @@ export const icons = {
 };
 export const socialLinks = [
   { href: "https://www.facebook.com/directfromlandloard/", icon: <FBSVG /> },
-  { href: "https://www.instagram.com/directfromlandloard/", icon: <InstaSVG /> },
+  {
+    href: "https://www.instagram.com/directfromlandloard/",
+    icon: <InstaSVG />,
+  },
   { href: "https://x.com/directfromlandloard", icon: <XSVG /> },
   // { href: "https://www.linkedin.com", icon: <INSVG /> },
   // { href: "https://www.youtube.com", icon: <YoutubeSVG /> },
@@ -643,3 +646,175 @@ export const faqData = [
     ],
   },
 ];
+export const listingDetailData = {
+  id: 1,
+  title: "Luxury 2BR Apartment with Marina Views",
+  price: 280000,
+  location: "Dubai Marina, Dubai",
+  rating: "4,8 (56 Reviews)",
+
+  features: [
+    {
+      icon: "/icons/icon_74.svg",
+      lable: "2 Bedrooms",
+    },
+    {
+      icon: "/icons/icon_75.svg",
+      lable: "2 Bathrooms",
+    },
+    {
+      icon: "/icons/icon_76.svg",
+      lable: "1200 sq ft Area",
+    },
+    {
+      icon: "/icons/icon_77.svg",
+      lable: "1 Parking Space",
+    },
+  ],
+  nearbyPlaces: [
+    {
+      icon: "/icons/icon_81.svg",
+      title: "Dubai Marina Mall",
+      lable: "Shopping",
+      time: "2 min walk",
+    },
+    {
+      icon: "/icons/icon_82.svg",
+      title: "Marina Beach",
+      lable: "Recreation",
+      time: "5 min walk",
+    },
+    {
+      icon: "/icons/icon_83.svg",
+      title: "Metro Station",
+      lable: "Transport",
+      time: "8 min walk",
+    },
+    {
+      icon: "/icons/icon_84.svg",
+      title: "JBR Beach",
+      lable: "Recreation",
+      time: "12 min walk",
+    },
+  ],
+  propertyDetails: [
+    {
+      title: "City",
+      lable: "Dubai",
+    },
+    {
+      title: "Area/Community",
+      lable: "Dubai Marina, Downtown",
+    },
+    {
+      title: "Street Name",
+      lable: "Marina Heights Tower",
+    },
+    {
+      title: "Villa Number/House Number",
+      lable: "1205",
+    },
+    {
+      title: "Plot Number",
+      lable: "122",
+    },
+    {
+      title: "Unit Number",
+      lable: "1502",
+    },
+    {
+      title: "Bedrooms",
+      lable: "4",
+    },
+    {
+      title: "Bathrooms",
+      lable: "4",
+    },
+    {
+      title: "Area (sq ft)",
+      lable: "1400",
+    },
+    {
+      title: "Furnishing Status",
+      lable: "Furnished",
+    },
+    {
+      title: "Available From",
+      lable: "22/12/2025",
+    },
+    {
+      title: "Building Year",
+      lable: "2022",
+    },
+    {
+      title: "Plot/Land Area (sq ft)",
+      lable: "3000",
+    },
+    {
+      title: "Parking Spaces",
+      lable: "2 Spaces",
+    },
+    {
+      title: "View Type",
+      lable: "Marina View",
+    },
+  ],
+  amenities: [
+    { label: "Maids Room" },
+    { label: "Balcony" },
+    { label: "Shared Pool" },
+    { label: "Shared Spa" },
+    { label: "Shared Gym" },
+    { label: "Central A/C" },
+    { label: "Concierge Service" },
+    { label: "Covered Parking" },
+    { label: "View of Water" },
+    { label: "View of Landmark" },
+    { label: "Pets Allowed" },
+    { label: "Children’s Play Area" },
+    { label: "Children’s Pool" },
+    { label: "Barbecue Area" },
+    { label: "Built-in Wardrobes" },
+    { label: "Study" },
+    { label: "Walk-in Closet" },
+    { label: "Private Jacuzzi" },
+    { label: "Garden Access" },
+    { label: "Rooftop Terrace" },
+    { label: "Cycling Track" },
+    { label: "24/7 Security" },
+    { label: "Smart Home Features" },
+    { label: "Fireplace" },
+    { label: "CCTV Surveillance" },
+    { label: "Laundry Room" },
+    { label: "Outdoor Shower" },
+    { label: "Fitness Studio" },
+    { label: "Game Room" },
+    { label: "Sauna" },
+  ],
+  agent: {
+    name: "Muhammad Ahmed",
+    lastActive: "2 hours ago",
+    memberSince: "2019",
+    phone: "+971 50 123 4567",
+    email: "agent@example.com",
+  },
+  tenantReviews: [
+    {
+      name: "Sarah Johnson",
+      rating: 5,
+      comment: "Amazing apartment! The landlord was very responsive.",
+      timeAgo: "2 weeks ago",
+    },
+    {
+      name: "Mike Chen",
+      rating: 4,
+      comment: "Good location and amenities. The building is well-maintained.",
+      timeAgo: "1 month ago",
+    },
+  ],
+  relatedSearches: [
+    "2BR Apartments in Dubai Marina",
+    "Furnished Apartments in JBR",
+    "Marina View Properties",
+  ],
+};

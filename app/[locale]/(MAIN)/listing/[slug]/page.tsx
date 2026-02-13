@@ -1,6 +1,9 @@
 import { SEOAction } from "@/actions/seo-action";
 import { BASE_URL, isIndex, nocache } from "@/constants/constants";
-import ListingPage from "@/view/ListingDetail";
+import { btnText } from "@/mockData/dummyData";
+import AssetSection from "@/sections/AssetSection";
+import SocialCommunitySection from "@/sections/SocialCommunitySection";
+import ListingDetailPage from "@/view/ListingDetailPage";
 
 export async function generateMetadata() {
   const vMetaData = await SEOAction();
@@ -32,7 +35,23 @@ export default async function Page() {
   const { h1 } = await generateMetadata();
   return (
     <>
-      <ListingPage />
+     <div className="pt-16">
+       <ListingDetailPage />
+      <AssetSection
+        bgblue={true}
+        heading="Expand Your Reach to Attract More Tenants Today!"
+        paragraph={[
+          "Seize this incredible opportunity to enhance your visibility, receive quicker responses, and cultivate meaningful connections with committed tenants who genuinely appreciate what you bring to the table. This is your chance to create lasting relationships that can significantly benefit your endeavors.",
+        ]}
+        imageUrl="/images/image_2.webp"
+        imageWidth={632}
+        imageHeight={447}
+        link="/"
+        linkLext={btnText.list_your_property}
+        reverse
+      />
+      <SocialCommunitySection />
+     </div>
     </>
   );
 }
