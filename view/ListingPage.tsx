@@ -3,6 +3,7 @@ import CalculatorForm from "@/components/AllForms/CalculatorForm";
 import Breadcrumb from "@/components/BlogComponents/Breadcrumb";
 import InterestedCategoriesSection from "@/components/BlogComponents/InterestedCategoriesSection";
 import FeaturedCards, { Property } from "@/components/cards/FeaturedCards";
+import ListingCard from "@/components/cards/ListingCard";
 import SearchBar from "@/components/FormFields/SearchBar";
 import Typography from "@/components/Typography";
 import homeData from "@/mockData/homeData.json";
@@ -111,40 +112,53 @@ const ListingPage = ({ heading }: ListingPageProps) => {
         {/* Listing + sidebar */}
         <div className="flex justify-between gap-4">
           {/* Cards */}
-          <div className="grid md:grid-cols-2 grid-cols-1 gap-4 flex-1">
+          <div className="flex-1">
             {/* View Switch */}
-            <div className="md:col-span-2">
-              <div className="flex items-center justify-between gap-2 w-full pb-4">
-                <Typography as="h3" size="xl" weight="medium">
-                  {heading || "Residential Properties for rent in UAE"}
-                </Typography>
-                <div className="flex items-center gap-2 cursor-pointer">
-                  <Menu
-                    width={34}
-                    height={34}
-                    onClick={() => setView("list")}
-                    className={`p-1 rounded-sm ${
-                      view === "list"
-                        ? "bg-primary text-white"
-                        : "bg-white text-gray-700"
-                    }`}
-                  />
-                  <Grid2X2
-                    width={34}
-                    height={34}
-                    onClick={() => setView("grid")}
-                    className={`p-1 rounded-sm ${
-                      view === "grid"
-                        ? "bg-primary text-white"
-                        : "bg-white text-gray-700"
-                    }`}
-                  />
-                </div>
+            <div className="flex items-center justify-between gap-2 w-full pb-4 mb-4">
+              <Typography as="h3" size="xl" weight="medium">
+                {heading || "Residential Properties for rent in UAE"}
+              </Typography>
+              <div className="sm:flex hidden items-center gap-2 cursor-pointer">
+                <Menu
+                  width={34}
+                  height={34}
+                  onClick={() => setView("list")}
+                  className={`p-1 rounded-sm transition ${
+                    view === "list"
+                      ? "bg-primary text-white"
+                      : "bg-white text-gray-700 border border-gray-300"
+                  }`}
+                />
+                <Grid2X2
+                  width={34}
+                  height={34}
+                  onClick={() => setView("grid")}
+                  className={`p-1 rounded-sm transition ${
+                    view === "grid"
+                      ? "bg-primary text-white"
+                      : "bg-white text-gray-700 border border-gray-300"
+                  }`}
+                />
               </div>
             </div>
-            {sortedProperties.map((property: Property, idx: number) => (
-              <FeaturedCards data={property} key={idx} />
-            ))}
+
+            {/* Grid View */}
+            {view === "grid" && (
+              <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+                {sortedProperties.map((property: Property, idx: number) => (
+                  <FeaturedCards data={property} key={idx} />
+                ))}
+              </div>
+            )}
+
+            {/* List View */}
+            {view === "list" && (
+              <div className="space-y-3">
+                {sortedProperties.map((property: Property, idx: number) => (
+                  <ListingCard data={property} key={idx} />
+                ))}
+              </div>
+            )}
           </div>
           {/* Recommended searches */}
           <div className="lg:block hidden space-y-4 basis-1/4">

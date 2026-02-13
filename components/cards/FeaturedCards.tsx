@@ -132,7 +132,7 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
               <Icon icon={icons.view} width="14" height="14" className="mr-1" />
               views
             </span>
-            <Typography as="h3" size="sm" className="">
+            <Typography as="h3" size="md" weight="semibold" className="">
               {views}
             </Typography>
           </div>
@@ -146,7 +146,7 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
               />
               inquiries
             </span>
-            <Typography as="h3" size="sm" className="">
+            <Typography as="h3" size="md" weight="semibold" className="">
               {inquiries}
             </Typography>
           </div>
@@ -160,7 +160,7 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
               />
               Posted
             </span>
-            <Typography as="h3" size="sm" className="">
+            <Typography as="h3" size="md" weight="semibold" className="">
               {postedAgo}
             </Typography>
           </div>
