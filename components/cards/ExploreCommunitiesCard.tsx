@@ -65,7 +65,7 @@ const ExploreCommunitiesCard = ({
           <div className="flex items-center justify-between mt-4">
             <span className="text-gray-600">{data?.priceRange}</span>
             <Link
-              href="/communities"
+              href="/listing"
               icon2
               className="px-3! text-sm! rounded-full!"
             >

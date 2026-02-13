@@ -174,12 +174,12 @@ const HeroSection: FC<HeroSectionProps> = ({
           </div>
         </div>
         {headerserach && (
-          <div className="py-4">
+          <div className="py-4 lg:block hidden">
             <HeaderSearch />
           </div>
         )}
         {Countertabs && (
-          <div className="md:flex lg:flex-nowrap flex-wrap hidden gap-2 justify-center">
+          <div className="md:flex lg:flex-nowrap flex-wrap hidden gap-2 justify-center pt-4">
             {placeCounter.map((item, i) => (
               <div
                 key={i}

@@ -202,7 +202,7 @@ const ExploreCommunitiesSection = ({
 
         {/* ===================== CTA ===================== */}
         <div className="mt-12 flex justify-center">
-          <Link href="/communities" icon2>
+          <Link href="/listing" icon2>
             {btnText.view_all_communities_in_dubai}
           </Link>
         </div>

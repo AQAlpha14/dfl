@@ -104,7 +104,7 @@ const ListingPage = ({ heading }: ListingPageProps) => {
       <Breadcrumb />
       <div className="container">
         <SearchBar />
-        <div className="pt-10">
+        <div className="lg:pt-10 pt-2">
           <div className="max-w-md w-full pb-8">
             <InterestedCategoriesSection />
           </div>

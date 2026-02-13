@@ -10,7 +10,7 @@ import useFilterStore from "@/stores/filterStore";
 import { Icon } from "@iconify/react";
 import { Chevron } from "@/public/icons/SVGIcons";
 import { LanguageContext } from "@/context/LanguageContext";
-import LanguageAwareLink from "./LanguageAwareLink";
+import LanguageAwareLink from "../LanguageAwareLink";
 
 interface NavSubLink {
   name: string;
