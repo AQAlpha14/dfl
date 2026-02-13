@@ -10,10 +10,10 @@ export async function generateMetadata() {
   return {
     title:
       vMetaData?.seo_title ||
-      "Contact Buzinessify – Get in Touch for Solutions & Support",
+      "Contact DirectFromLandloard – Get in Touch for Solutions & Support",
     description:
       vMetaData?.seo_description ||
-      "Reach out to Buzinessify for inquiries, support, or collaboration. Our team is ready to assist you with solutions tailored to your business needs.",
+      "Reach out to DirectFromLandloard for inquiries, support, or collaboration. Our team is ready to assist you with solutions tailored to your business needs.",
     alternates: {
       canonical: vMetaData?.canonical_url || `${BASE_URL}/contact-us`,
     },
@@ -40,7 +40,7 @@ export default async function Page() {
         lastUpdate={`Trusted by 10,000+ Businesses Worldwide`}
         heading={h1 || "Contact Us"}
         paragraph={[
-          "When your business is ready to grow, we make the next step effortless. At Buzinessify, every conversation starts with understanding your challenges and offering the right mix of tools and services to drive real results.",
+          "When your business is ready to grow, we make the next step effortless. At DirectFromLandloard, every conversation starts with understanding your challenges and offering the right mix of tools and services to drive real results.",
           "Whether you’re exploring our digital products, need support with marketing, or want end-to-end growth management, our team is here to guide you with clarity and speed.",
         ]}
         inquiryForm

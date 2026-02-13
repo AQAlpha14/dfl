@@ -9,9 +9,12 @@ import Typography from "../Typography";
 import Button from "../Button";
 import { Icon } from "@iconify/react";
 import { AreaSVG, BathSVG, BedsSVG } from "@/public/icons/SVGIcons";
+import { useRouter, useParams } from "next/navigation";
 
 // Define the shape of a property
 export type Property = {
+  id?: string | number;
+  slug?: string;
   imageUrl: string;
   title: string;
   type: string;
@@ -35,8 +38,13 @@ type PropertyCardProps = {
 
 const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
   const [isFavorited, setIsFavorited] = useState(false);
+  const router = useRouter();
+  const params = useParams<{ locale?: string }>();
+  const locale = params?.locale || "en";
 
   const {
+    id,
+    slug,
     imageUrl,
     title,
     type,
@@ -55,6 +63,14 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
 
   const handleFavoriteClick = () => {
     setIsFavorited(!isFavorited);
+  };
+
+  const handleViewDetails = () => {
+    if (slug) {
+      router.push(`/${locale}/listing/${slug}`);
+    } else if (onViewDetails) {
+      onViewDetails();
+    }
   };
 
   return (
@@ -168,7 +184,7 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
 
         <div className="flex gap-2 items-center justify-center">
           <Button
-            onClick={onViewDetails}
+            onClick={handleViewDetails}
             variant="outline"
             className="border-secondary/20 text-primary inline-flex items-center justify-center w-full"
           >
@@ -176,7 +192,7 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
             {btnText.view_details}
           </Button>
           <Button
-            onClick={onViewDetails}
+            type="button"
             variant="outline"
             className="border-secondary/20 text-primary py-3"
           >

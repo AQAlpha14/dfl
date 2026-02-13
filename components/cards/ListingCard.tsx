@@ -33,7 +33,7 @@ type PropertyCardProps = {
   data: Property;
 };
 
-const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
+const ListingCard: React.FC<PropertyCardProps> = ({ data }) => {
   const [isFavorited, setIsFavorited] = useState(false);
 
   const {
@@ -203,4 +203,4 @@ const FeaturedCards: React.FC<PropertyCardProps> = ({ data }) => {
   );
 };
 
-export default FeaturedCards;
+export default ListingCard;

@@ -10,10 +10,10 @@ export async function generateMetadata() {
   return {
     title:
       vMetaData?.seo_title ||
-      "About Buzinessify – Innovative Business Solutions for Growth",
+      "About DirectFromLandloard – Innovative Business Solutions for Growth",
     description:
       vMetaData?.seo_description ||
-      "Learn about Buzinessify’s mission, vision, and team. We provide innovative software solutions to help businesses scale, optimize operations, and grow efficiently.",
+      "Learn about DirectFromLandloard’s mission, vision, and team. We provide innovative software solutions to help businesses scale, optimize operations, and grow efficiently.",
     alternates: {
       canonical: vMetaData?.canonical_url || `${BASE_URL}/about-us`,
     },
