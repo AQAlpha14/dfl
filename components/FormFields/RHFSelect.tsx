@@ -37,7 +37,7 @@ interface RHFSelectProps extends Partial<SelectProps<SelectOption, boolean>> {
 
 const classNames = {
   container: () =>
-    "flex h-10 w-full rounded-md !border-none bg-transparent text-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+    "flex h-10 w-full rounded-md !border-none bg-transparent text-sm text-nowrap transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
   control: () => "h-full! w-full bg-transparent! border-0!",
   valueContainer: () => "bg-transparent",
   singleValue: () => "text-black",
